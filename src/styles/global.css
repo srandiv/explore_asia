@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/effect-fade";
+
+@theme {
+  --color-brand-blue: #1a73e8;
+  --color-brand-dark: #0d1b2a;
+  --color-brand-gold: #c9a84c;
+}
