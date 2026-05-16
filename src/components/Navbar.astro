@@ -1,0 +1,166 @@
+---
+import { ChevronDown, Globe2, Mail, Menu, Phone, X } from '@lucide/astro';
+import logo from '../assets/logo.png';
+
+const servicesLinks = [
+  { href: '/services/amazing-hotels', label: 'Amazing Hotels' },
+  { href: '/services/transportation', label: 'Transportation' },
+  { href: '/services/sightseeing', label: 'Sightseeing' },
+  { href: '/services/professional-guides', label: 'Professional Guides' },
+  { href: '/services/food-and-drinks', label: 'Food & Drinks' },
+  { href: '/services/happy-clients', label: 'Happy Clients' },
+  { href: '/services/international-visa', label: 'International Visa' },
+];
+
+const packageLinks = [
+  { href: '/packages/simply-sri-lanka', label: 'Simply Sri Lanka' },
+  { href: '/packages/islands-wonders', label: "Island's Wonders" },
+  { href: '/packages/ceylon-highlights', label: 'Ceylon Highlights' },
+  { href: '/packages/pearl-of-asia', label: 'Pearl of Asia' },
+  { href: '/packages/undiscovered-sri-lanka', label: 'Undiscovered Sri Lanka' },
+  { href: '/packages/active-and-adventurous', label: 'Active & Adventurous' },
+];
+---
+
+<header class="absolute left-0 top-0 z-50 w-full border-b border-white/20 backdrop-blur-[3px]">
+  <div class="flex h-20 w-full items-center justify-between px-6 md:px-16 lg:px-24">
+    <a href="/" class="shrink-0" aria-label="Explore Asia home">
+      <img src={logo.src} alt="Explore Asia" class="h-16 w-auto object-contain brightness-0 invert" />
+    </a>
+
+    <nav class="hidden items-center text-sm font-medium uppercase tracking-wide text-white drop-shadow-sm lg:flex">
+      <a href="/" class="px-4 text-brand-gold transition-colors hover:text-brand-gold">Home</a>
+      <span class="h-5 w-px bg-white/55"></span>
+      <a href="/about" class="px-4 transition-colors hover:text-brand-gold">About</a>
+      <span class="h-5 w-px bg-white/55"></span>
+
+      <div class="group relative">
+        <a href="/services" class="flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-gold">
+          Services
+          <ChevronDown class="h-4 w-4" aria-hidden="true" />
+        </a>
+        <div class="invisible absolute left-4 top-full w-60 translate-y-2 border border-white/15 bg-white/10 py-2 opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+          {
+            servicesLinks.map((link, index) => (
+              <a
+                href={link.href}
+                class:list={[
+                  'block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-gold',
+                  index === 0 && 'border-b border-white/20',
+                ]}
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <span class="h-5 w-px bg-white/55"></span>
+
+      <div class="group relative">
+        <a href="/packages" class="flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-gold">
+          Packages
+          <ChevronDown class="h-4 w-4" aria-hidden="true" />
+        </a>
+        <div class="invisible absolute left-4 top-full w-64 translate-y-2 border border-white/15 bg-white/10 py-2 opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+          {
+            packageLinks.map((link) => (
+              <a
+                href={link.href}
+                class="block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-gold"
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex items-center gap-3 text-white drop-shadow-sm">
+      <a href="tel:+940000000000" class="hidden transition-colors hover:text-brand-gold sm:block" title="Call" aria-label="Call">
+        <Phone class="h-5 w-5" aria-hidden="true" />
+      </a>
+      <span class="hidden h-5 w-px bg-white/55 sm:block"></span>
+      <a href="mailto:info@exploreasia.com" class="hidden transition-colors hover:text-brand-gold sm:block" title="Email" aria-label="Email">
+        <Mail class="h-5 w-5" aria-hidden="true" />
+      </a>
+      <span class="hidden h-5 w-px bg-white/55 sm:block"></span>
+      <a href="/" class="hidden items-center gap-1 transition-colors hover:text-brand-gold sm:flex" title="Language" aria-label="Language">
+        <Globe2 class="h-5 w-5" aria-hidden="true" />
+        <ChevronDown class="h-3.5 w-3.5" aria-hidden="true" />
+      </a>
+      <button
+        type="button"
+        class="grid h-9 w-9 place-items-center text-white lg:hidden"
+        id="mobile-menu-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open menu"
+      >
+        <Menu class="menu-open h-6 w-6" aria-hidden="true" />
+        <X class="menu-close hidden h-6 w-6" aria-hidden="true" />
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="hidden border-t border-white/20 bg-white/10 px-6 py-5 text-white shadow-xl backdrop-blur-md lg:hidden">
+    <nav class="flex flex-col gap-1 text-sm font-medium uppercase tracking-wide">
+      <a href="/" class="py-3 text-brand-gold">Home</a>
+      <a href="/about" class="py-3">About</a>
+      <details class="group">
+        <summary class="flex cursor-pointer list-none items-center justify-between py-3">
+          Services
+          <ChevronDown class="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
+        </summary>
+        <div class="border border-white/15 bg-white/10 py-1 shadow-inner backdrop-blur-md">
+          {
+            servicesLinks.map((link, index) => (
+              <a
+                href={link.href}
+                class:list={[
+                  'block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-gold',
+                  index === 0 && 'border-b border-white/20',
+                ]}
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </details>
+      <details class="group">
+        <summary class="flex cursor-pointer list-none items-center justify-between py-3">
+          Packages
+          <ChevronDown class="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
+        </summary>
+        <div class="border border-white/15 bg-white/10 py-1 shadow-inner backdrop-blur-md">
+          {
+            packageLinks.map((link) => (
+              <a href={link.href} class="block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-gold">
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('#mobile-menu-toggle');
+  const mobileNav = document.querySelector('#mobile-nav');
+  const menuOpen = toggle?.querySelector('.menu-open');
+  const menuClose = toggle?.querySelector('.menu-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    mobileNav?.classList.toggle('hidden', isOpen);
+    menuOpen?.classList.toggle('hidden', !isOpen);
+    menuClose?.classList.toggle('hidden', isOpen);
+  });
+</script>

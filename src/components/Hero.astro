@@ -1,5 +1,5 @@
 ---
-import { Globe2, Mail, Menu, Phone } from '@lucide/astro';
+import Navbar from './Navbar.astro';
 import sigiriyaImg from '../assets/images/ hero/chathura-indika-laj-xlhp6rs-unsplash.webp';
 import galleImg from '../assets/images/ hero/malith-d-karunarathne--pw-saa99lw-unsplash.webp';
 import elephantImg from '../assets/images/ hero/paul-kapischka-43fxbr3mqoy-unsplash.webp';
@@ -31,43 +31,7 @@ const slides = [
 ---
 
 <div id="hero-wrapper" class="relative h-screen w-full overflow-hidden">
-  <!-- ===== HEADER ===== -->
-  <header class="absolute top-0 left-0 z-50 w-full bg-gradient-to-b from-black/60 to-transparent">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-      <!-- Logo -->
-      <a href="/" class="text-lg font-bold tracking-wide text-white">
-        Sri Lanka <span class="text-brand-gold">Classy</span> Tours
-      </a>
-
-      <!-- Navigation -->
-      <nav class="hidden items-center gap-6 text-xs font-semibold tracking-wider text-white lg:flex">
-        <a href="/" class="hover:text-brand-gold transition-colors">HOME</a>
-        <a href="/tours" class="hover:text-brand-gold transition-colors">TOURS</a>
-        <a href="/offers" class="hover:text-brand-gold transition-colors">OFFERS</a>
-        <a href="/excursions" class="hover:text-brand-gold transition-colors">EXCURSIONS</a>
-        <a href="/destinations" class="hover:text-brand-gold transition-colors">DESTINATION</a>
-        <a href="/hotels" class="hover:text-brand-gold transition-colors">HOTELS</a>
-        <a href="/maldives" class="hover:text-brand-gold transition-colors">MALDIVES</a>
-        <a href="/contact" class="hover:text-brand-gold transition-colors">CONTACT US</a>
-      </nav>
-
-      <!-- Header icons + Hamburger -->
-      <div class="flex items-center gap-4 text-white">
-        <a href="tel:+940000000000" class="hidden md:block hover:text-brand-gold transition-colors" title="Call">
-          <Phone class="h-4 w-4" aria-hidden="true" />
-        </a>
-        <a href="mailto:info@classytours.com" class="hidden md:block hover:text-brand-gold transition-colors" title="Email">
-          <Mail class="h-4 w-4" aria-hidden="true" />
-        </a>
-        <a href="/" class="hidden md:block hover:text-brand-gold transition-colors" title="Language">
-          <Globe2 class="h-4 w-4" aria-hidden="true" />
-        </a>
-        <button class="text-white lg:hidden" title="Menu" id="menu-toggle">
-          <Menu class="h-5 w-5" aria-hidden="true" />
-        </button>
-      </div>
-    </div>
-  </header>
+  <Navbar />
 
   <!-- ===== SWIPER SLIDES ===== -->
   <div class="swiper hero-swiper h-full w-full">
