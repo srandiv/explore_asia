@@ -49,14 +49,16 @@ const slides = [
             <div class="absolute inset-0 bg-black/40"></div>
 
             <!-- Slide content -->
-            <div class="absolute inset-0 z-10 flex items-center px-6 md:px-16 lg:px-24">
-              <div class="max-w-xl text-left">
-                <h2 class="text-3xl font-bold tracking-wider text-white md:text-5xl lg:text-6xl">
-                  {slide.title}
-                </h2>
-                <p class="mt-4 max-w-lg text-sm leading-relaxed text-white/90 md:text-base lg:text-lg">
-                  {slide.subtitle}
-                </p>
+            <div class="absolute inset-0 z-10 flex items-center">
+              <div class="section-container w-full">
+                <div class="hero-copy">
+                  <h2>
+                    {slide.title}
+                  </h2>
+                  <p>
+                    {slide.subtitle}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

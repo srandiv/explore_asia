@@ -1,66 +1,41 @@
 ---
 import { ArrowRight } from "@lucide/astro";
-import logoImg from "../assets/Explore_Asia_Logo_cropped.png";
-import landscapeImg from "../assets/images/sri-lanka-brush-masked.png";
 ---
 
 <section
-  class="bg-white py-10 px-6 pt-[39px] pb-[30px] text-[#5f6368] max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6"
+  class="site-section bg-white"
 >
-  <div class="space-y-4 flex flex-col justify-center">
-    <h2 id="holiday-intro-title" class="text-4xl font-bold">
-      <span class="font-light">Holidays with</span>
-      <br />
-      Lanka Classy Tours ?
-    </h2>
+  <div class="section-container grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
+    <div class="intro-copy">
+      <div class="section-heading" data-align="left">
+        <p>Welcome to Explore Asia</p>
+        <h2 id="holiday-intro-title">Holidays with Lanka Classy Tours</h2>
+        <p>Customized Sri Lanka holidays planned around your pace, budget, comfort, and travel style.</p>
+      </div>
 
-    <p
-      class="mb-[22px] text-[15.5px] font-normal leading-[1.45] text-justify text-[#646970] max-[720px]:text-left max-[720px]:text-[15px] max-[720px]:leading-[1.55] text-justify"
-    >
-      Lanka Classy Tours is a travel agency in Sri Lanka who mainly offers
-      customized holiday tours. We give our clients the best solutions for their
-      needs to meet their ultimate hospitality experience.
-    </p>
+      <div class="intro-body">
+        <p>
+          Lanka Classy Tours creates custom Sri Lanka holidays with local guidance,
+          comfortable stays, and flexible routes built around the way you like to travel.
+        </p>
 
-    <p
-      class="mb-[22px] text-[15.5px] font-normal leading-[1.45] text-justify text-[#646970] max-[720px]:text-left max-[720px]:text-[15px] max-[720px]:leading-[1.55] text-justify"
-    >
-      If you are looking to explore Sri Lanka with the best Sri Lanka tour
-      holiday packages, you have really come to the perfect place. No matter how
-      small or big your budget is, we have packages that cater to all. With our
-      well planned Sri Lanka holidays, you can surely have a gala time. At Sri
-      Lanka Classy Tours, we even offered Tailor-made tour packages in Sri Lanka
-      depending on what place you want to visit &amp; for how long you wish to
-      visit. Whenever you book these tours with us to travel to Sri Lanka, you
-      will realize that we give utmost priority to comfort and luxury. As the
-      premier tour operators in Sri Lanka, we promise to make your holidays
-      refreshing, memorable, and perfectly suited to your preferences. Just let
-      us know the number of people traveling, the dates &amp; the preferred
-      places; once these details are submitted, you are good to go.
-    </p>
+        <p>
+          Share your dates, group size, budget, and favorite places. We will shape a
+          refreshing island journey that feels easy from arrival to departure.
+        </p>
+      </div>
 
-    <a
-      class="mt-[1px] inline-flex items-center gap-[7px] text-[21px] font-bold leading-none text-[#214f9f] no-underline max-[720px]:text-[20px]"
-      href="/about"
-    >
-      <span>View More</span>
-      <ArrowRight class="h-[17px] w-[17px] stroke-[3]" aria-hidden="true" />
-    </a>
-  </div>
-
-  <div class="">
-    <div
-      class="mask-contain mask-no-repeat
- mask-[url(../assets/images/masks/brush-stock-mask.png)] bg-[url(../assets/images/sri-lanka-unsplash-sigiriya.jpg)] h-full w-full lg:h-150 lg:w-150 bg-center"
-    >
+      <a class="text-link" href="/about">
+        <span>View More</span>
+        <ArrowRight class="h-[17px] w-[17px] stroke-[3]" aria-hidden="true" />
+      </a>
     </div>
-    <!-- <div class="" aria-label="Explore Asia">
-      <img
-        class="relative z-[1] block h-auto w-full"
-        src={logoImg.src}
-        alt="Explore Asia Travels"
-        loading="lazy"
-      />
-    </div> -->
+
+    <div>
+      <div
+        class="mask-contain mask-no-repeat mask-[url(../assets/images/masks/brush-stock-mask.png)] h-[24rem] w-full bg-[url(../assets/images/sri-lanka-unsplash-sigiriya.jpg)] bg-center bg-cover lg:h-[38rem]"
+      >
+      </div>
+    </div>
   </div>
 </section>
