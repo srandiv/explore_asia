@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
+import { ArrowLeft, CheckCircle2 } from "@lucide/astro";
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import PageHeader from "../../components/PageHeader.astro";
@@ -19,6 +20,8 @@ if (!entry) {
 }
 
 const { Content } = await render(entry);
+const options = entry.data.options ?? [];
+const gallery = entry.data.gallery ?? [];
 ---
 
 <Layout>
@@ -33,14 +36,51 @@ const { Content } = await render(entry);
   />
 
   <main class="inner-page">
-    <section class="site-section">
+    <section class="service-detail-section">
       <div class="section-container">
-        <article class="content-panel mx-auto max-w-4xl" data-animate="fade-up">
-          <a href="/services">Back to services</a>
+        <article class="service-detail content-panel" data-animate="fade-up">
+          <a href="/services" class="back-link">
+            <ArrowLeft aria-hidden="true" />
+            Back to services
+          </a>
 
-          <div class="content-body">
-            <Content />
+          <div class="service-detail-grid">
+            <div class="content-body">
+              <Content />
+            </div>
+
+            {options.length > 0 && (
+              <aside class="service-options" data-animate="fade-left" data-animate-delay="0.12">
+                <p data-role="eyebrow">Options</p>
+                <h2>What we can arrange</h2>
+                <ul>
+                  {options.map((option) => (
+                    <li>
+                      <CheckCircle2 aria-hidden="true" />
+                      <span>{option}</span>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
           </div>
+
+          {gallery.length > 0 && (
+            <section class="service-gallery" aria-labelledby="service-gallery-title">
+              <div class="section-heading mx-auto text-center" data-animate="fade-up">
+                <p>Gallery</p>
+                <h2 id="service-gallery-title">{entry.data.title} moments</h2>
+              </div>
+
+              <div class="service-gallery-grid">
+                {gallery.map((item, index) => (
+                  <figure data-animate="fade-up" data-animate-delay={String(index * 0.08)}>
+                    <img src={item.image} alt={item.imageAlt} loading="lazy" />
+                  </figure>
+                ))}
+              </div>
+            </section>
+          )}
         </article>
       </div>
     </section>

@@ -55,6 +55,10 @@
     @apply py-16 sm:py-20 lg:py-24;
   }
 
+  .service-detail-section {
+    @apply pb-16 pt-8 sm:pb-20 sm:pt-10 lg:pb-24 lg:pt-12;
+  }
+
   .welcome-section {
     @apply py-8 sm:py-10 lg:py-0;
   }
@@ -140,6 +144,18 @@
     @apply text-sm font-medium text-brand-primary transition-colors hover:text-brand-secondary;
   }
 
+  .back-link {
+    @apply inline-flex items-center gap-2;
+  }
+
+  .back-link svg {
+    @apply h-4 w-4 transition-transform;
+  }
+
+  .back-link:hover svg {
+    @apply -translate-x-1;
+  }
+
   .content-body {
     @apply mt-8 max-w-none;
   }
@@ -176,6 +192,58 @@
 
   .content-body a {
     @apply text-brand-primary underline-offset-4 hover:text-brand-secondary hover:underline;
+  }
+
+  .service-detail {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .service-detail-grid {
+    @apply mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start;
+  }
+
+  .service-detail .content-body {
+    @apply mt-0;
+  }
+
+  .service-options {
+    @apply bg-slate-50 p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)];
+  }
+
+  .service-options [data-role="eyebrow"] {
+    @apply text-xs font-bold uppercase tracking-[0.24em] text-brand-secondary;
+  }
+
+  .service-options h2 {
+    @apply mt-3 text-3xl text-slate-800;
+  }
+
+  .service-options ul {
+    @apply mt-6 space-y-4;
+  }
+
+  .service-options li {
+    @apply flex gap-3 text-base text-slate-600;
+  }
+
+  .service-options svg {
+    @apply mt-1 h-5 w-5 shrink-0 text-brand-secondary;
+  }
+
+  .service-gallery {
+    @apply mt-14;
+  }
+
+  .service-gallery-grid {
+    @apply mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .service-gallery-grid figure {
+    @apply aspect-[4/3] overflow-hidden bg-slate-200 shadow-[0_16px_34px_rgba(15,23,42,0.1)];
+  }
+
+  .service-gallery-grid img {
+    @apply h-full w-full object-cover transition duration-500 hover:scale-105;
   }
 
   .package-detail-layout {

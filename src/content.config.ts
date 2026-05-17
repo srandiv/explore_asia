@@ -9,6 +9,15 @@ const services = defineCollection({
     image: z.string().url(),
     imageAlt: z.string(),
     order: z.number().int().nonnegative(),
+    options: z.array(z.string()).optional(),
+    gallery: z
+      .array(
+        z.object({
+          image: z.string().url(),
+          imageAlt: z.string(),
+        }),
+      )
+      .optional(),
   }),
 });
 
