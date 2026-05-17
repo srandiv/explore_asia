@@ -1,8 +1,8 @@
 ---
 title: Ceylon Highlights
 description: A 7 day island route through Sigiriya, Polonnaruwa, Kandy, Nuwara Eliya, Yala, Galle, Bentota, and Colombo.
-image: https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-imageAlt: Sigiriya rock fortress rising above the Sri Lankan forest
+image: https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+imageAlt: Aerial view of a lush coastal area
 order: 3
 duration: 7 Days / 6 Nights
 price:
@@ -24,8 +24,8 @@ complimentary:
   - Room upgrades on availability
   - Honeymoon freebies
 gallery:
-  - image: https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    imageAlt: Sigiriya rock fortress rising above the Sri Lankan forest
+  - image: https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+    imageAlt: Aerial view of a lush coastal area
   - image: https://images.unsplash.com/photo-1621847473222-d85c022cbf07?w=1400&auto=format&fit=crop&q=80&ixlib=rb-4.1.0
     imageAlt: Sunlit tropical beach with bright blue water
   - image: https://images.unsplash.com/photo-1566299589192-bdf059d4b0be?q=80&w=727&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D

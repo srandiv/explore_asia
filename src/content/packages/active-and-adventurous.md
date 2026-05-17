@@ -1,8 +1,8 @@
 ---
 title: Active & Adventurous
 description: A 7 day adventure route with Wilpattu safari, ancient cities, hot air ballooning, waterfall trekking, rafting, and Colombo.
-image: https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-imageAlt: Sigiriya rock fortress rising above the Sri Lankan forest
+image: https://images.unsplash.com/photo-1752498227072-3641487a2a44?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+imageAlt: Adventurous mountain road and landscape
 order: 6
 duration: 7 Days / 6 Nights
 price:
@@ -24,10 +24,10 @@ complimentary:
   - Room upgrades on availability
   - Honeymoon freebies
 gallery:
-  - image: https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    imageAlt: Sigiriya rock fortress rising above the Sri Lankan forest
   - image: https://images.unsplash.com/photo-1752498227072-3641487a2a44?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     imageAlt: Adventurous mountain road and landscape
+  - image: https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+    imageAlt: Sigiriya rock fortress rising above the Sri Lankan forest
   - image: https://images.unsplash.com/photo-1566299589192-bdf059d4b0be?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     imageAlt: Misty Sri Lankan hill country landscape
   - image: https://images.unsplash.com/photo-1623595289196-007a22dd8560?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
