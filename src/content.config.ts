@@ -33,8 +33,18 @@ const testimonials = defineCollection({
   }),
 });
 
+const faqs = defineCollection({
+  loader: glob({ base: "./src/content/faqs", pattern: "**/*.md" }),
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+    order: z.number().int().nonnegative(),
+  }),
+});
+
 export const collections = {
   services,
   packages,
   testimonials,
+  faqs,
 };
