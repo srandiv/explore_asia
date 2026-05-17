@@ -246,6 +246,98 @@
     @apply h-full w-full object-cover transition duration-500 hover:scale-105;
   }
 
+  .about-story-grid {
+    @apply grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,0.92fr)] lg:items-center;
+  }
+
+  .about-body {
+    @apply mt-7 space-y-5;
+  }
+
+  .about-body p {
+    @apply text-base text-slate-600 sm:text-lg;
+  }
+
+  .about-stats {
+    @apply mt-8 grid gap-4 sm:grid-cols-3;
+  }
+
+  .about-stat {
+    @apply border-l-2 border-brand-secondary bg-slate-50 p-5;
+  }
+
+  .about-stat strong {
+    @apply block font-display text-3xl font-semibold text-brand-primary;
+  }
+
+  .about-stat span {
+    @apply mt-2 block text-sm text-slate-600;
+  }
+
+  .about-media-collage {
+    @apply grid gap-4 sm:grid-cols-[1.25fr_0.8fr];
+  }
+
+  .about-media-collage figure {
+    @apply overflow-hidden bg-slate-200 shadow-[0_18px_45px_rgba(15,23,42,0.12)];
+  }
+
+  .about-media-collage img {
+    @apply h-full w-full object-cover transition duration-700 hover:scale-105;
+  }
+
+  .about-media-main {
+    @apply min-h-[28rem] sm:min-h-[34rem];
+  }
+
+  .about-media-stack {
+    @apply grid gap-4;
+  }
+
+  .about-media-stack figure {
+    @apply min-h-[13.5rem] sm:min-h-[16.5rem];
+  }
+
+  .about-values-section {
+    @apply bg-slate-50;
+  }
+
+  .about-values-grid {
+    @apply mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4;
+  }
+
+  .about-value {
+    @apply bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)];
+  }
+
+  .about-value svg {
+    @apply h-9 w-9 text-brand-secondary;
+  }
+
+  .about-value h3 {
+    @apply mt-5 text-slate-800;
+  }
+
+  .about-value p {
+    @apply mt-3 text-base text-slate-600;
+  }
+
+  .about-gallery-grid {
+    @apply mt-10 grid auto-rows-[14rem] gap-4 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .about-gallery-item {
+    @apply overflow-hidden bg-slate-200 shadow-[0_16px_34px_rgba(15,23,42,0.1)];
+  }
+
+  .about-gallery-feature {
+    @apply sm:col-span-2 sm:row-span-2;
+  }
+
+  .about-gallery-item img {
+    @apply h-full w-full object-cover transition duration-700 hover:scale-105;
+  }
+
   .package-detail-layout {
     @apply grid items-start gap-8 lg:grid-cols-[minmax(18rem,25rem)_1fr];
   }

@@ -1,0 +1,191 @@
+---
+import { ArrowRight, BadgeCheck, HeartHandshake, Map, Sparkles } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import PageHeader from "../components/PageHeader.astro";
+import TestimonialsCarousel from "../components/TestimonialsCarousel.astro";
+import heroImage from "../assets/images/ hero/malith-d-karunarathne--pw-saa99lw-unsplash.webp";
+import coastImage from "../assets/images/ hero/chathura-indika-laj-xlhp6rs-unsplash.webp";
+import templeImage from "../assets/images/ hero/paul-kapischka-43fxbr3mqoy-unsplash.webp";
+import mountainImage from "../assets/images/ hero/yves-alarie-yagheetusk4-unsplash.webp";
+import sigiriyaImage from "../assets/images/sri-lanka-unsplash-sigiriya.jpg";
+
+const values = [
+  {
+    title: "Local knowledge",
+    text: "Routes are shaped by people who understand travel times, seasons, quiet stops, and the small details that make each day feel easier.",
+    icon: Map,
+  },
+  {
+    title: "Personal planning",
+    text: "Every itinerary is adjusted around your pace, comfort, budget, interests, and the kind of Sri Lanka you want to experience.",
+    icon: Sparkles,
+  },
+  {
+    title: "Warm guidance",
+    text: "From arrival to departure, our team keeps the journey calm with clear communication, flexible support, and thoughtful service.",
+    icon: HeartHandshake,
+  },
+  {
+    title: "Trusted partners",
+    text: "We work with reliable hotels, private drivers, guides, and local hosts so each journey feels connected and well cared for.",
+    icon: BadgeCheck,
+  },
+];
+
+const gallery = [
+  {
+    image: sigiriyaImage.src,
+    alt: "Sigiriya rock fortress rising above green forest",
+  },
+  {
+    image: coastImage.src,
+    alt: "Sri Lankan coastal landscape with tropical water",
+  },
+  {
+    image: templeImage.src,
+    alt: "Ancient temple architecture in Sri Lanka",
+  },
+  {
+    image: mountainImage.src,
+    alt: "Misty mountain scenery in Sri Lanka",
+  },
+  {
+    image: heroImage.src,
+    alt: "Scenic Sri Lankan landscape with palms and hills",
+  },
+];
+---
+
+<Layout>
+  <Navbar />
+
+  <PageHeader
+    eyebrow="About Us"
+    title="Sri Lanka holidays planned with local care"
+    subtitle="We create comfortable, flexible journeys across Sri Lanka with private transport, trusted stays, friendly guides, and thoughtful travel planning."
+    image={heroImage.src}
+    imageAlt="Scenic Sri Lankan landscape with palms and hills"
+    imagePosition="center 46%"
+  />
+
+  <main class="inner-page">
+    <section class="site-section">
+      <div class="section-container">
+        <div class="about-story-grid">
+          <div class="about-copy" data-animate="fade-right">
+            <div class="section-heading" data-align="left">
+              <p>Who We Are</p>
+              <h2>Made for travelers who want Sri Lanka to feel effortless</h2>
+              <p>
+                Lanka Classy Tours helps travelers discover Sri Lanka with calm planning, local insight, and flexible service from the first message to the final airport transfer.
+              </p>
+            </div>
+
+            <div class="about-body">
+              <p>
+                We plan tailor-made holidays for couples, families, groups, and solo travelers who want more than a fixed route. Our itineraries can include cultural cities, wildlife parks, tea country, beach stays, village experiences, food stops, and meaningful local encounters.
+              </p>
+              <p>
+                The idea is simple: you share your dates, interests, pace, and budget, then we shape the route, transport, hotels, and daily details around you. The result is a journey that feels organized but never rushed.
+              </p>
+            </div>
+
+            <div class="about-stats" aria-label="Company highlights">
+              <div class="about-stat">
+                <strong>Custom</strong>
+                <span>Routes for every traveler</span>
+              </div>
+              <div class="about-stat">
+                <strong>Private</strong>
+                <span>Transport and guide support</span>
+              </div>
+              <div class="about-stat">
+                <strong>Islandwide</strong>
+                <span>Culture, coast, hills, and wildlife</span>
+              </div>
+            </div>
+
+            <a class="site-button" href="/contact">
+              Plan With Us
+              <span class="site-button-icon" aria-hidden="true">
+                <ArrowRight class="site-button-icon-angle" />
+                <ArrowRight class="site-button-icon-straight" />
+              </span>
+            </a>
+          </div>
+
+          <div class="about-media-collage" data-animate="fade-left" data-animate-delay="0.12">
+            <figure class="about-media-main">
+              <img src={sigiriyaImage.src} alt="Sigiriya rock fortress surrounded by green forest" loading="lazy" />
+            </figure>
+            <div class="about-media-stack">
+              <figure>
+                <img src={coastImage.src} alt="Tropical coastline in Sri Lanka" loading="lazy" />
+              </figure>
+              <figure>
+                <img src={templeImage.src} alt="Sri Lankan temple and cultural architecture" loading="lazy" />
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-values-section site-section">
+      <div class="section-container">
+        <div class="section-heading" data-animate="fade-up">
+          <p>Why Travel With Us</p>
+          <h2>Comfortable journeys, carefully connected</h2>
+          <p>
+            We focus on the practical details that keep your trip smooth, while leaving enough space for surprise, rest, and discovery.
+          </p>
+        </div>
+
+        <div class="about-values-grid">
+          {
+            values.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <article
+                  class="about-value"
+                  data-animate="fade-up"
+                  data-animate-delay={Math.min(index, 3) * 0.08}
+                >
+                  <Icon aria-hidden="true" />
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section">
+      <div class="section-container">
+        <div class="section-heading" data-animate="fade-up">
+          <p>Gallery</p>
+          <h2>A few moments from the island</h2>
+          <p>
+            Ancient kingdoms, wild coastlines, tea country, temples, and scenic routes come together in one compact island journey.
+          </p>
+        </div>
+
+        <div class="about-gallery-grid" data-animate="fade-up" data-animate-delay="0.12">
+          {
+            gallery.map((item, index) => (
+              <figure class:list={["about-gallery-item", index === 0 && "about-gallery-feature"]}>
+                <img src={item.image} alt={item.alt} loading="lazy" />
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <TestimonialsCarousel />
+  </main>
+</Layout>
