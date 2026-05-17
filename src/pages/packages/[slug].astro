@@ -1,5 +1,6 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
+import { ArrowLeft, ArrowRight, MessageCircle } from "@lucide/astro";
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import PageHeader from "../../components/PageHeader.astro";
@@ -19,6 +20,19 @@ if (!entry) {
 }
 
 const { Content } = await render(entry);
+const hasPackageDetails = Boolean(
+  entry.data.duration ||
+    entry.data.price ||
+    entry.data.inclusions?.length ||
+    entry.data.complimentary?.length ||
+    entry.data.itinerary?.length ||
+    entry.data.gallery?.length,
+);
+const gallery = entry.data.gallery ?? [];
+const whatsappText = encodeURIComponent(
+  `Hello Explore Asia, I would like to inquire about the ${entry.data.title} package.`,
+);
+const whatsappHref = `https://wa.me/940000000000?text=${whatsappText}`;
 ---
 
 <Layout>
@@ -35,14 +49,218 @@ const { Content } = await render(entry);
   <main class="inner-page">
     <section class="site-section">
       <div class="section-container">
-        <article class="content-panel mx-auto max-w-4xl" data-animate="fade-up">
-          <a href="/packages">Back to packages</a>
+        {
+          hasPackageDetails ? (
+            <>
+              <div class="package-detail-layout">
+                <aside class="package-summary-card" data-animate="fade-right" data-animate-delay="0.08">
+                  <div class="package-summary-heading">
+                    <p data-role="eyebrow">Tour Package</p>
+                    <h2>{entry.data.title}</h2>
+                    {entry.data.duration && <p data-role="duration">{entry.data.duration}</p>}
+                  </div>
 
-          <div class="content-body">
-            <Content />
-          </div>
-        </article>
+                  {entry.data.price && (
+                    <div class="package-price">
+                      <p>{entry.data.price.label}</p>
+                      <strong>{entry.data.price.amount}</strong>
+                      {entry.data.price.note && <span>{entry.data.price.note}</span>}
+                    </div>
+                  )}
+
+                  {entry.data.inclusions?.length && (
+                    <div class="package-list-block">
+                      <h3>Included</h3>
+                      <ul>
+                        {entry.data.inclusions.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {entry.data.complimentary?.length && (
+                    <div class="package-list-block" data-accent="secondary">
+                      <h3>Complimentary from us</h3>
+                      <ul>
+                        {entry.data.complimentary.map((item) => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </aside>
+
+                <article class="package-itinerary" data-animate="fade-up" data-animate-delay="0.14">
+                  <div class="section-heading" data-align="left">
+                    <p>Daily Itinerary</p>
+                    <h2>How the journey unfolds</h2>
+                    <p>
+                      A clear day-by-day route with arrivals, sightseeing, beach time, and departure
+                      planning already mapped out.
+                    </p>
+                  </div>
+
+                  {gallery.length > 0 && (
+                    <section class="package-gallery">
+                      <div class="swiper package-gallery-swiper">
+                        <div class="swiper-wrapper">
+                          {gallery.map((item) => (
+                            <figure class="swiper-slide package-gallery-slide">
+                              <img src={item.image} alt={item.imageAlt} loading="lazy" />
+                            </figure>
+                          ))}
+                        </div>
+
+                        {gallery.length > 1 && (
+                          <>
+                            <button
+                              type="button"
+                              class="package-gallery-prev package-gallery-arrow"
+                              aria-label="Previous package image"
+                            >
+                              <ArrowLeft class="h-4 w-4" aria-hidden="true" />
+                            </button>
+                            <button
+                              type="button"
+                              class="package-gallery-next package-gallery-arrow"
+                              aria-label="Next package image"
+                            >
+                              <ArrowRight class="h-4 w-4" aria-hidden="true" />
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </section>
+                  )}
+
+                  {entry.data.itinerary?.length ? (
+                    <div class="package-day-list">
+                      {entry.data.itinerary.map((day, index) => (
+                        <section
+                          class="package-day-card"
+                          data-animate="fade-left"
+                          data-animate-delay={Math.min(index, 5) * 0.08}
+                        >
+                          <div class="package-day-label">
+                            <span>{day.day}</span>
+                          </div>
+                          <div class="package-day-copy">
+                            <h3>{day.route}</h3>
+                            <p>{day.description}</p>
+                            {day.stay && <p data-role="stay">{day.stay}</p>}
+                            {day.note && <p data-role="note">{day.note}</p>}
+                          </div>
+                        </section>
+                      ))}
+                    </div>
+                  ) : (
+                    <div class="content-body">
+                      <Content />
+                    </div>
+                  )}
+                </article>
+              </div>
+
+              <section
+                class="package-cta"
+                style={`--package-cta-image: url('${entry.data.image}');`}
+                data-animate="fade-up"
+              >
+                <div>
+                  <p data-role="eyebrow">Ready to plan?</p>
+                  <h2>Start your {entry.data.title} inquiry</h2>
+                  <p>
+                    Tell us your dates, group size, and travel style. We will help shape the route
+                    around you.
+                  </p>
+                </div>
+
+                <div class="package-cta-actions">
+                  <a href={whatsappHref} class="site-button" target="_blank" rel="noreferrer">
+                    Inquire on WhatsApp
+                    <span class="site-button-icon" aria-hidden="true">
+                      <MessageCircle class="site-button-icon-angle" />
+                      <MessageCircle class="site-button-icon-straight" />
+                    </span>
+                  </a>
+                  <a href="/contact" class="site-button package-cta-secondary">
+                    Contact Form
+                    <span class="site-button-icon" aria-hidden="true">
+                      <ArrowRight class="site-button-icon-angle" />
+                      <ArrowRight class="site-button-icon-straight" />
+                    </span>
+                  </a>
+                </div>
+              </section>
+
+            </>
+          ) : (
+            <>
+              <article class="content-panel mx-auto max-w-4xl" data-animate="fade-up">
+                <div class="content-body">
+                  <Content />
+                </div>
+              </article>
+
+              <section
+                class="package-cta mx-auto mt-10 max-w-4xl"
+                style={`--package-cta-image: url('${entry.data.image}');`}
+                data-animate="fade-up"
+              >
+                <div>
+                  <p data-role="eyebrow">Ready to plan?</p>
+                  <h2>Start your {entry.data.title} inquiry</h2>
+                  <p>
+                    Tell us your dates, group size, and travel style. We will help shape the route
+                    around you.
+                  </p>
+                </div>
+
+                <div class="package-cta-actions">
+                  <a href={whatsappHref} class="site-button" target="_blank" rel="noreferrer">
+                    Inquire on WhatsApp
+                    <span class="site-button-icon" aria-hidden="true">
+                      <MessageCircle class="site-button-icon-angle" />
+                      <MessageCircle class="site-button-icon-straight" />
+                    </span>
+                  </a>
+                  <a href="/contact" class="site-button package-cta-secondary">
+                    Contact Form
+                    <span class="site-button-icon" aria-hidden="true">
+                      <ArrowRight class="site-button-icon-angle" />
+                      <ArrowRight class="site-button-icon-straight" />
+                    </span>
+                  </a>
+                </div>
+              </section>
+            </>
+          )
+        }
       </div>
     </section>
   </main>
+
+  <script>
+    import Swiper from "swiper";
+    import { Navigation } from "swiper/modules";
+
+    const packageGallery = document.querySelector(".package-gallery-swiper");
+    const packageGalleryNext = document.querySelector(".package-gallery-next");
+    const packageGalleryPrev = document.querySelector(".package-gallery-prev");
+
+    if (packageGallery && packageGalleryNext && packageGalleryPrev) {
+      new Swiper(packageGallery, {
+        modules: [Navigation],
+        loop: true,
+        speed: 700,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        navigation: {
+          nextEl: packageGalleryNext,
+          prevEl: packageGalleryPrev,
+        },
+      });
+    }
+  </script>
 </Layout>

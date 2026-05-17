@@ -1,0 +1,102 @@
+---
+import { ArrowRight } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const headerImage =
+  "https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+---
+
+<Layout>
+  <Navbar />
+
+  <PageHeader
+    eyebrow="Contact"
+    title="Tell us about your Sri Lanka trip"
+    subtitle="Share your dates, route ideas, and group details. We will help turn them into a clear travel plan."
+    image={headerImage}
+    imageAlt="Scenic Sri Lankan coastline and tropical landscape"
+  />
+
+  <main class="inner-page">
+    <section class="site-section">
+      <div class="section-container">
+        <div class="contact-layout">
+          <aside class="contact-card" data-animate="fade-right">
+            <h2>Plan with a local team</h2>
+            <p>
+              Send the basics now. We can refine hotels, transport, sightseeing, and travel pace
+              together once we know what kind of journey you want.
+            </p>
+
+            <div class="contact-detail-list">
+              <div>
+                <span>Phone</span>
+                <a href="tel:+940000000000">+94 00 000 0000</a>
+              </div>
+              <div>
+                <span>Email</span>
+                <a href="mailto:info@exploreasia.com">info@exploreasia.com</a>
+              </div>
+              <div>
+                <span>Based in</span>
+                <span>Sri Lanka</span>
+              </div>
+            </div>
+          </aside>
+
+          <form class="contact-form" action="mailto:info@exploreasia.com" method="post" enctype="text/plain" data-animate="fade-up">
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="contact-field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+              <div class="contact-field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+            </div>
+
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div class="contact-field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="contact-field">
+                <label for="package">Package</label>
+                <select id="package" name="package">
+                  <option>Simply Sri Lanka</option>
+                  <option>Island's Wonders</option>
+                  <option>Ceylon Highlights</option>
+                  <option>Pearl of Asia</option>
+                  <option>Undiscovered Sri Lanka</option>
+                  <option>Active & Adventurous</option>
+                  <option>Custom trip</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="contact-field">
+              <label for="message">Trip details</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Travel dates, number of travelers, places you want to include, and anything important for the trip."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="site-button">
+              Send Inquiry
+              <span class="site-button-icon" aria-hidden="true">
+                <ArrowRight class="site-button-icon-angle" />
+                <ArrowRight class="site-button-icon-straight" />
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

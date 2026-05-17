@@ -20,6 +20,35 @@ const packages = defineCollection({
     image: z.string().url(),
     imageAlt: z.string(),
     order: z.number().int().nonnegative(),
+    duration: z.string().optional(),
+    price: z
+      .object({
+        label: z.string(),
+        amount: z.string(),
+        note: z.string().optional(),
+      })
+      .optional(),
+    inclusions: z.array(z.string()).optional(),
+    complimentary: z.array(z.string()).optional(),
+    gallery: z
+      .array(
+        z.object({
+          image: z.string().url(),
+          imageAlt: z.string(),
+        }),
+      )
+      .optional(),
+    itinerary: z
+      .array(
+        z.object({
+          day: z.string(),
+          route: z.string(),
+          description: z.string(),
+          stay: z.string().optional(),
+          note: z.string().optional(),
+        }),
+      )
+      .optional(),
   }),
 });
 
