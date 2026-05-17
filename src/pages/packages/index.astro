@@ -1,0 +1,53 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+
+const packages = (await getCollection("packages")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout>
+  <Navbar />
+
+  <main class="min-h-screen bg-white px-6 pb-16 pt-32 md:px-16 lg:px-24">
+    <div class="mx-auto max-w-7xl">
+      <p class="text-[1.6rem] font-light tracking-tight text-slate-600 sm:text-[1.9rem]">Highlights of</p>
+      <h1 class="text-[2.25rem] font-semibold tracking-tight text-slate-700 sm:text-[2.8rem]">Our Tour Packages</h1>
+      <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
+        Browse the full package collection below. Each card links to a dedicated page you can expand later with itinerary details.
+      </p>
+
+      <div class="mt-10 grid gap-3 lg:grid-cols-[1.22fr_1fr]">
+        {
+          packages.slice(0, 5).map((pkg, index) => (
+            <a
+              href={`/packages/${pkg.id}`}
+              class:list={[
+                'group block overflow-hidden bg-slate-200 shadow-[0_18px_40px_rgba(15,23,42,0.08)]',
+                index === 0 ? 'min-h-[520px] lg:min-h-[560px]' : 'min-h-[245px]',
+              ]}
+            >
+              <article class="relative h-full">
+                <img
+                  src={pkg.data.image}
+                  alt={pkg.data.imageAlt}
+                  class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-slate-950/10"></div>
+                <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <h2 class:list={['font-semibold tracking-tight', index === 0 ? 'text-2xl sm:text-[1.9rem]' : 'text-xl sm:text-[1.35rem]']}>
+                    {pkg.data.title}
+                  </h2>
+                  <p class="mt-2 max-w-[24rem] text-sm leading-6 text-white/85">
+                    {pkg.data.description}
+                  </p>
+                </div>
+              </article>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>

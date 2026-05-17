@@ -12,6 +12,18 @@ const services = defineCollection({
   }),
 });
 
+const packages = defineCollection({
+  loader: glob({ base: "./src/content/packages", pattern: "**/*.md" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    image: z.string().url(),
+    imageAlt: z.string(),
+    order: z.number().int().nonnegative(),
+  }),
+});
+
 export const collections = {
   services,
+  packages,
 };
