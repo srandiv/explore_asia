@@ -1,6 +1,11 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
-import { ArrowLeft, ArrowRight, MessageCircle } from "@lucide/astro";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ClipboardPenLine,
+} from "@lucide/astro";
+import { siWhatsapp } from "simple-icons";
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import PageHeader from "../../components/PageHeader.astro";
@@ -180,15 +185,19 @@ const whatsappHref = `https://wa.me/940000000000?text=${whatsappText}`;
                   <a href={whatsappHref} class="site-button" target="_blank" rel="noreferrer">
                     Inquire on WhatsApp
                     <span class="site-button-icon" aria-hidden="true">
-                      <MessageCircle class="site-button-icon-angle" />
-                      <MessageCircle class="site-button-icon-straight" />
+                      <svg class="site-button-icon-angle" viewBox="0 0 24 24">
+                        <path d={siWhatsapp.path} fill="currentColor" />
+                      </svg>
+                      <svg class="site-button-icon-straight" viewBox="0 0 24 24">
+                        <path d={siWhatsapp.path} fill="currentColor" />
+                      </svg>
                     </span>
                   </a>
                   <a href="/contact" class="site-button package-cta-secondary">
                     Contact Form
                     <span class="site-button-icon" aria-hidden="true">
-                      <ArrowRight class="site-button-icon-angle" />
-                      <ArrowRight class="site-button-icon-straight" />
+                      <ClipboardPenLine class="site-button-icon-angle" />
+                      <ClipboardPenLine class="site-button-icon-straight" />
                     </span>
                   </a>
                 </div>
@@ -221,15 +230,19 @@ const whatsappHref = `https://wa.me/940000000000?text=${whatsappText}`;
                   <a href={whatsappHref} class="site-button" target="_blank" rel="noreferrer">
                     Inquire on WhatsApp
                     <span class="site-button-icon" aria-hidden="true">
-                      <MessageCircle class="site-button-icon-angle" />
-                      <MessageCircle class="site-button-icon-straight" />
+                      <svg class="site-button-icon-angle" viewBox="0 0 24 24">
+                        <path d={siWhatsapp.path} fill="currentColor" />
+                      </svg>
+                      <svg class="site-button-icon-straight" viewBox="0 0 24 24">
+                        <path d={siWhatsapp.path} fill="currentColor" />
+                      </svg>
                     </span>
                   </a>
                   <a href="/contact" class="site-button package-cta-secondary">
                     Contact Form
                     <span class="site-button-icon" aria-hidden="true">
-                      <ArrowRight class="site-button-icon-angle" />
-                      <ArrowRight class="site-button-icon-straight" />
+                      <ClipboardPenLine class="site-button-icon-angle" />
+                      <ClipboardPenLine class="site-button-icon-straight" />
                     </span>
                   </a>
                 </div>
