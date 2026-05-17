@@ -1,0 +1,110 @@
+---
+import { ChevronLeft, ChevronRight } from "@lucide/astro";
+import { getCollection } from "astro:content";
+
+const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="services-section relative overflow-hidden bg-[#dceaea] py-16 sm:py-20 lg:py-24">
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-16 bg-[radial-gradient(circle_at_10%_20%,rgba(255,255,255,0.95),rgba(255,255,255,0)_45%),radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.92),rgba(255,255,255,0)_42%),radial-gradient(circle_at_90%_18%,rgba(255,255,255,0.92),rgba(255,255,255,0)_45%)] opacity-90"></div>
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-16 rotate-180 bg-[radial-gradient(circle_at_10%_20%,rgba(255,255,255,0.95),rgba(255,255,255,0)_45%),radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.92),rgba(255,255,255,0)_42%),radial-gradient(circle_at_90%_18%,rgba(255,255,255,0.92),rgba(255,255,255,0)_45%)] opacity-90"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 md:px-16 lg:px-24">
+    <div class="max-w-3xl space-y-4">
+      <p class="text-sm font-semibold uppercase tracking-[0.28em] text-slate-600">Our Services</p>
+      <h3 class="text-3xl font-semibold tracking-tight text-slate-800 sm:text-4xl lg:text-[2.75rem]">
+        Everything you need for a smooth Sri Lanka trip
+      </h3>
+      <p class="max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+        Choose the service you need and build the trip around it. The carousel below can highlight hotels, transport, sightseeing, food, and more.
+      </p>
+    </div>
+
+    <div class="relative mt-8">
+      <button
+        type="button"
+        class="services-prev absolute left-0 top-1/2 z-20 inline-flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-white/80 text-slate-700 shadow-[0_10px_25px_rgba(15,23,42,0.12)] backdrop-blur-sm transition hover:bg-white hover:text-brand-blue sm:h-12 sm:w-12"
+        aria-label="Previous service"
+      >
+        <ChevronLeft class="h-5 w-5" aria-hidden="true" />
+      </button>
+
+      <button
+        type="button"
+        class="services-next absolute right-0 top-1/2 z-20 inline-flex h-11 w-11 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-white/80 text-slate-700 shadow-[0_10px_25px_rgba(15,23,42,0.12)] backdrop-blur-sm transition hover:bg-white hover:text-brand-blue sm:h-12 sm:w-12"
+        aria-label="Next service"
+      >
+        <ChevronRight class="h-5 w-5" aria-hidden="true" />
+      </button>
+
+      <div class="swiper services-swiper overflow-visible px-1 pb-2 sm:px-8 lg:px-12">
+        <div class="swiper-wrapper">
+          {
+            services.map((service) => (
+              <div class="swiper-slide">
+                <a href={`/services/${service.id}`} class="group block h-full">
+                  <article class="relative h-[340px] overflow-hidden rounded-[2px] bg-slate-200 shadow-[0_18px_30px_rgba(15,23,42,0.16)]">
+                    <img
+                      src={service.data.image}
+                      alt={service.data.imageAlt}
+                      class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-slate-950/10"></div>
+
+                    <div class="absolute inset-x-0 bottom-0 p-5 text-white">
+                      <div class="mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/80 backdrop-blur-sm">
+                        Service
+                      </div>
+                      <h4 class="text-2xl font-semibold tracking-tight">{service.data.title}</h4>
+                      <p class="mt-2 max-w-[18rem] text-sm leading-6 text-white/80">{service.data.description}</p>
+                    </div>
+                  </article>
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation } from 'swiper/modules';
+
+  new Swiper('.services-swiper', {
+    modules: [Navigation],
+    loop: true,
+    speed: 700,
+    spaceBetween: 18,
+    navigation: {
+      nextEl: '.services-next',
+      prevEl: '.services-prev',
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1.08,
+      },
+      640: {
+        slidesPerView: 1.4,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 2.6,
+      },
+      1280: {
+        slidesPerView: 3.1,
+      },
+    },
+  });
+</script>
+
+<style>
+  .services-section {
+    isolation: isolate;
+  }
+</style>
