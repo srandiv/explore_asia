@@ -21,7 +21,10 @@ const servicesBackground =
     aria-hidden="true"
   />
   <div class="absolute inset-0 bg-slate-950/28"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.34),rgba(255,255,255,0)_34%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(15,23,42,0.08)_42%,rgba(15,23,42,0.34)_100%)]"></div>
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.34),rgba(255,255,255,0)_34%),linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(15,23,42,0.08)_42%,rgba(15,23,42,0.34)_100%)]"
+  >
+  </div>
 
   <div class="section-container relative z-10">
     <div class="section-heading" data-theme="dark">
@@ -68,7 +71,6 @@ const servicesBackground =
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-slate-950/10" />
 
                     <div class="service-card-copy">
-                      <div class="card-kicker">Service</div>
                       <h3>{service.data.title}</h3>
                       <p>{service.data.description}</p>
                     </div>
