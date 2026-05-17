@@ -23,7 +23,7 @@ const truncateWords = (text: string, limit: number) => {
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,244,214,0.42),rgba(255,244,214,0)_32%),linear-gradient(180deg,rgba(15,23,42,0.18)_0%,rgba(15,23,42,0.08)_38%,rgba(15,23,42,0.3)_100%)]"></div>
 
   <div class="section-container relative">
-    <div class="section-heading" data-theme="dark">
+    <div class="section-heading" data-theme="dark" data-animate="fade-up">
       <p>Testimonials</p>
       <h2>
         Traveler Reviews
@@ -33,7 +33,7 @@ const truncateWords = (text: string, limit: number) => {
       </p>
     </div>
 
-    <div class="relative mt-10">
+    <div class="relative mt-10" data-animate="fade-up" data-animate-delay="0.12">
       <button
         type="button"
         class="testimonials-prev absolute left-0 top-1/2 z-20 inline-flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-white/20 text-white shadow-[0_10px_25px_rgba(15,23,42,0.2)] backdrop-blur-md transition hover:bg-white/30 sm:h-14 sm:w-14"
@@ -53,9 +53,13 @@ const truncateWords = (text: string, limit: number) => {
       <div class="swiper testimonials-swiper overflow-visible px-1 pb-2 sm:px-10 lg:px-14">
         <div class="swiper-wrapper items-stretch">
           {
-            testimonials.map((testimonial) => (
+            testimonials.map((testimonial, index) => (
               <div class="swiper-slide h-auto">
-                <article class="testimonial-card">
+                <article
+                  class="testimonial-card"
+                  data-animate="fade-up"
+                  data-animate-delay={`${Math.min(index, 2) * 0.1}`}
+                >
                   <div class="flex items-center gap-1 text-[#f2c94c]">
                     {
                       Array.from({ length: 5 }).map(() => (
@@ -86,14 +90,20 @@ const truncateWords = (text: string, limit: number) => {
   import Swiper from "swiper";
   import { Navigation } from "swiper/modules";
 
-  new Swiper(".testimonials-swiper", {
+  const testimonialsSection = document.querySelector(".testimonials-section");
+  const testimonialsSwiper = testimonialsSection?.querySelector(".testimonials-swiper");
+  const testimonialsNext = testimonialsSection?.querySelector(".testimonials-next");
+  const testimonialsPrev = testimonialsSection?.querySelector(".testimonials-prev");
+
+  if (testimonialsSwiper && testimonialsNext && testimonialsPrev) {
+    new Swiper(testimonialsSwiper, {
     modules: [Navigation],
     loop: true,
     speed: 700,
     spaceBetween: 18,
     navigation: {
-      nextEl: ".testimonials-next",
-      prevEl: ".testimonials-prev",
+      nextEl: testimonialsNext,
+      prevEl: testimonialsPrev,
     },
     breakpoints: {
       0: {
@@ -110,6 +120,7 @@ const truncateWords = (text: string, limit: number) => {
       },
     },
   });
+  }
 </script>
 
 <style>

@@ -7,7 +7,7 @@ const faqs = (await getCollection("faqs")).sort((a, b) => a.data.order - b.data.
 
 <section id="faq" class="faq-section site-section relative overflow-hidden bg-brand-primary/5">
   <div class="section-container relative">
-    <div class="section-heading">
+    <div class="section-heading" data-animate="fade-up">
       <p>FAQ</p>
       <h2>
         Questions travelers ask most
@@ -23,6 +23,8 @@ const faqs = (await getCollection("faqs")).sort((a, b) => a.data.order - b.data.
           <article
             class="faq-item rounded-[1.4rem] border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.06)] transition-shadow duration-300 hover:shadow-[0_16px_34px_rgba(15,23,42,0.09)]"
             data-open={index === 0 ? "true" : "false"}
+            data-animate="fade-left"
+            data-animate-delay={`${Math.min(index, 4) * 0.08}`}
           >
             <button
               type="button"

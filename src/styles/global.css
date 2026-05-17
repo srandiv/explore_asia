@@ -130,6 +130,42 @@
     @apply mt-6 inline-flex items-center gap-2 text-lg font-bold leading-none text-brand-primary no-underline transition-colors hover:text-brand-secondary;
   }
 
+  .site-button {
+    @apply mt-6 inline-flex w-fit items-center justify-center gap-2 border border-brand-secondary bg-brand-secondary px-5 py-2.5 text-xs font-medium uppercase tracking-[0.14em] text-white no-underline shadow-[0_14px_28px_rgba(27,156,80,0.18)] transition hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-secondary;
+  }
+
+  .site-button-icon {
+    @apply relative inline-flex h-4 w-4 shrink-0 items-center justify-center overflow-hidden;
+  }
+
+  .site-button-icon svg {
+    @apply absolute h-4 w-4 transition-all duration-300;
+  }
+
+  .site-button-icon-angle {
+    @apply translate-x-0 opacity-100;
+  }
+
+  .site-button-icon-straight {
+    @apply -translate-x-2 opacity-0;
+  }
+
+  .site-button:hover .site-button-icon-angle {
+    @apply translate-x-2 opacity-0;
+  }
+
+  .site-button:hover .site-button-icon-straight {
+    @apply translate-x-0 opacity-100;
+  }
+
+  [data-animate],
+  .gsap-fade-up,
+  .gsap-fade-down,
+  .gsap-fade-left,
+  .gsap-fade-right {
+    will-change: transform, opacity;
+  }
+
   .service-card-copy,
   .package-card-copy {
     @apply absolute inset-x-0 bottom-0 text-white;

@@ -27,7 +27,7 @@ const servicesBackground =
   </div>
 
   <div class="section-container relative z-10">
-    <div class="section-heading" data-theme="dark">
+    <div class="section-heading" data-theme="dark" data-animate="fade-up">
       <p>Our Services</p>
       <h2>Everything you need for a smooth Sri Lanka trip</h2>
       <p>
@@ -36,7 +36,7 @@ const servicesBackground =
       </p>
     </div>
 
-    <div class="relative mt-8">
+    <div class="relative mt-8" data-animate="fade-up" data-animate-delay="0.12">
       <button
         type="button"
         class="services-prev absolute left-0 top-1/2 z-20 inline-flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 bg-white/20 text-white shadow-[0_10px_25px_rgba(15,23,42,0.2)] backdrop-blur-md transition hover:bg-white/30 sm:h-14 sm:w-14"
@@ -58,10 +58,14 @@ const servicesBackground =
       >
         <div class="swiper-wrapper">
           {
-            services.map((service) => (
+            services.map((service, index) => (
               <div class="swiper-slide">
                 <a href={`/services/${service.id}`} class="group block h-full">
-                  <article class="relative h-[420px] overflow-hidden rounded-[2px] bg-slate-200 shadow-[0_22px_45px_rgba(15,23,42,0.22)] sm:h-[460px]">
+                  <article
+                    class="relative h-[420px] overflow-hidden rounded-[2px] bg-slate-200 shadow-[0_22px_45px_rgba(15,23,42,0.22)] sm:h-[460px]"
+                    data-animate="fade-up"
+                    data-animate-delay={`${Math.min(index, 2) * 0.1}`}
+                  >
                     <img
                       src={service.data.image}
                       alt={service.data.imageAlt}
@@ -89,14 +93,20 @@ const servicesBackground =
   import Swiper from "swiper";
   import { Navigation } from "swiper/modules";
 
-  new Swiper(".services-swiper", {
+  const servicesSection = document.querySelector(".services-section");
+  const servicesSwiper = servicesSection?.querySelector(".services-swiper");
+  const servicesNext = servicesSection?.querySelector(".services-next");
+  const servicesPrev = servicesSection?.querySelector(".services-prev");
+
+  if (servicesSwiper && servicesNext && servicesPrev) {
+    new Swiper(servicesSwiper, {
     modules: [Navigation],
     loop: true,
     speed: 700,
     spaceBetween: 18,
     navigation: {
-      nextEl: ".services-next",
-      prevEl: ".services-prev",
+      nextEl: servicesNext,
+      prevEl: servicesPrev,
     },
     breakpoints: {
       0: {
@@ -116,6 +126,7 @@ const servicesBackground =
       },
     },
   });
+  }
 </script>
 
 <style>

@@ -1,4 +1,5 @@
 ---
+import { ArrowRight, ArrowUpRight } from "@lucide/astro";
 import { getCollection } from "astro:content";
 
 const packages = (await getCollection("packages")).sort((a, b) => a.data.order - b.data.order);
@@ -8,7 +9,7 @@ const gridPackages = packages.slice(1, 5);
 
 <section class="packages-section site-section relative overflow-hidden bg-white">
   <div class="section-container">
-    <div class="section-heading">
+    <div class="section-heading" data-animate="fade-up">
       <p>Tour Packages</p>
       <h2>
         Our Tour Packages
@@ -19,7 +20,7 @@ const gridPackages = packages.slice(1, 5);
     </div>
 
     <div class="mt-10 grid gap-3 lg:grid-cols-[1.22fr_1fr]">
-      <a href={`/packages/${featuredPackage.id}`} class="group block min-h-[520px] lg:min-h-[560px]">
+      <a href={`/packages/${featuredPackage.id}`} class="group block min-h-[520px] lg:min-h-[560px]" data-animate="fade-right" data-animate-delay="0.12">
         <article class="relative h-full overflow-hidden bg-slate-200 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
           <img
             src={featuredPackage.data.image}
@@ -39,8 +40,13 @@ const gridPackages = packages.slice(1, 5);
 
       <div class="grid gap-3 sm:grid-cols-2 sm:grid-rows-2 lg:h-[560px]">
         {
-          gridPackages.map((pkg) => (
-            <a href={`/packages/${pkg.id}`} class="group block min-h-[245px]">
+          gridPackages.map((pkg, index) => (
+            <a
+              href={`/packages/${pkg.id}`}
+              class="group block min-h-[245px]"
+              data-animate="fade-up"
+              data-animate-delay={`${0.18 + index * 0.08}`}
+            >
               <article class="relative h-full overflow-hidden bg-slate-200 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
                 <img
                   src={pkg.data.image}
@@ -62,10 +68,13 @@ const gridPackages = packages.slice(1, 5);
       </div>
     </div>
 
-    <div class="mt-8 text-center">
-      <a href="/packages" class="inline-flex items-center gap-2 text-base font-semibold text-brand-blue transition-colors hover:text-slate-800">
+    <div class="mt-8 text-center" data-animate="fade-up" data-animate-delay="0.24">
+      <a href="/packages" class="site-button">
         View More
-        <span aria-hidden="true">→</span>
+        <span class="site-button-icon" aria-hidden="true">
+          <ArrowUpRight class="site-button-icon-angle stroke-[3]" />
+          <ArrowRight class="site-button-icon-straight stroke-[3]" />
+        </span>
       </a>
     </div>
   </div>

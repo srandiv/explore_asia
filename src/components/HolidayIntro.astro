@@ -1,12 +1,12 @@
 ---
-import { ArrowRight } from "@lucide/astro";
+import { ArrowRight, ArrowUpRight } from "@lucide/astro";
 ---
 
 <section class="welcome-section bg-white">
   <div
     class="section-container grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center"
   >
-    <div class="intro-copy">
+    <div class="intro-copy" data-animate="fade-right">
       <div class="section-heading" data-align="left">
         <p>Welcome to Explore Asia</p>
         <h2 id="holiday-intro-title">Holidays with Lanka Classy Tours</h2>
@@ -17,14 +17,14 @@ import { ArrowRight } from "@lucide/astro";
       </div>
 
       <div class="intro-body">
-        <p>
+        <p data-animate="fade-up" data-animate-delay="0.08">
           Lanka Classy Tours creates custom Sri Lanka holidays with warm local
           guidance, comfortable stays, and flexible routes shaped around the way
           you like to travel. From cultural cities to quiet beaches, each
           journey is planned with care.
         </p>
 
-        <p>
+        <p data-animate="fade-up" data-animate-delay="0.16">
           Share your dates, group size, budget, and favorite places, and we will
           craft a refreshing island journey that feels easy from arrival to
           departure. Our team helps with transport, hotels, daily plans, and the
@@ -32,13 +32,16 @@ import { ArrowRight } from "@lucide/astro";
         </p>
       </div>
 
-      <a class="text-link" href="/about">
+      <a class="site-button" href="/about" data-animate="fade-up" data-animate-delay="0.24">
         <span>View More</span>
-        <ArrowRight class="h-[17px] w-[17px] stroke-[3]" aria-hidden="true" />
+        <span class="site-button-icon" aria-hidden="true">
+          <ArrowUpRight class="site-button-icon-angle stroke-[3]" />
+          <ArrowRight class="site-button-icon-straight stroke-[3]" />
+        </span>
       </a>
     </div>
 
-    <div>
+    <div data-animate="fade-left" data-animate-delay="0.12">
       <div
         class="mask-contain mask-no-repeat mask-[url(../assets/images/masks/brush-stock-mask.png)] h-150 w-full bg-[url(../assets/images/sri-lanka-unsplash-sigiriya.jpg)] bg-center bg-cover lg:h-[38rem]"
       >
