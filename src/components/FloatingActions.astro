@@ -1,0 +1,42 @@
+---
+import { ArrowUp } from "@lucide/astro";
+import { siWhatsapp } from "simple-icons";
+
+const whatsappText = encodeURIComponent(
+  "Hello Sri Lanka Classy Tours, I would like to inquire about a tour.",
+);
+const whatsappHref = `https://wa.me/940000000000?text=${whatsappText}`;
+---
+
+<div class="floating-actions" aria-label="Quick actions" data-floating-actions>
+  <button class="floating-action floating-action-top" type="button" aria-label="Back to top" data-back-to-top>
+    <ArrowUp aria-hidden="true" />
+  </button>
+  <a
+    class="floating-action floating-action-whatsapp"
+    href={whatsappHref}
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Chat on WhatsApp"
+  >
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d={siWhatsapp.path} fill="currentColor" />
+    </svg>
+  </a>
+</div>
+
+<script>
+  const floatingActions = document.querySelector("[data-floating-actions]");
+  const toggleFloatingActions = () => {
+    floatingActions?.classList.toggle("is-visible", window.scrollY > 180);
+  };
+
+  toggleFloatingActions();
+  window.addEventListener("scroll", toggleFloatingActions, { passive: true });
+
+  document.querySelectorAll("[data-back-to-top]").forEach((button) => {
+    button.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+</script>

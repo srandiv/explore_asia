@@ -707,6 +707,30 @@
     @apply translate-x-0 opacity-100;
   }
 
+  .floating-actions {
+    @apply pointer-events-none fixed bottom-5 right-5 z-[80] flex translate-y-4 flex-col items-center gap-3 opacity-0 transition-all duration-300 sm:bottom-6 sm:right-6;
+  }
+
+  .floating-actions.is-visible {
+    @apply pointer-events-auto translate-y-0 opacity-100;
+  }
+
+  .floating-action {
+    @apply flex h-12 w-12 items-center justify-center border border-white/25 text-white shadow-[0_18px_34px_rgba(15,23,42,0.22)] transition hover:-translate-y-0.5 hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+  }
+
+  .floating-action svg {
+    @apply h-5 w-5;
+  }
+
+  .floating-action-top {
+    @apply bg-brand-primary;
+  }
+
+  .floating-action-whatsapp {
+    @apply bg-brand-secondary;
+  }
+
   [data-animate],
   .gsap-fade-up,
   .gsap-fade-down,
