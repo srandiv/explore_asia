@@ -2,6 +2,17 @@
 import { ArrowRight, ChevronDown, Menu, X } from "@lucide/astro";
 import logo from "../assets/logo.png";
 import { packageLinks, servicesLinks } from "../lib/navigation";
+
+const normalizePath = (path: string) =>
+  path.length > 1 ? path.replace(/\/$/, "") : path;
+
+const currentPath = normalizePath(Astro.url.pathname);
+const isActivePath = (href: string) => currentPath === normalizePath(href);
+const isSectionActive = (href: string) =>
+  currentPath === href || currentPath.startsWith(`${href}/`);
+
+const isServicesActive = isSectionActive("/services");
+const isPackagesActive = isSectionActive("/packages");
 ---
 
 <header
@@ -23,11 +34,21 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
     >
       <a
         href="/"
-        class="px-4 text-brand-secondary transition-colors hover:text-brand-secondary"
+        aria-current={isActivePath("/") ? "page" : undefined}
+        class:list={[
+          "px-4 transition-colors hover:text-brand-secondary",
+          isActivePath("/") && "text-brand-secondary",
+        ]}
         >Home</a
       >
       <span class="h-5 w-px bg-white/55"></span>
-      <a href="/about" class="px-4 transition-colors hover:text-brand-secondary"
+      <a
+        href="/about"
+        aria-current={isActivePath("/about") ? "page" : undefined}
+        class:list={[
+          "px-4 transition-colors hover:text-brand-secondary",
+          isActivePath("/about") && "text-brand-secondary",
+        ]}
         >About</a
       >
       <span class="h-5 w-px bg-white/55"></span>
@@ -35,7 +56,11 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
       <div class="group relative">
         <a
           href="/services"
-          class="flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-secondary"
+          aria-current={isServicesActive ? "page" : undefined}
+          class:list={[
+            "flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-secondary",
+            isServicesActive && "text-brand-secondary",
+          ]}
         >
           Services
           <ChevronDown class="h-4 w-4" aria-hidden="true" />
@@ -48,9 +73,11 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
               servicesLinks.map((link, index) => (
                 <a
                   href={link.href}
+                  aria-current={isActivePath(link.href) ? "page" : undefined}
                   class:list={[
                     "block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-secondary",
                     index === 0 && "border-b border-white/20",
+                    isActivePath(link.href) && "text-brand-secondary",
                   ]}
                 >
                   {link.label}
@@ -66,7 +93,11 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
       <div class="group relative">
         <a
           href="/packages"
-          class="flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-secondary"
+          aria-current={isPackagesActive ? "page" : undefined}
+          class:list={[
+            "flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-secondary",
+            isPackagesActive && "text-brand-secondary",
+          ]}
         >
           Packages
           <ChevronDown class="h-4 w-4" aria-hidden="true" />
@@ -79,7 +110,11 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
               packageLinks.map((link) => (
                 <a
                   href={link.href}
-                  class="block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-secondary"
+                  aria-current={isActivePath(link.href) ? "page" : undefined}
+                  class:list={[
+                    "block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-secondary",
+                    isActivePath(link.href) && "text-brand-secondary",
+                  ]}
                 >
                   {link.label}
                 </a>
@@ -90,7 +125,13 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
       </div>
 
       <span class="h-5 w-px bg-white/55"></span>
-      <a href="/contact" class="px-4 transition-colors hover:text-brand-secondary"
+      <a
+        href="/contact"
+        aria-current={isActivePath("/contact") ? "page" : undefined}
+        class:list={[
+          "px-4 transition-colors hover:text-brand-secondary",
+          isActivePath("/contact") && "text-brand-secondary",
+        ]}
         >Contact</a
       >
     </nav>
@@ -127,11 +168,24 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
     <nav
       class="flex flex-col gap-1 text-sm font-medium uppercase tracking-wide"
     >
-      <a href="/" class="py-3 text-brand-secondary">Home</a>
-      <a href="/about" class="py-3">About</a>
-      <details class="group">
+      <a
+        href="/"
+        aria-current={isActivePath("/") ? "page" : undefined}
+        class:list={["py-3", isActivePath("/") && "text-brand-secondary"]}
+        >Home</a
+      >
+      <a
+        href="/about"
+        aria-current={isActivePath("/about") ? "page" : undefined}
+        class:list={["py-3", isActivePath("/about") && "text-brand-secondary"]}
+        >About</a
+      >
+      <details class="group" open={isServicesActive}>
         <summary
-          class="flex cursor-pointer list-none items-center justify-between py-3"
+          class:list={[
+            "flex cursor-pointer list-none items-center justify-between py-3",
+            isServicesActive && "text-brand-secondary",
+          ]}
         >
           Services
           <ChevronDown
@@ -146,9 +200,11 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
             servicesLinks.map((link, index) => (
               <a
                 href={link.href}
+                aria-current={isActivePath(link.href) ? "page" : undefined}
                 class:list={[
                   "block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-secondary",
                   index === 0 && "border-b border-white/20",
+                  isActivePath(link.href) && "text-brand-secondary",
                 ]}
               >
                 {link.label}
@@ -157,9 +213,12 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
           }
         </div>
       </details>
-      <details class="group">
+      <details class="group" open={isPackagesActive}>
         <summary
-          class="flex cursor-pointer list-none items-center justify-between py-3"
+          class:list={[
+            "flex cursor-pointer list-none items-center justify-between py-3",
+            isPackagesActive && "text-brand-secondary",
+          ]}
         >
           Packages
           <ChevronDown
@@ -174,7 +233,11 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
             packageLinks.map((link) => (
               <a
                 href={link.href}
-                class="block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-secondary"
+                aria-current={isActivePath(link.href) ? "page" : undefined}
+                class:list={[
+                  "block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-secondary",
+                  isActivePath(link.href) && "text-brand-secondary",
+                ]}
               >
                 {link.label}
               </a>
@@ -182,7 +245,12 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
           }
         </div>
       </details>
-      <a href="/contact" class="py-3">Contact</a>
+      <a
+        href="/contact"
+        aria-current={isActivePath("/contact") ? "page" : undefined}
+        class:list={["py-3", isActivePath("/contact") && "text-brand-secondary"]}
+        >Contact</a
+      >
     </nav>
   </div>
 </header>
