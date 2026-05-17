@@ -1,5 +1,4 @@
 ---
-import { ArrowRight, Mail, MapPin, Phone } from "@lucide/astro";
 import logo from "../assets/logo.png";
 import { footerQuickLinks, packageLinks, servicesLinks } from "../lib/navigation";
 
@@ -11,31 +10,16 @@ const year = new Date().getFullYear();
 
   <div class="relative mx-auto max-w-7xl px-6 py-16 md:px-16 lg:px-24">
     <div class="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
-      <div class="footer-copy space-y-5" data-animate="fade-up">
+      <div class="footer-copy space-y-5">
         <a href="/" class="inline-flex items-center" aria-label="Explore Asia home">
           <img src={logo.src} alt="Explore Asia" class="h-20 w-auto object-contain sm:h-24" />
         </a>
         <p>
           Curated Sri Lanka journeys, trusted local guidance, and flexible trip planning for holidays that feel effortless.
         </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-          href="/packages"
-            class="inline-flex items-center gap-2 rounded-full border border-brand-secondary/40 bg-brand-secondary px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-green hover:bg-brand-green"
-          >
-            View Packages
-            <ArrowRight class="h-4 w-4" aria-hidden="true" />
-          </a>
-          <a
-          href="/services"
-            class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:border-brand-secondary hover:text-brand-secondary"
-          >
-            Explore Services
-          </a>
-        </div>
       </div>
 
-      <div class="footer-column" data-animate="fade-up" data-animate-delay="0.08">
+      <div class="footer-column">
         <h2>Quick Links</h2>
         <ul class="mt-5 space-y-3 text-sm text-white/82">
           {
@@ -50,7 +34,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="footer-column" data-animate="fade-up" data-animate-delay="0.16">
+      <div class="footer-column">
         <h2>Services</h2>
         <ul class="mt-5 space-y-3 text-sm text-white/82">
           {
@@ -65,7 +49,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="footer-column" data-animate="fade-up" data-animate-delay="0.24">
+      <div class="footer-column">
         <h2>Packages</h2>
         <ul class="mt-5 space-y-3 text-sm text-white/82">
           {
@@ -80,7 +64,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="footer-column" data-animate="fade-up" data-animate-delay="0.32">
+      <div class="footer-column">
         <h2>Legal</h2>
         <ul class="mt-5 space-y-3 text-sm text-white/82">
           <li>
@@ -97,30 +81,7 @@ const year = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="mt-12 grid gap-6 border-t border-white/10 pt-8 sm:grid-cols-3 sm:justify-items-center">
-      <a href="tel:+940000000000" class="flex w-full max-w-xs items-center gap-3 text-sm text-white/76 transition hover:text-brand-gold" data-animate="fade-up">
-        <span class="grid h-10 w-10 place-items-center rounded-full bg-white/10">
-          <Phone class="h-4 w-4" aria-hidden="true" />
-        </span>
-        <span>+94 00 000 0000</span>
-      </a>
-
-      <a href="mailto:info@exploreasia.com" class="flex w-full max-w-xs items-center gap-3 text-sm text-white/76 transition hover:text-brand-gold" data-animate="fade-up" data-animate-delay="0.08">
-        <span class="grid h-10 w-10 place-items-center rounded-full bg-white/10">
-          <Mail class="h-4 w-4" aria-hidden="true" />
-        </span>
-        <span>info@exploreasia.com</span>
-      </a>
-
-      <div class="flex w-full max-w-xs items-center gap-3 text-sm text-white/76" data-animate="fade-up" data-animate-delay="0.16">
-        <span class="grid h-10 w-10 place-items-center rounded-full bg-white/10">
-          <MapPin class="h-4 w-4" aria-hidden="true" />
-        </span>
-        <span>Sri Lanka</span>
-      </div>
-    </div>
-
-    <div class="footer-bottom mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+    <div class="footer-bottom mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
       <p>© {year} Explore Asia. All rights reserved.</p>
       <p>Crafted for Sri Lanka tours, packages, and custom travel planning.</p>
     </div>

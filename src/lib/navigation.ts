@@ -18,8 +18,10 @@ export const packageLinks = [
 
 export const footerQuickLinks = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/packages", label: "Packages" },
+  { href: "/contact", label: "Contact" },
   { href: "/#testimonials", label: "Testimonials" },
   { href: "/#faq", label: "FAQ" },
 ];
