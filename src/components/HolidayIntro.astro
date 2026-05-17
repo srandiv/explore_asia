@@ -1,253 +1,66 @@
 ---
-import { ArrowRight } from '@lucide/astro';
-import logoImg from '../assets/Explore_Asia_Logo_cropped.png';
-import landscapeImg from '../assets/images/sri-lanka-brush-masked.png';
+import { ArrowRight } from "@lucide/astro";
+import logoImg from "../assets/Explore_Asia_Logo_cropped.png";
+import landscapeImg from "../assets/images/sri-lanka-brush-masked.png";
 ---
 
-<section id="holiday-intro" class="holiday-intro" aria-labelledby="holiday-intro-title">
-  <div class="holiday-intro__inner">
-    <div class="holiday-intro__copy">
-      <p class="holiday-intro__eyebrow">Holidays with</p>
-      <h2 id="holiday-intro-title" class="holiday-intro__title">Lanka Classy Tours ?</h2>
+<section
+  class="bg-white py-10 px-6 pt-[39px] pb-[30px] text-[#5f6368] max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6"
+>
+  <div class="space-y-4 flex flex-col justify-center">
+    <h2 id="holiday-intro-title" class="text-4xl font-bold">
+      <span class="font-light">Holidays with</span>
+      <br />
+      Lanka Classy Tours ?
+    </h2>
 
-      <p class="holiday-intro__text">
-        Lanka Classy Tours is a travel agency in Sri Lanka who mainly offers customized holiday
-        tours. We give our clients the best solutions for their needs to meet their ultimate
-        hospitality experience.
-      </p>
+    <p
+      class="mb-[22px] text-[15.5px] font-normal leading-[1.45] text-justify text-[#646970] max-[720px]:text-left max-[720px]:text-[15px] max-[720px]:leading-[1.55] text-justify"
+    >
+      Lanka Classy Tours is a travel agency in Sri Lanka who mainly offers
+      customized holiday tours. We give our clients the best solutions for their
+      needs to meet their ultimate hospitality experience.
+    </p>
 
-      <p class="holiday-intro__text">
-        If you are looking to explore Sri Lanka with the best Sri Lanka tour holiday packages, you
-        have really come to the perfect place. No matter how small or big your budget is, we have
-        packages that cater to all. With our well planned Sri Lanka holidays, you can surely have a
-        gala time. At Sri Lanka Classy Tours, we even offered Tailor-made tour packages in Sri
-        Lanka depending on what place you want to visit &amp; for how long you wish to visit.
-        Whenever you book these tours with us to travel to Sri Lanka, you will realize that we
-        give utmost priority to comfort and luxury. As the premier tour operators in Sri Lanka, we
-        promise to make your holidays refreshing, memorable, and perfectly suited to your
-        preferences. Just let us know the number of people traveling, the dates &amp; the preferred
-        places; once these details are submitted, you are good to go.
-      </p>
+    <p
+      class="mb-[22px] text-[15.5px] font-normal leading-[1.45] text-justify text-[#646970] max-[720px]:text-left max-[720px]:text-[15px] max-[720px]:leading-[1.55] text-justify"
+    >
+      If you are looking to explore Sri Lanka with the best Sri Lanka tour
+      holiday packages, you have really come to the perfect place. No matter how
+      small or big your budget is, we have packages that cater to all. With our
+      well planned Sri Lanka holidays, you can surely have a gala time. At Sri
+      Lanka Classy Tours, we even offered Tailor-made tour packages in Sri Lanka
+      depending on what place you want to visit &amp; for how long you wish to
+      visit. Whenever you book these tours with us to travel to Sri Lanka, you
+      will realize that we give utmost priority to comfort and luxury. As the
+      premier tour operators in Sri Lanka, we promise to make your holidays
+      refreshing, memorable, and perfectly suited to your preferences. Just let
+      us know the number of people traveling, the dates &amp; the preferred
+      places; once these details are submitted, you are good to go.
+    </p>
 
-      <a class="holiday-intro__link" href="/about">
-        <span>View More</span>
-        <ArrowRight class="holiday-intro__link-icon" aria-hidden="true" />
-      </a>
+    <a
+      class="mt-[1px] inline-flex items-center gap-[7px] text-[21px] font-bold leading-none text-[#214f9f] no-underline max-[720px]:text-[20px]"
+      href="/about"
+    >
+      <span>View More</span>
+      <ArrowRight class="h-[17px] w-[17px] stroke-[3]" aria-hidden="true" />
+    </a>
+  </div>
+
+  <div class="">
+    <div
+      class="mask-contain mask-no-repeat
+ mask-[url(../assets/images/masks/brush-stock-mask.png)] bg-[url(../assets/images/sri-lanka-unsplash-sigiriya.jpg)] h-full w-full lg:h-150 lg:w-150 bg-center"
+    >
     </div>
-
-    <div class="holiday-intro__visual">
-      <div class="holiday-intro__paint">
-        <img
-          class="holiday-intro__image"
-          src={landscapeImg.src}
-          alt="Sigiriya rock rising above the Sri Lankan forest"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="holiday-intro__logo-card" aria-label="Explore Asia">
-        <img src={logoImg.src} alt="Explore Asia Travels" loading="lazy" />
-      </div>
-    </div>
+    <!-- <div class="" aria-label="Explore Asia">
+      <img
+        class="relative z-[1] block h-auto w-full"
+        src={logoImg.src}
+        alt="Explore Asia Travels"
+        loading="lazy"
+      />
+    </div> -->
   </div>
 </section>
-
-<style>
-  .holiday-intro {
-    background: #fff;
-    color: #5f6368;
-    font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-    padding: 39px 24px 30px;
-  }
-
-  .holiday-intro__inner {
-    margin: 0 auto;
-    display: grid;
-    max-width: 1356px;
-    grid-template-columns: 638px minmax(0, 1fr);
-    align-items: start;
-    gap: 58px;
-  }
-
-  .holiday-intro__copy {
-    max-width: 638px;
-  }
-
-  .holiday-intro__eyebrow {
-    margin: 0;
-    color: #55565a;
-    font-size: 34px;
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: 0;
-  }
-
-  .holiday-intro__title {
-    margin: 1px 0 29px;
-    color: #46464a;
-    font-size: 39px;
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: 0;
-  }
-
-  .holiday-intro__text {
-    margin: 0 0 22px;
-    color: #646970;
-    font-size: 15.5px;
-    font-weight: 400;
-    line-height: 1.45;
-    text-align: justify;
-  }
-
-  .holiday-intro__link {
-    margin-top: 1px;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    color: #214f9f;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1;
-    text-decoration: none;
-  }
-
-  .holiday-intro__link-icon {
-    height: 17px;
-    width: 17px;
-    stroke-width: 3;
-  }
-
-  .holiday-intro__visual {
-    position: relative;
-    justify-self: center;
-    margin-top: 0;
-    width: min(100%, 590px);
-    min-height: 430px;
-    isolation: isolate;
-    overflow: visible;
-  }
-
-  .holiday-intro__paint {
-    position: absolute;
-    left: -28px;
-    top: -22px;
-    z-index: 1;
-    display: block;
-    width: 650px;
-    max-width: 116%;
-    aspect-ratio: 1;
-    filter: drop-shadow(0 26px 42px rgba(16, 38, 48, 0.14));
-    transform: rotate(-3deg);
-  }
-
-  .holiday-intro__image {
-    display: block;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: saturate(1.12) contrast(1.04) brightness(1.02);
-  }
-
-  .holiday-intro__logo-card {
-    position: absolute;
-    left: 174px;
-    top: 126px;
-    z-index: 4;
-    display: grid;
-    width: 158px;
-    min-height: 148px;
-    place-items: center;
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 244, 232, 0.94)),
-      repeating-linear-gradient(100deg, rgba(34, 31, 27, 0.08) 0 1px, transparent 1px 7px);
-    padding: 9px;
-    box-shadow: 0 18px 35px rgba(9, 35, 52, 0.2);
-    transform: rotate(2.2deg);
-  }
-
-  .holiday-intro__logo-card::before,
-  .holiday-intro__logo-card::after {
-    position: absolute;
-    height: 16px;
-    width: 54px;
-    background: rgba(255, 255, 255, 0.54);
-    content: "";
-    box-shadow: 0 2px 7px rgba(33, 37, 33, 0.12);
-  }
-
-  .holiday-intro__logo-card::before {
-    left: -19px;
-    top: 13px;
-    rotate: -24deg;
-  }
-
-  .holiday-intro__logo-card::after {
-    right: -18px;
-    bottom: 14px;
-    rotate: -24deg;
-  }
-
-  .holiday-intro__logo-card img {
-    display: block;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: auto;
-  }
-
-  @media (max-width: 1100px) {
-    .holiday-intro__inner {
-      grid-template-columns: 1fr;
-    }
-
-    .holiday-intro__copy {
-      max-width: 100%;
-    }
-
-    .holiday-intro__visual {
-      justify-self: start;
-      width: min(100%, 590px);
-    }
-  }
-
-  @media (max-width: 720px) {
-    .holiday-intro {
-      padding-inline: 1.1rem;
-      padding-top: 34px;
-    }
-
-    .holiday-intro__eyebrow {
-      font-size: 30px;
-    }
-
-    .holiday-intro__title {
-      font-size: 33px;
-      margin-bottom: 24px;
-    }
-
-    .holiday-intro__text {
-      font-size: 15px;
-      line-height: 1.55;
-      text-align: left;
-    }
-
-    .holiday-intro__link {
-      font-size: 20px;
-    }
-
-    .holiday-intro__visual {
-      width: min(100%, 380px);
-      min-height: 295px;
-    }
-
-    .holiday-intro__logo-card {
-      left: 96px;
-      top: 76px;
-      width: 118px;
-      min-height: 110px;
-      padding: 7px;
-    }
-  }
-</style>
