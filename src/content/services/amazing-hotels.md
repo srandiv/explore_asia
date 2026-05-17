@@ -1,7 +1,7 @@
 ---
 title: Amazing Hotels
 description: Handpicked stays that balance comfort, location, and a touch of Sri Lankan character.
-image: https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1200&q=80
+image: https://images.unsplash.com/photo-1582743994220-ec212ec4b5e8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 imageAlt: Luxurious hotel room with soft lighting
 order: 1
 ---
