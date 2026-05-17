@@ -1,77 +1,76 @@
 ---
-import { ChevronDown, Globe2, Mail, Menu, Phone, X } from '@lucide/astro';
+import { ArrowRight, ChevronDown, Menu, X } from '@lucide/astro';
 import logo from '../assets/logo.png';
 import { packageLinks, servicesLinks } from '../lib/navigation';
 ---
 
-<header class="absolute left-0 top-0 z-50 w-full border-b border-white/20 backdrop-blur-[3px]">
-  <div class="flex h-20 w-full items-center justify-between px-6 md:px-16 lg:px-24">
+<header class="absolute left-0 top-0 z-50 w-full border-b border-white/20 backdrop-blur-sm">
+  <div class="flex w-full items-center justify-between px-6 py-3 md:px-16 lg:px-24">
     <a href="/" class="shrink-0" aria-label="Explore Asia home">
       <img src={logo.src} alt="Explore Asia" class="h-16 w-auto object-contain brightness-0 invert" />
     </a>
 
     <nav class="hidden items-center text-sm font-medium uppercase tracking-wide text-white drop-shadow-sm lg:flex">
-      <a href="/" class="px-4 text-brand-gold transition-colors hover:text-brand-gold">Home</a>
+      <a href="/" class="px-4 text-brand-secondary transition-colors hover:text-brand-secondary">Home</a>
       <span class="h-5 w-px bg-white/55"></span>
-      <a href="/about" class="px-4 transition-colors hover:text-brand-gold">About</a>
+      <a href="/about" class="px-4 transition-colors hover:text-brand-secondary">About</a>
       <span class="h-5 w-px bg-white/55"></span>
 
       <div class="group relative">
-        <a href="/services" class="flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-gold">
+        <a href="/services" class="flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-secondary">
           Services
           <ChevronDown class="h-4 w-4" aria-hidden="true" />
         </a>
-        <div class="invisible absolute left-4 top-full w-60 translate-y-2 border border-white/15 bg-white/10 py-2 opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-          {
-            servicesLinks.map((link, index) => (
-              <a
-                href={link.href}
-                class:list={[
-                  'block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-gold',
-                  index === 0 && 'border-b border-white/20',
-                ]}
-              >
-                {link.label}
-              </a>
-            ))
-          }
+        <div class="invisible absolute left-4 top-full w-60 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+          <div class="nav-dropdown-panel border border-white/15 py-2 shadow-xl">
+            {
+              servicesLinks.map((link, index) => (
+                <a
+                  href={link.href}
+                  class:list={[
+                    'block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-secondary',
+                    index === 0 && 'border-b border-white/20',
+                  ]}
+                >
+                  {link.label}
+                </a>
+              ))
+            }
+          </div>
         </div>
       </div>
 
       <span class="h-5 w-px bg-white/55"></span>
 
       <div class="group relative">
-        <a href="/packages" class="flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-gold">
+        <a href="/packages" class="flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-secondary">
           Packages
           <ChevronDown class="h-4 w-4" aria-hidden="true" />
         </a>
-        <div class="invisible absolute left-4 top-full w-64 translate-y-2 border border-white/15 bg-white/10 py-2 opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-          {
-            packageLinks.map((link) => (
-              <a
-                href={link.href}
-                class="block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-gold"
-              >
-                {link.label}
-              </a>
-            ))
-          }
+        <div class="invisible absolute left-4 top-full w-64 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+          <div class="nav-dropdown-panel border border-white/15 py-2 shadow-xl">
+            {
+              packageLinks.map((link) => (
+                <a
+                  href={link.href}
+                  class="block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-secondary"
+                >
+                  {link.label}
+                </a>
+              ))
+            }
+          </div>
         </div>
       </div>
     </nav>
 
-    <div class="flex items-center gap-3 text-white drop-shadow-sm">
-      <a href="tel:+940000000000" class="hidden transition-colors hover:text-brand-gold sm:block" title="Call" aria-label="Call">
-        <Phone class="h-5 w-5" aria-hidden="true" />
-      </a>
-      <span class="hidden h-5 w-px bg-white/55 sm:block"></span>
-      <a href="mailto:info@exploreasia.com" class="hidden transition-colors hover:text-brand-gold sm:block" title="Email" aria-label="Email">
-        <Mail class="h-5 w-5" aria-hidden="true" />
-      </a>
-      <span class="hidden h-5 w-px bg-white/55 sm:block"></span>
-      <a href="/" class="hidden items-center gap-1 transition-colors hover:text-brand-gold sm:flex" title="Language" aria-label="Language">
-        <Globe2 class="h-5 w-5" aria-hidden="true" />
-        <ChevronDown class="h-3.5 w-3.5" aria-hidden="true" />
+    <div class="flex items-center gap-4 text-white drop-shadow-sm">
+      <a
+        href="tel:+940000000000"
+        class="group inline-flex items-center justify-center gap-2 border border-white/55 bg-white/10 px-5 py-3 text-xs font-medium uppercase tracking-[0.14em] text-white shadow-[0_12px_24px_rgba(15,23,42,0.18)] backdrop-blur-md transition hover:border-white hover:bg-white hover:text-brand-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-6"
+      >
+        Call us<span class="hidden sm:inline">&nbsp;now</span>
+        <ArrowRight class="h-3.5 w-3.5 -rotate-45 transition-transform duration-300 group-hover:rotate-0" aria-hidden="true" />
       </a>
       <button
         type="button"
@@ -89,7 +88,7 @@ import { packageLinks, servicesLinks } from '../lib/navigation';
 
   <div id="mobile-nav" class="hidden border-t border-white/20 bg-white/10 px-6 py-5 text-white shadow-xl backdrop-blur-md lg:hidden">
     <nav class="flex flex-col gap-1 text-sm font-medium uppercase tracking-wide">
-      <a href="/" class="py-3 text-brand-gold">Home</a>
+      <a href="/" class="py-3 text-brand-secondary">Home</a>
       <a href="/about" class="py-3">About</a>
       <details class="group">
         <summary class="flex cursor-pointer list-none items-center justify-between py-3">
@@ -102,7 +101,7 @@ import { packageLinks, servicesLinks } from '../lib/navigation';
               <a
                 href={link.href}
                 class:list={[
-                  'block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-gold',
+                  'block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-secondary',
                   index === 0 && 'border-b border-white/20',
                 ]}
               >
@@ -120,7 +119,7 @@ import { packageLinks, servicesLinks } from '../lib/navigation';
         <div class="border border-white/15 bg-white/10 py-1 shadow-inner backdrop-blur-md">
           {
             packageLinks.map((link) => (
-              <a href={link.href} class="block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-gold">
+              <a href={link.href} class="block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-secondary">
                 {link.label}
               </a>
             ))
@@ -146,3 +145,27 @@ import { packageLinks, servicesLinks } from '../lib/navigation';
     menuClose?.classList.toggle('hidden', isOpen);
   });
 </script>
+
+<style>
+  .nav-dropdown-panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: rgba(13, 27, 42, 0.18);
+  }
+
+  .nav-dropdown-panel::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    content: "";
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(56px) saturate(170%);
+    backdrop-filter: blur(56px) saturate(170%);
+  }
+
+  .nav-dropdown-panel > * {
+    position: relative;
+    z-index: 1;
+  }
+</style>
