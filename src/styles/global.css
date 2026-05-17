@@ -10,7 +10,9 @@
   --color-brand-green: #1b9c50;
   --color-brand-dark: #0d1b2a;
   --color-brand-gold: #af6f23;
-  --font-sans: "Instrument Sans", Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+  --font-sans:
+    "Instrument Sans", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
 }
 
@@ -54,7 +56,7 @@
   }
 
   .welcome-section {
-    @apply py-8 sm:py-10 lg:py-12;
+    @apply py-8 sm:py-10 lg:py-0;
   }
 
   .section-container {
