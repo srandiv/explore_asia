@@ -515,32 +515,67 @@
   }
 
   .contact-layout {
-    @apply grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start;
+    @apply grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(26rem,1.05fr)] lg:items-start;
   }
 
-  .contact-card {
-    @apply bg-slate-50 p-6 shadow-[0_18px_45px_rgba(15,23,42,0.06)] sm:p-8;
+  .contact-intro {
+    @apply min-w-0;
   }
 
-  .contact-card h2 {
-    @apply text-slate-900;
+  .contact-detail-grid {
+    @apply mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-1;
   }
 
-  .contact-card p {
-    @apply mt-4 text-base text-slate-600 sm:text-lg;
+  .contact-detail-card {
+    @apply flex items-center gap-4 border border-slate-200 bg-white p-5 text-slate-800 no-underline shadow-[0_16px_34px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:border-brand-secondary/40 hover:shadow-[0_20px_44px_rgba(15,23,42,0.1)];
   }
 
-  .contact-detail-list {
-    @apply mt-8 space-y-4;
+  .contact-detail-icon {
+    @apply grid h-12 w-12 shrink-0 place-items-center bg-brand-secondary/10 text-brand-secondary;
   }
 
-  .contact-detail-list a,
-  .contact-detail-list span {
-    @apply block text-base font-medium text-slate-800;
+  .contact-detail-icon svg {
+    @apply h-5 w-5;
+  }
+
+  .contact-detail-card [data-role="label"] {
+    @apply block text-xs font-bold uppercase tracking-[0.2em] text-brand-primary;
+  }
+
+  .contact-detail-card strong {
+    @apply mt-1 block text-base font-medium text-slate-800;
+  }
+
+  .contact-note {
+    @apply mt-5 flex gap-3 bg-slate-50 p-5;
+  }
+
+  .contact-note svg {
+    @apply mt-1 h-5 w-5 shrink-0 text-brand-primary;
+  }
+
+  .contact-note p {
+    @apply text-base text-slate-600;
   }
 
   .contact-form {
-    @apply grid gap-5 bg-white p-6 shadow-[0_18px_45px_rgba(15,23,42,0.08)] sm:p-8;
+    @apply grid gap-5 bg-white p-6 shadow-[0_22px_55px_rgba(15,23,42,0.1)] sm:p-8 lg:p-10;
+  }
+
+  .contact-form-heading {
+    @apply mb-1 flex items-start gap-4 border-b border-slate-200 pb-6;
+  }
+
+  .contact-form-heading svg {
+    @apply mt-1 h-8 w-8 shrink-0 text-brand-secondary;
+  }
+
+  .contact-form-heading h2 {
+    @apply text-slate-900;
+  }
+
+  .contact-form-heading p {
+    @apply mt-2 text-base text-slate-600;
   }
 
   .contact-field {
@@ -559,6 +594,22 @@
 
   .contact-field textarea {
     @apply min-h-36 resize-y;
+  }
+
+  .contact-map-section {
+    @apply pb-16 sm:pb-20 lg:pb-24;
+  }
+
+  .contact-map-layout {
+    @apply grid gap-8 bg-slate-50 p-6 sm:p-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:p-10;
+  }
+
+  .contact-map-card {
+    @apply min-h-[24rem] overflow-hidden bg-slate-200 shadow-[0_22px_55px_rgba(15,23,42,0.12)];
+  }
+
+  .contact-map-card iframe {
+    @apply h-full min-h-[24rem] w-full border-0;
   }
 
   .section-heading {

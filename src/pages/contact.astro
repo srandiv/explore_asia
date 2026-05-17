@@ -1,11 +1,38 @@
 ---
-import { ArrowRight } from "@lucide/astro";
+import { ArrowRight, Clock3, Mail, MapPin, MessageCircle, Phone, Send } from "@lucide/astro";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import PageHeader from "../components/PageHeader.astro";
 
 const headerImage =
   "https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+const contactDetails = [
+  {
+    label: "Call us",
+    value: "+94 00 000 0000",
+    href: "tel:+940000000000",
+    icon: Phone,
+  },
+  {
+    label: "Email",
+    value: "info@exploreasia.com",
+    href: "mailto:info@exploreasia.com",
+    icon: Mail,
+  },
+  {
+    label: "WhatsApp",
+    value: "Chat with our travel team",
+    href: "https://wa.me/940000000000",
+    icon: MessageCircle,
+  },
+  {
+    label: "Based in",
+    value: "Colombo, Sri Lanka",
+    href: "https://www.openstreetmap.org/?mlat=6.9271&mlon=79.8612#map=12/6.9271/79.8612",
+    icon: MapPin,
+  },
+];
 ---
 
 <Layout>
@@ -23,30 +50,59 @@ const headerImage =
     <section class="site-section">
       <div class="section-container">
         <div class="contact-layout">
-          <aside class="contact-card" data-animate="fade-right">
-            <h2>Plan with a local team</h2>
-            <p>
-              Send the basics now. We can refine hotels, transport, sightseeing, and travel pace
-              together once we know what kind of journey you want.
-            </p>
+          <aside class="contact-intro" data-animate="fade-right">
+            <div class="section-heading" data-align="left">
+              <p>Get In Touch</p>
+              <h2>Start with a few trip details</h2>
+              <p>
+                Tell us your travel dates, group size, route ideas, and the kind of Sri Lanka holiday you want. We will help shape it into a clear plan.
+              </p>
+            </div>
 
-            <div class="contact-detail-list">
-              <div>
-                <span>Phone</span>
-                <a href="tel:+940000000000">+94 00 000 0000</a>
-              </div>
-              <div>
-                <span>Email</span>
-                <a href="mailto:info@exploreasia.com">info@exploreasia.com</a>
-              </div>
-              <div>
-                <span>Based in</span>
-                <span>Sri Lanka</span>
-              </div>
+            <div class="contact-detail-grid">
+              {
+                contactDetails.map((item, index) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <a
+                      href={item.href}
+                      class="contact-detail-card"
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                      data-animate="fade-up"
+                      data-animate-delay={Math.min(index, 3) * 0.08}
+                    >
+                      <span class="contact-detail-icon">
+                        <Icon aria-hidden="true" />
+                      </span>
+                      <span>
+                        <span data-role="label">{item.label}</span>
+                        <strong>{item.value}</strong>
+                      </span>
+                    </a>
+                  );
+                })
+              }
+            </div>
+
+            <div class="contact-note" data-animate="fade-up" data-animate-delay="0.16">
+              <Clock3 aria-hidden="true" />
+              <p>
+                We usually reply within one business day. For urgent travel support, calling or WhatsApp is fastest.
+              </p>
             </div>
           </aside>
 
           <form class="contact-form" action="mailto:info@exploreasia.com" method="post" enctype="text/plain" data-animate="fade-up">
+            <div class="contact-form-heading">
+              <Send aria-hidden="true" />
+              <div>
+                <h2>Send an inquiry</h2>
+                <p>Share the essentials and we will come back with the next steps.</p>
+              </div>
+            </div>
+
             <div class="grid gap-5 sm:grid-cols-2">
               <div class="contact-field">
                 <label for="name">Name</label>
@@ -95,6 +151,40 @@ const headerImage =
               </span>
             </button>
           </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-map-section">
+      <div class="section-container">
+        <div class="contact-map-layout">
+          <div class="contact-map-copy" data-animate="fade-right">
+            <div class="section-heading" data-align="left">
+              <p>Find Us</p>
+              <h2>Based in Sri Lanka</h2>
+              <p>
+                We coordinate trips across the island, with easy pickup planning for airport arrivals, city stays, beach holidays, and round tours.
+              </p>
+            </div>
+            <a
+              class="text-link"
+              href="https://www.openstreetmap.org/?mlat=6.9271&mlon=79.8612#map=12/6.9271/79.8612"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open map
+              <ArrowRight class="h-4 w-4" aria-hidden="true" />
+            </a>
+          </div>
+
+          <div class="contact-map-card" data-animate="fade-left" data-animate-delay="0.1">
+            <iframe
+              title="Explore Asia location map"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=79.8000%2C6.8400%2C79.9500%2C6.9900&layer=mapnik&marker=6.9271%2C79.8612"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>
