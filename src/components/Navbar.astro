@@ -43,9 +43,7 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
         <div
           class="invisible absolute left-4 top-full w-60 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
         >
-          <div
-            class="nav-dropdown-panel border border-white/15 py-2 shadow-xl"
-          >
+          <div class="nav-dropdown-panel border border-white/15 py-2 shadow-xl">
             {
               servicesLinks.map((link, index) => (
                 <a
@@ -76,9 +74,7 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
         <div
           class="invisible absolute left-4 top-full w-64 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
         >
-          <div
-            class="nav-dropdown-panel border border-white/15 py-2 shadow-xl"
-          >
+          <div class="nav-dropdown-panel border border-white/15 py-2 shadow-xl">
             {
               packageLinks.map((link) => (
                 <a
@@ -208,8 +204,8 @@ import { packageLinks, servicesLinks } from "../lib/navigation";
     z-index: 0;
     content: "";
     background: rgba(0, 0, 0, 0.08);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     pointer-events: none;
   }
 
