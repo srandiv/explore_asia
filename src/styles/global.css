@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
 @import "swiper/css";
 @import "swiper/css/effect-fade";
@@ -10,8 +10,8 @@
   --color-brand-green: #1b9c50;
   --color-brand-dark: #0d1b2a;
   --color-brand-gold: #af6f23;
-  --font-sans: Manrope, Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
-  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Instrument Sans", Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial, sans-serif;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
 }
 
 @layer base {
@@ -44,7 +44,7 @@
   }
 
   p {
-    @apply text-[0.95rem] leading-7 text-slate-600;
+    @apply font-sans text-lg text-slate-600;
   }
 }
 
@@ -54,7 +54,7 @@
   }
 
   .welcome-section {
-    @apply py-10 sm:py-12 lg:py-14;
+    @apply py-8 sm:py-10 lg:py-12;
   }
 
   .section-container {
