@@ -23,7 +23,18 @@ const packages = defineCollection({
   }),
 });
 
+const testimonials = defineCollection({
+  loader: glob({ base: "./src/content/testimonials", pattern: "**/*.md" }),
+  schema: z.object({
+    name: z.string(),
+    location: z.string(),
+    quote: z.string(),
+    order: z.number().int().nonnegative(),
+  }),
+});
+
 export const collections = {
   services,
   packages,
+  testimonials,
 };
