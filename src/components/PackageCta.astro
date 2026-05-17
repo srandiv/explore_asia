@@ -1,0 +1,52 @@
+---
+import { ClipboardPenLine } from "@lucide/astro";
+import { siWhatsapp } from "simple-icons";
+
+interface Props {
+  packageTitle: string;
+  image: string;
+  class?: string;
+}
+
+const { packageTitle, image, class: className = "" } = Astro.props;
+const whatsappText = encodeURIComponent(
+  `Hello Explore Asia, I would like to inquire about the ${packageTitle} package.`,
+);
+const whatsappHref = `https://wa.me/940000000000?text=${whatsappText}`;
+---
+
+<section
+  class:list={["package-cta", className]}
+  style={`--package-cta-image: url('${image}');`}
+  data-animate="fade-up"
+>
+  <div>
+    <p data-role="eyebrow">Ready to plan?</p>
+    <h2>Start your {packageTitle} inquiry</h2>
+    <p>
+      Tell us your dates, group size, and travel style. We will help shape the route
+      around you.
+    </p>
+  </div>
+
+  <div class="package-cta-actions">
+    <a href={whatsappHref} class="site-button" target="_blank" rel="noreferrer">
+      Inquire on WhatsApp
+      <span class="site-button-icon" aria-hidden="true">
+        <svg class="site-button-icon-angle" viewBox="0 0 24 24">
+          <path d={siWhatsapp.path} fill="currentColor" />
+        </svg>
+        <svg class="site-button-icon-straight" viewBox="0 0 24 24">
+          <path d={siWhatsapp.path} fill="currentColor" />
+        </svg>
+      </span>
+    </a>
+    <a href="/contact" class="site-button package-cta-secondary">
+      Contact Form
+      <span class="site-button-icon" aria-hidden="true">
+        <ClipboardPenLine class="site-button-icon-angle" />
+        <ClipboardPenLine class="site-button-icon-straight" />
+      </span>
+    </a>
+  </div>
+</section>

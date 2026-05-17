@@ -1,14 +1,10 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
-import {
-  ArrowLeft,
-  ArrowRight,
-  ClipboardPenLine,
-} from "@lucide/astro";
-import { siWhatsapp } from "simple-icons";
+import { ArrowLeft, ArrowRight } from "@lucide/astro";
 import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import PageHeader from "../../components/PageHeader.astro";
+import PackageCta from "../../components/PackageCta.astro";
 
 export async function getStaticPaths() {
   const packages = await getCollection("packages");
@@ -34,10 +30,6 @@ const hasPackageDetails = Boolean(
     entry.data.gallery?.length,
 );
 const gallery = entry.data.gallery ?? [];
-const whatsappText = encodeURIComponent(
-  `Hello Explore Asia, I would like to inquire about the ${entry.data.title} package.`,
-);
-const whatsappHref = `https://wa.me/940000000000?text=${whatsappText}`;
 ---
 
 <Layout>
@@ -167,41 +159,7 @@ const whatsappHref = `https://wa.me/940000000000?text=${whatsappText}`;
                 </article>
               </div>
 
-              <section
-                class="package-cta"
-                style={`--package-cta-image: url('${entry.data.image}');`}
-                data-animate="fade-up"
-              >
-                <div>
-                  <p data-role="eyebrow">Ready to plan?</p>
-                  <h2>Start your {entry.data.title} inquiry</h2>
-                  <p>
-                    Tell us your dates, group size, and travel style. We will help shape the route
-                    around you.
-                  </p>
-                </div>
-
-                <div class="package-cta-actions">
-                  <a href={whatsappHref} class="site-button" target="_blank" rel="noreferrer">
-                    Inquire on WhatsApp
-                    <span class="site-button-icon" aria-hidden="true">
-                      <svg class="site-button-icon-angle" viewBox="0 0 24 24">
-                        <path d={siWhatsapp.path} fill="currentColor" />
-                      </svg>
-                      <svg class="site-button-icon-straight" viewBox="0 0 24 24">
-                        <path d={siWhatsapp.path} fill="currentColor" />
-                      </svg>
-                    </span>
-                  </a>
-                  <a href="/contact" class="site-button package-cta-secondary">
-                    Contact Form
-                    <span class="site-button-icon" aria-hidden="true">
-                      <ClipboardPenLine class="site-button-icon-angle" />
-                      <ClipboardPenLine class="site-button-icon-straight" />
-                    </span>
-                  </a>
-                </div>
-              </section>
+              <PackageCta packageTitle={entry.data.title} image={entry.data.image} />
 
             </>
           ) : (
@@ -212,41 +170,11 @@ const whatsappHref = `https://wa.me/940000000000?text=${whatsappText}`;
                 </div>
               </article>
 
-              <section
-                class="package-cta mx-auto mt-10 max-w-4xl"
-                style={`--package-cta-image: url('${entry.data.image}');`}
-                data-animate="fade-up"
-              >
-                <div>
-                  <p data-role="eyebrow">Ready to plan?</p>
-                  <h2>Start your {entry.data.title} inquiry</h2>
-                  <p>
-                    Tell us your dates, group size, and travel style. We will help shape the route
-                    around you.
-                  </p>
-                </div>
-
-                <div class="package-cta-actions">
-                  <a href={whatsappHref} class="site-button" target="_blank" rel="noreferrer">
-                    Inquire on WhatsApp
-                    <span class="site-button-icon" aria-hidden="true">
-                      <svg class="site-button-icon-angle" viewBox="0 0 24 24">
-                        <path d={siWhatsapp.path} fill="currentColor" />
-                      </svg>
-                      <svg class="site-button-icon-straight" viewBox="0 0 24 24">
-                        <path d={siWhatsapp.path} fill="currentColor" />
-                      </svg>
-                    </span>
-                  </a>
-                  <a href="/contact" class="site-button package-cta-secondary">
-                    Contact Form
-                    <span class="site-button-icon" aria-hidden="true">
-                      <ClipboardPenLine class="site-button-icon-angle" />
-                      <ClipboardPenLine class="site-button-icon-straight" />
-                    </span>
-                  </a>
-                </div>
-              </section>
+              <PackageCta
+                packageTitle={entry.data.title}
+                image={entry.data.image}
+                class="mx-auto mt-10 max-w-4xl"
+              />
             </>
           )
         }
