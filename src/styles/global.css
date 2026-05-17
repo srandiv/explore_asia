@@ -63,6 +63,121 @@
     @apply mx-auto max-w-7xl px-6 md:px-16 lg:px-24;
   }
 
+  .page-header {
+    @apply relative flex min-h-[52vh] items-end overflow-hidden bg-brand-dark pb-14 pt-36 text-white sm:min-h-[58vh] sm:pb-16 lg:min-h-[64vh] lg:pb-20;
+  }
+
+  .page-header-image {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+
+  .page-header-overlay {
+    @apply absolute inset-0 bg-[linear-gradient(180deg,rgba(5,18,31,0.46)_0%,rgba(5,18,31,0.34)_42%,rgba(5,18,31,0.76)_100%)];
+  }
+
+  .page-header-content {
+    @apply relative z-10 text-center;
+  }
+
+  .page-header-content [data-role="eyebrow"] {
+    @apply text-xs font-bold uppercase tracking-[0.24em] text-white/78;
+  }
+
+  .page-header-content h1 {
+    @apply mx-auto mt-3 max-w-4xl text-white sm:text-6xl lg:text-7xl;
+  }
+
+  .page-header-content [data-role="subtitle"] {
+    @apply mx-auto mt-4 max-w-2xl text-base text-white/82 sm:text-lg;
+  }
+
+  .inner-page {
+    @apply bg-white;
+  }
+
+  .page-grid {
+    @apply grid gap-5 sm:grid-cols-2 xl:grid-cols-3;
+  }
+
+  .page-card {
+    @apply block h-full overflow-hidden bg-white shadow-[0_18px_40px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .page-card-media {
+    @apply h-72 w-full overflow-hidden bg-slate-200;
+  }
+
+  .page-card-media img {
+    @apply h-full w-full object-cover transition duration-500;
+  }
+
+  .page-card:hover .page-card-media img {
+    @apply scale-105;
+  }
+
+  .page-card-content {
+    @apply p-6;
+  }
+
+  .page-card-content [data-role="eyebrow"] {
+    @apply text-xs font-bold uppercase tracking-[0.24em] text-brand-primary;
+  }
+
+  .page-card-content h2,
+  .page-card-content h3 {
+    @apply mt-3 text-slate-800;
+  }
+
+  .page-card-content p:not([data-role="eyebrow"]) {
+    @apply mt-3 text-base text-slate-600;
+  }
+
+  .content-panel {
+    @apply bg-white;
+  }
+
+  .content-panel > a {
+    @apply text-sm font-medium text-brand-primary transition-colors hover:text-brand-secondary;
+  }
+
+  .content-body {
+    @apply mt-8 max-w-none;
+  }
+
+  .content-body h2 {
+    @apply mt-10 text-slate-800;
+  }
+
+  .content-body h3 {
+    @apply mt-8 text-slate-800;
+  }
+
+  .content-body p,
+  .content-body li {
+    @apply text-base text-slate-600 sm:text-lg;
+  }
+
+  .content-body p {
+    @apply mt-5;
+  }
+
+  .content-body ul,
+  .content-body ol {
+    @apply mt-5 space-y-3 pl-6;
+  }
+
+  .content-body ul {
+    @apply list-disc;
+  }
+
+  .content-body ol {
+    @apply list-decimal;
+  }
+
+  .content-body a {
+    @apply text-brand-primary underline-offset-4 hover:text-brand-secondary hover:underline;
+  }
+
   .section-heading {
     @apply mx-auto max-w-3xl text-center;
   }

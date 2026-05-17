@@ -1,0 +1,40 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  image: string;
+  imageAlt?: string;
+  imagePosition?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  image,
+  imageAlt = "",
+  imagePosition = "center",
+} = Astro.props;
+---
+
+<section class="page-header">
+  <img
+    src={image}
+    alt={imageAlt}
+    class="page-header-image"
+    style={`object-position: ${imagePosition};`}
+  />
+  <div class="page-header-overlay"></div>
+
+  <div
+    class="page-header-content section-container"
+    data-animate="fade-up"
+    data-animate-trigger="load"
+    data-animate-delay="0.15"
+  >
+    {eyebrow && <p data-role="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    {subtitle && <p data-role="subtitle">{subtitle}</p>}
+  </div>
+</section>
