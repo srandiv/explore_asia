@@ -1,10 +1,8 @@
 ---
-import { ArrowRight, ArrowUpRight } from "@lucide/astro";
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "@lucide/astro";
 import { getCollection } from "astro:content";
 
 const packages = (await getCollection("packages")).sort((a, b) => a.data.order - b.data.order);
-const featuredPackage = packages[0];
-const gridPackages = packages.slice(1, 5);
 ---
 
 <section class="packages-section site-section relative overflow-hidden bg-white">
@@ -19,53 +17,50 @@ const gridPackages = packages.slice(1, 5);
       </p>
     </div>
 
-    <div class="mt-10 grid gap-3 lg:grid-cols-[1.22fr_1fr]">
-      <a href={`/packages/${featuredPackage.id}`} class="group block min-h-[520px] lg:min-h-[560px]" data-animate="fade-right" data-animate-delay="0.12">
-        <article class="relative h-full overflow-hidden bg-slate-200 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-          <img
-            src={featuredPackage.data.image}
-            alt={featuredPackage.data.imageAlt}
-            class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-slate-950/10"></div>
-          <div class="package-card-copy" data-featured="true">
-            <h3>{featuredPackage.data.title}</h3>
-            <p>
-              {featuredPackage.data.description}
-            </p>
-          </div>
-        </article>
-      </a>
+    <div class="package-showcase-carousel" data-animate="fade-up" data-animate-delay="0.12">
+      <button type="button" class="package-showcase-control standard-packages-prev" aria-label="Previous tour package">
+        <ChevronLeft aria-hidden="true" />
+      </button>
 
-      <div class="grid gap-3 sm:grid-cols-2 sm:grid-rows-2 lg:h-[560px]">
-        {
-          gridPackages.map((pkg, index) => (
-            <a
-              href={`/packages/${pkg.id}`}
-              class="group block min-h-[245px]"
-              data-animate="fade-up"
-              data-animate-delay={`${0.18 + index * 0.08}`}
-            >
-              <article class="relative h-full overflow-hidden bg-slate-200 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-                <img
-                  src={pkg.data.image}
-                  alt={pkg.data.imageAlt}
-                  class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-slate-950/10"></div>
-                <div class="package-card-copy" data-compact="true">
-                  <h3>{pkg.data.title}</h3>
-                  <p>
-                    {pkg.data.description}
-                  </p>
-                </div>
-              </article>
-            </a>
-          ))
-        }
+      <div class="swiper package-showcase-swiper standard-packages-swiper">
+        <div class="swiper-wrapper">
+          {
+            packages.map((pkg) => (
+              <div class="swiper-slide">
+                <a href={`/packages/${pkg.id}`} class="package-showcase-card">
+                  <article>
+                    <div class="package-showcase-media">
+                      <img src={pkg.data.image} alt={pkg.data.imageAlt} loading="lazy" />
+                    </div>
+
+                    <div class="package-showcase-content">
+                      <div>
+                        <p data-role="duration">{pkg.data.duration ?? "Private Sri Lanka Tour"}</p>
+                        <h3>{pkg.data.title}</h3>
+                      </div>
+
+                      <div class="package-showcase-footer">
+                        <div>
+                          <span data-role="price-label">{pkg.data.price?.label ?? "Tour package"}</span>
+                          {pkg.data.price?.amount && <strong>{pkg.data.price.amount}</strong>}
+                          <span data-role="note">{pkg.data.price?.note ?? "View package details"}</span>
+                        </div>
+                        <span class="package-showcase-arrow" aria-hidden="true">
+                          <ArrowRight />
+                        </span>
+                      </div>
+                    </div>
+                  </article>
+                </a>
+              </div>
+            ))
+          }
+        </div>
       </div>
+
+      <button type="button" class="package-showcase-control standard-packages-next" aria-label="Next tour package">
+        <ChevronRight aria-hidden="true" />
+      </button>
     </div>
 
     <div class="mt-8 text-center" data-animate="fade-up" data-animate-delay="0.24">
@@ -79,3 +74,45 @@ const gridPackages = packages.slice(1, 5);
     </div>
   </div>
 </section>
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay, Navigation } from "swiper/modules";
+
+  const packagesSection = document.querySelector(".packages-section");
+  const packagesSwiper = packagesSection?.querySelector(".standard-packages-swiper");
+  const packagesNext = packagesSection?.querySelector(".standard-packages-next");
+  const packagesPrev = packagesSection?.querySelector(".standard-packages-prev");
+
+  if (packagesSwiper && packagesNext && packagesPrev) {
+    new Swiper(packagesSwiper, {
+      modules: [Autoplay, Navigation],
+      loop: true,
+      speed: 750,
+      spaceBetween: 20,
+      autoplay: {
+        delay: 3400,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      navigation: {
+        nextEl: packagesNext,
+        prevEl: packagesPrev,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.05,
+        },
+        640: {
+          slidesPerView: 1.35,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1180: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  }
+</script>

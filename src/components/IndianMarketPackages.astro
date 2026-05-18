@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, BadgeDollarSign, Sparkles } from "@lucide/astro";
+import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "@lucide/astro";
 import { getCollection } from "astro:content";
 import { getIndiaMarketPrice } from "../lib/packagePricing";
 
@@ -14,7 +14,7 @@ const offerPackages = packages
 
 {
   offerPackages.length > 0 && (
-    <section class="india-packages-section site-section relative overflow-hidden">
+    <section class="india-packages-section site-section relative overflow-hidden bg-white">
       <div class="section-container relative z-10">
         <div class="india-packages-header" data-animate="fade-up">
           <div>
@@ -28,54 +28,98 @@ const offerPackages = packages
               Choose your route and open the package to see the offer price.
             </p>
           </div>
-
-          <div class="india-saving-card" aria-label="India market package saving">
-            <BadgeDollarSign aria-hidden="true" />
-            <strong>$10</strong>
-            <span>less per person</span>
-          </div>
         </div>
 
-        <div class="india-packages-grid">
-          {offerPackages.map((pkg, index) => (
-            <a
-              href={`/packages/${pkg.id}?market=india`}
-              class="india-package-card"
-              data-animate="fade-up"
-              data-animate-delay={Math.min(index, 5) * 0.08}
-            >
-              <article>
-                <div class="india-package-media">
-                  <img src={pkg.data.image} alt={pkg.data.imageAlt} loading="lazy" />
-                  <span>
-                    <Sparkles aria-hidden="true" />
-                    Save $10
-                  </span>
-                </div>
+        <div class="package-showcase-carousel" data-animate="fade-up" data-animate-delay="0.12">
+          <button type="button" class="package-showcase-control india-packages-prev" aria-label="Previous India special package">
+            <ChevronLeft aria-hidden="true" />
+          </button>
 
-                <div class="india-package-content">
-                  <div>
-                    <p data-role="duration">{pkg.data.duration ?? "Private Sri Lanka Tour"}</p>
-                    <h3>{pkg.data.title}</h3>
-                    <p data-role="description">{pkg.data.description}</p>
-                  </div>
+          <div class="swiper package-showcase-swiper india-packages-swiper">
+            <div class="swiper-wrapper">
+              {offerPackages.map((pkg) => (
+                <div class="swiper-slide">
+                  <a href={`/packages/${pkg.id}?market=india`} class="package-showcase-card">
+                    <article>
+                      <div class="package-showcase-media">
+                        <img src={pkg.data.image} alt={pkg.data.imageAlt} loading="lazy" />
+                        <span>
+                          <Sparkles aria-hidden="true" />
+                          Save $10
+                        </span>
+                      </div>
 
-                  <div class="india-package-footer">
-                    <div>
-                      <span data-role="standard-price">{pkg.data.price?.amount}</span>
-                      <strong>{pkg.indiaPrice}</strong>
-                      <span data-role="note">{pkg.data.price?.note ?? "per person"}</span>
-                    </div>
-                    <span class="india-package-arrow" aria-hidden="true">
-                      <ArrowRight />
-                    </span>
-                  </div>
+                      <div class="package-showcase-content">
+                        <div>
+                          <p data-role="duration">{pkg.data.duration ?? "Private Sri Lanka Tour"}</p>
+                          <h3>{pkg.data.title}</h3>
+                        </div>
+
+                        <div class="package-showcase-footer">
+                          <div>
+                            <span data-role="standard-price">{pkg.data.price?.amount}</span>
+                            <strong>{pkg.indiaPrice}</strong>
+                            <span data-role="note">{pkg.data.price?.note ?? "per person"}</span>
+                          </div>
+                          <span class="package-showcase-arrow" aria-hidden="true">
+                            <ArrowRight />
+                          </span>
+                        </div>
+                      </div>
+                    </article>
+                  </a>
                 </div>
-              </article>
-            </a>
-          ))}
+              ))}
+            </div>
+          </div>
+
+          <button type="button" class="package-showcase-control india-packages-next" aria-label="Next India special package">
+            <ChevronRight aria-hidden="true" />
+          </button>
         </div>
       </div>
     </section>
   )
 }
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay, Navigation } from "swiper/modules";
+
+  const indiaPackagesSection = document.querySelector(".india-packages-section");
+  const indiaPackagesSwiper = indiaPackagesSection?.querySelector(".india-packages-swiper");
+  const indiaPackagesNext = indiaPackagesSection?.querySelector(".india-packages-next");
+  const indiaPackagesPrev = indiaPackagesSection?.querySelector(".india-packages-prev");
+
+  if (indiaPackagesSwiper && indiaPackagesNext && indiaPackagesPrev) {
+    new Swiper(indiaPackagesSwiper, {
+      modules: [Autoplay, Navigation],
+      loop: true,
+      speed: 750,
+      spaceBetween: 20,
+      autoplay: {
+        delay: 3200,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      navigation: {
+        nextEl: indiaPackagesNext,
+        prevEl: indiaPackagesPrev,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.05,
+        },
+        640: {
+          slidesPerView: 1.35,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1180: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  }
+</script>
