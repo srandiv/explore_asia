@@ -1,4 +1,5 @@
 export const servicesLinks = [
+  { href: "/services/b2b", label: "B2B Services" },
   { href: "/services/amazing-hotels", label: "Amazing Hotels" },
   { href: "/services/transportation", label: "Transportation" },
   { href: "/services/sightseeing", label: "Sightseeing" },

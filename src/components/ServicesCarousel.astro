@@ -1,6 +1,7 @@
 ---
 import { ChevronLeft, ChevronRight } from "@lucide/astro";
 import { getCollection } from "astro:content";
+import { resolveContentImage } from "../lib/contentImages";
 
 const services = (await getCollection("services")).sort(
   (a, b) => a.data.order - b.data.order,
@@ -67,7 +68,7 @@ const servicesBackground =
                     data-animate-delay={`${Math.min(index, 2) * 0.1}`}
                   >
                     <img
-                      src={service.data.image}
+                      src={resolveContentImage(service.data.image)}
                       alt={service.data.imageAlt}
                       class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       loading="lazy"

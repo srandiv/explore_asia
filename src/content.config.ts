@@ -6,14 +6,14 @@ const services = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string().url(),
+    image: z.string(),
     imageAlt: z.string(),
     order: z.number().int().nonnegative(),
     options: z.array(z.string()).optional(),
     gallery: z
       .array(
         z.object({
-          image: z.string().url(),
+          image: z.string(),
           imageAlt: z.string(),
         }),
       )
