@@ -1,0 +1,88 @@
+---
+import type { ImageMetadata } from "astro";
+
+const galleryModules = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/images/gallery/*.webp",
+  { eager: true },
+);
+
+const galleryImages = Object.entries(galleryModules)
+  .sort(([a], [b]) => {
+    const aNumber = Number(a.match(/gallery-(\d+)\.webp$/)?.[1] ?? 0);
+    const bNumber = Number(b.match(/gallery-(\d+)\.webp$/)?.[1] ?? 0);
+
+    return aNumber - bNumber;
+  })
+  .map(([, image], index) => ({
+    src: image.default.src,
+    alt: `Explore Asia Sri Lanka travel gallery ${index + 1}`,
+  }));
+
+const galleryRows = [
+  galleryImages.filter((_, index) => index % 2 === 0),
+  galleryImages.filter((_, index) => index % 2 === 1),
+].map((row) => [...row, ...row]);
+---
+
+{
+  galleryImages.length > 0 && (
+    <section id="gallery" class="home-gallery-section site-section relative overflow-hidden">
+      <div class="section-container">
+        <div class="section-heading" data-animate="fade-up">
+          <p>Gallery</p>
+          <h2>Moments from the Island</h2>
+          <p>
+            A glimpse of the places, textures, and travel days guests remember long after the journey.
+          </p>
+        </div>
+
+        <div class="gallery-marquee" data-animate="fade-up" data-animate-delay="0.12">
+          {galleryRows.map((rowImages, rowIndex) => (
+            <div class:list={["swiper gallery-marquee-swiper", rowIndex === 1 && "gallery-marquee-reverse"]}>
+              <div class="swiper-wrapper">
+                {rowImages.map((image, imageIndex) => (
+                  <div class="swiper-slide">
+                    <figure class="gallery-marquee-item">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        loading={rowIndex === 0 && imageIndex < 2 ? "eager" : "lazy"}
+                        decoding="async"
+                      />
+                    </figure>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  import Swiper from "swiper";
+  import { Autoplay } from "swiper/modules";
+
+  document.querySelectorAll(".gallery-marquee-swiper").forEach((swiperElement, index) => {
+    new Swiper(swiperElement as HTMLElement, {
+      modules: [Autoplay],
+      loop: true,
+      speed: 6200,
+      allowTouchMove: false,
+      slidesPerView: "auto",
+      spaceBetween: 8,
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+        reverseDirection: index % 2 === 1,
+      },
+      breakpoints: {
+        768: {
+          spaceBetween: 10,
+        },
+      },
+    });
+  });
+</script>
