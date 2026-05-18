@@ -391,7 +391,7 @@
   }
 
   .package-showcase-control {
-    @apply absolute top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-brand-primary/95 text-white shadow-[0_16px_34px_rgba(15,23,42,0.22)] backdrop-blur-md ring-1 ring-slate-950/5 transition hover:-translate-y-[52%] hover:bg-brand-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-secondary sm:inline-flex sm:h-14 sm:w-14;
+    @apply absolute top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-brand-primary/95 text-white shadow-[0_16px_34px_rgba(15,23,42,0.22)] backdrop-blur-md ring-1 ring-slate-950/5 transition hover:-translate-y-[52%] hover:bg-brand-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-secondary sm:h-14 sm:w-14;
   }
 
   .package-showcase-control svg {
@@ -400,12 +400,12 @@
 
   .india-packages-prev,
   .standard-packages-prev {
-    @apply left-0 -translate-x-1/2;
+    @apply left-2 sm:left-0 sm:-translate-x-1/2;
   }
 
   .india-packages-next,
   .standard-packages-next {
-    @apply right-0 translate-x-1/2;
+    @apply right-2 sm:right-0 sm:translate-x-1/2;
   }
 
   .package-showcase-card {
