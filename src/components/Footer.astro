@@ -9,7 +9,7 @@ const year = new Date().getFullYear();
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(201,168,76,0.16),transparent_35%),radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_28%)]"></div>
 
   <div class="relative mx-auto max-w-7xl px-6 py-16 md:px-16 lg:px-24">
-    <div class="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.8fr_0.8fr]">
+    <div class="grid gap-10 lg:grid-cols-[1.2fr_3.2fr] lg:gap-12">
       <div class="footer-copy space-y-5">
         <a href="/" class="inline-flex items-center" aria-label="Explore Asia home">
           <img src={logo.src} alt="Explore Asia" class="h-20 w-auto object-contain sm:h-24" />
@@ -19,65 +19,67 @@ const year = new Date().getFullYear();
         </p>
       </div>
 
-      <div class="footer-column">
-        <h2>Quick Links</h2>
-        <ul class="mt-5 space-y-3 text-sm text-white/82">
-          {
-            footerQuickLinks.map((link) => (
-              <li>
-                <a href={link.href} class="transition-colors hover:text-brand-gold">
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+      <div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 lg:grid-cols-4">
+        <div class="footer-column">
+          <h2>Quick Links</h2>
+          <ul class="mt-5 space-y-3 text-sm text-white/82">
+            {
+              footerQuickLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="transition-colors hover:text-brand-gold">
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
 
-      <div class="footer-column">
-        <h2>Services</h2>
-        <ul class="mt-5 space-y-3 text-sm text-white/82">
-          {
-            servicesLinks.map((link) => (
-              <li>
-                <a href={link.href} class="transition-colors hover:text-brand-gold">
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+        <div class="footer-column">
+          <h2>Services</h2>
+          <ul class="mt-5 space-y-3 text-sm text-white/82">
+            {
+              servicesLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="transition-colors hover:text-brand-gold">
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
 
-      <div class="footer-column">
-        <h2>Packages</h2>
-        <ul class="mt-5 space-y-3 text-sm text-white/82">
-          {
-            packageLinks.map((link) => (
-              <li>
-                <a href={link.href} class="transition-colors hover:text-brand-gold">
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+        <div class="footer-column">
+          <h2>Packages</h2>
+          <ul class="mt-5 space-y-3 text-sm text-white/82">
+            {
+              packageLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="transition-colors hover:text-brand-gold">
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
 
-      <div class="footer-column">
-        <h2>Legal</h2>
-        <ul class="mt-5 space-y-3 text-sm text-white/82">
-          <li>
-            <a href="/terms-and-conditions" class="transition-colors hover:text-brand-gold">
-              Terms and Conditions
-            </a>
-          </li>
-          <li>
-            <a href="/privacy-policy" class="transition-colors hover:text-brand-gold">
-              Privacy Policy
-            </a>
-          </li>
-        </ul>
+        <div class="footer-column">
+          <h2>Legal</h2>
+          <ul class="mt-5 space-y-3 text-sm text-white/82">
+            <li>
+              <a href="/terms-and-conditions" class="transition-colors hover:text-brand-gold">
+                Terms and Conditions
+              </a>
+            </li>
+            <li>
+              <a href="/privacy-policy" class="transition-colors hover:text-brand-gold">
+                Privacy Policy
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
