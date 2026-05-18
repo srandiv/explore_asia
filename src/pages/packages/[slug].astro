@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import PackageCta from "../../components/PackageCta.astro";
+import { getIndiaMarketPrice } from "../../lib/packagePricing";
 
 export async function getStaticPaths() {
   const packages = await getCollection("packages");
@@ -30,6 +31,7 @@ const hasPackageDetails = Boolean(
     entry.data.gallery?.length,
 );
 const gallery = entry.data.gallery ?? [];
+const indiaMarketPrice = entry.data.price ? getIndiaMarketPrice(entry.data.price.amount) : undefined;
 ---
 
 <Layout>
@@ -58,9 +60,20 @@ const gallery = entry.data.gallery ?? [];
                   </div>
 
                   {entry.data.price && (
-                    <div class="package-price">
+                    <div
+                      class="package-price"
+                      data-discount-market="india"
+                      data-standard-price={entry.data.price.amount}
+                      data-discount-price={indiaMarketPrice}
+                    >
+                      {indiaMarketPrice && (
+                        <span data-role="market-offer" hidden>India market special: Save $10 per person</span>
+                      )}
                       <p>{entry.data.price.label}</p>
-                      <strong>{entry.data.price.amount}</strong>
+                      {indiaMarketPrice && (
+                        <span data-role="standard-price" hidden>{entry.data.price.amount}</span>
+                      )}
+                      <strong data-role="price-amount">{entry.data.price.amount}</strong>
                       {entry.data.price.note && <span>{entry.data.price.note}</span>}
                     </div>
                   )}
@@ -202,6 +215,30 @@ const gallery = entry.data.gallery ?? [];
           prevEl: packageGalleryPrev,
         },
       });
+    }
+
+    const packagePrice = document.querySelector("[data-discount-market='india']");
+
+    if (packagePrice) {
+      const params = new URLSearchParams(window.location.search);
+      const isIndiaMarketOffer = params.get("market") === "india";
+      const discountPrice = packagePrice.getAttribute("data-discount-price");
+      const priceAmount = packagePrice.querySelector("[data-role='price-amount']");
+      const standardPrice = packagePrice.querySelector("[data-role='standard-price']");
+      const offerNote = packagePrice.querySelector("[data-role='market-offer']");
+
+      if (isIndiaMarketOffer && discountPrice && priceAmount) {
+        packagePrice.classList.add("is-market-offer");
+        priceAmount.textContent = discountPrice;
+
+        if (standardPrice) {
+          standardPrice.removeAttribute("hidden");
+        }
+
+        if (offerNote) {
+          offerNote.removeAttribute("hidden");
+        }
+      }
     }
   </script>
 </Layout>

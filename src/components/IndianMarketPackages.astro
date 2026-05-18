@@ -1,0 +1,81 @@
+---
+import { ArrowRight, BadgeDollarSign, Sparkles } from "@lucide/astro";
+import { getCollection } from "astro:content";
+import { getIndiaMarketPrice } from "../lib/packagePricing";
+
+const packages = (await getCollection("packages")).sort((a, b) => a.data.order - b.data.order);
+const offerPackages = packages
+  .map((pkg) => ({
+    ...pkg,
+    indiaPrice: pkg.data.price ? getIndiaMarketPrice(pkg.data.price.amount) : undefined,
+  }))
+  .filter((pkg) => pkg.data.price && pkg.indiaPrice);
+---
+
+{
+  offerPackages.length > 0 && (
+    <section class="india-packages-section site-section relative overflow-hidden">
+      <div class="section-container relative z-10">
+        <div class="india-packages-header" data-animate="fade-up">
+          <div>
+            <span class="india-market-pill">
+              <img src="/flags/india.svg" alt="" loading="lazy" />
+              India Market Special
+            </span>
+            <h2>Sri Lanka tour packages with $10 off</h2>
+            <p>
+              A special starting price for Indian travelers across every private Sri Lanka journey.
+              Choose your route and open the package to see the offer price.
+            </p>
+          </div>
+
+          <div class="india-saving-card" aria-label="India market package saving">
+            <BadgeDollarSign aria-hidden="true" />
+            <strong>$10</strong>
+            <span>less per person</span>
+          </div>
+        </div>
+
+        <div class="india-packages-grid">
+          {offerPackages.map((pkg, index) => (
+            <a
+              href={`/packages/${pkg.id}?market=india`}
+              class="india-package-card"
+              data-animate="fade-up"
+              data-animate-delay={Math.min(index, 5) * 0.08}
+            >
+              <article>
+                <div class="india-package-media">
+                  <img src={pkg.data.image} alt={pkg.data.imageAlt} loading="lazy" />
+                  <span>
+                    <Sparkles aria-hidden="true" />
+                    Save $10
+                  </span>
+                </div>
+
+                <div class="india-package-content">
+                  <div>
+                    <p data-role="duration">{pkg.data.duration ?? "Private Sri Lanka Tour"}</p>
+                    <h3>{pkg.data.title}</h3>
+                    <p data-role="description">{pkg.data.description}</p>
+                  </div>
+
+                  <div class="india-package-footer">
+                    <div>
+                      <span data-role="standard-price">{pkg.data.price?.amount}</span>
+                      <strong>{pkg.indiaPrice}</strong>
+                      <span data-role="note">{pkg.data.price?.note ?? "per person"}</span>
+                    </div>
+                    <span class="india-package-arrow" aria-hidden="true">
+                      <ArrowRight />
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
