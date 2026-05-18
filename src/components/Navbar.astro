@@ -1,5 +1,6 @@
 ---
 import { ArrowRight, ChevronDown, Menu, X } from "@lucide/astro";
+import LanguageSelector from "./LanguageSelector.astro";
 import logo from "../assets/logo.png";
 import { packageLinks, servicesLinks } from "../lib/navigation";
 
@@ -147,6 +148,7 @@ const isPackagesActive = isSectionActive("/packages");
           aria-hidden="true"
         />
       </a>
+      <LanguageSelector class="hidden lg:flex" />
       <button
         type="button"
         class="grid h-9 w-9 place-items-center text-white lg:hidden"
@@ -251,6 +253,9 @@ const isPackagesActive = isSectionActive("/packages");
         class:list={["py-3", isActivePath("/contact") && "text-brand-secondary"]}
         >Contact</a
       >
+      <div class="mt-4 border-t border-slate-200 pt-4">
+        <LanguageSelector variant="mobile" />
+      </div>
     </nav>
   </div>
 </header>
