@@ -436,7 +436,7 @@ const languages = [
   }
 
   .language-selector[data-variant="mobile"] {
-    width: 100%;
+    width: fit-content;
   }
 
   .language-selector[data-variant="mobile"] .language-selector-trigger {
@@ -458,6 +458,12 @@ const languages = [
 
   .language-selector[data-variant="mobile"] .language-selector-menu {
     right: auto;
-    left: 0;
+    left: 50%;
+    min-width: min(11.75rem, calc(100vw - 2rem));
+    transform: translate(-50%, 0.5rem);
+  }
+
+  .language-selector[data-variant="mobile"][open] .language-selector-menu {
+    transform: translate(-50%, 0);
   }
 </style>
