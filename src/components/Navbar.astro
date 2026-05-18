@@ -68,15 +68,15 @@ const isPackagesActive = isSectionActive("/packages");
         <div
           class="invisible absolute left-4 top-full w-60 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
         >
-          <div class="nav-dropdown-panel border border-white/15 py-2 shadow-xl">
+          <div class="nav-dropdown-panel border border-white/70 py-2 shadow-xl">
             {
               servicesLinks.map((link, index) => (
                 <a
                   href={link.href}
                   aria-current={isActivePath(link.href) ? "page" : undefined}
                   class:list={[
-                    "block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-secondary",
-                    index === 0 && "border-b border-white/20",
+                    "block px-6 py-3 text-sm font-semibold normal-case tracking-normal text-slate-700 transition-colors hover:bg-brand-secondary/10 hover:text-brand-secondary",
+                    index === 0 && "border-b border-slate-200",
                     isActivePath(link.href) && "text-brand-secondary",
                   ]}
                 >
@@ -105,14 +105,14 @@ const isPackagesActive = isSectionActive("/packages");
         <div
           class="invisible absolute left-4 top-full w-64 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
         >
-          <div class="nav-dropdown-panel border border-white/15 py-2 shadow-xl">
+          <div class="nav-dropdown-panel border border-white/70 py-2 shadow-xl">
             {
               packageLinks.map((link) => (
                 <a
                   href={link.href}
                   aria-current={isActivePath(link.href) ? "page" : undefined}
                   class:list={[
-                    "block px-6 py-3 text-sm font-medium normal-case tracking-normal text-white transition-colors hover:bg-white/15 hover:text-brand-secondary",
+                    "block px-6 py-3 text-sm font-semibold normal-case tracking-normal text-slate-700 transition-colors hover:bg-brand-secondary/10 hover:text-brand-secondary",
                     isActivePath(link.href) && "text-brand-secondary",
                   ]}
                 >
@@ -139,7 +139,7 @@ const isPackagesActive = isSectionActive("/packages");
     <div class="flex items-center gap-4 text-white drop-shadow-sm">
       <a
         href="tel:+940000000000"
-        class="group inline-flex items-center justify-center gap-2 border border-white/55 bg-white/10 px-5 py-3 text-xs font-medium uppercase tracking-[0.14em] text-white shadow-[0_12px_24px_rgba(15,23,42,0.18)] backdrop-blur-md transition hover:border-white hover:bg-white hover:text-brand-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-6"
+        class="group inline-flex items-center justify-center gap-2 rounded-full border border-white/60 bg-white/14 px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_12px_28px_rgba(15,23,42,0.2)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-brand-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-6"
       >
         Call Now
         <ArrowRight
@@ -163,7 +163,7 @@ const isPackagesActive = isSectionActive("/packages");
 
   <div
     id="mobile-nav"
-    class="hidden border-t border-white/20 bg-white/10 px-6 py-5 text-white shadow-xl backdrop-blur-md lg:hidden"
+    class="hidden border-t border-white/40 bg-white/95 px-6 py-5 text-slate-800 shadow-xl backdrop-blur-xl lg:hidden"
   >
     <nav
       class="flex flex-col gap-1 text-sm font-medium uppercase tracking-wide"
@@ -194,7 +194,7 @@ const isPackagesActive = isSectionActive("/packages");
           />
         </summary>
         <div
-          class="border border-white/15 bg-white/10 py-1 shadow-inner backdrop-blur-md"
+          class="border border-slate-200 bg-white py-1 shadow-inner"
         >
           {
             servicesLinks.map((link, index) => (
@@ -202,8 +202,8 @@ const isPackagesActive = isSectionActive("/packages");
                 href={link.href}
                 aria-current={isActivePath(link.href) ? "page" : undefined}
                 class:list={[
-                  "block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-secondary",
-                  index === 0 && "border-b border-white/20",
+                  "block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-brand-secondary/10 hover:text-brand-secondary",
+                  index === 0 && "border-b border-slate-200",
                   isActivePath(link.href) && "text-brand-secondary",
                 ]}
               >
@@ -227,7 +227,7 @@ const isPackagesActive = isSectionActive("/packages");
           />
         </summary>
         <div
-          class="border border-white/15 bg-white/10 py-1 shadow-inner backdrop-blur-md"
+          class="border border-slate-200 bg-white py-1 shadow-inner"
         >
           {
             packageLinks.map((link) => (
@@ -235,7 +235,7 @@ const isPackagesActive = isSectionActive("/packages");
                 href={link.href}
                 aria-current={isActivePath(link.href) ? "page" : undefined}
                 class:list={[
-                  "block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-white/15 hover:text-brand-secondary",
+                  "block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-brand-secondary/10 hover:text-brand-secondary",
                   isActivePath(link.href) && "text-brand-secondary",
                 ]}
               >
@@ -287,13 +287,13 @@ const isPackagesActive = isSectionActive("/packages");
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.12);
-    -webkit-backdrop-filter: blur(56px) saturate(125%) brightness(0.92);
-    backdrop-filter: blur(56px) saturate(125%) brightness(0.92);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+    backdrop-filter: blur(22px) saturate(140%);
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.22),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-      0 24px 70px rgba(0, 0, 0, 0.32);
+      inset 0 1px 0 rgba(255, 255, 255, 0.82),
+      0 24px 70px rgba(15, 23, 42, 0.22);
   }
 
   .nav-dropdown-panel::before {
@@ -302,11 +302,7 @@ const isPackagesActive = isSectionActive("/packages");
     z-index: 0;
     content: "";
     pointer-events: none;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.24),
-      rgba(0, 0, 0, 0.12)
-    );
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(27, 156, 80, 0.06));
   }
 
   .nav-dropdown-panel > * {
