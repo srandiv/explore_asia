@@ -10,10 +10,10 @@ const packages = (await getCollection("packages")).sort((a, b) => a.data.order -
     <div class="section-heading" data-animate="fade-up">
       <p>Tour Packages</p>
       <h2>
-        Our Tour Packages
+        Explore Sri Lanka Your Way
       </h2>
       <p>
-        Explore handpicked Sri Lanka journeys with flexible routes, local guides, and room to tailor each day.
+        Handpicked private journeys across beaches, wildlife, culture, hill country, and hidden local favorites.
       </p>
     </div>
 
@@ -41,7 +41,6 @@ const packages = (await getCollection("packages")).sort((a, b) => a.data.order -
 
                       <div class="package-showcase-footer">
                         <div>
-                          <span data-role="price-label">{pkg.data.price?.label ?? "Tour package"}</span>
                           {pkg.data.price?.amount && <strong>{pkg.data.price.amount}</strong>}
                           <span data-role="note">{pkg.data.price?.note ?? "View package details"}</span>
                         </div>

@@ -339,11 +339,19 @@
   }
 
   .india-packages-section {
-    @apply text-slate-900;
+    @apply bg-slate-950 text-white;
+  }
+
+  .india-packages-bg {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+
+  .india-packages-overlay {
+    @apply absolute inset-0 bg-[linear-gradient(90deg,rgba(8,18,32,0.9),rgba(8,18,32,0.64)_48%,rgba(8,18,32,0.78))];
   }
 
   .india-packages-section::before {
-    @apply absolute inset-x-0 top-0 h-px bg-slate-200 content-[''];
+    @apply absolute inset-x-0 top-0 h-px bg-white/20 content-[''];
   }
 
   .india-packages-header {
@@ -351,15 +359,15 @@
   }
 
   .india-packages-header h2 {
-    @apply mt-4 text-slate-900;
+    @apply mt-4 text-white;
   }
 
   .india-packages-header p {
-    @apply mx-auto mt-4 text-base leading-7 text-slate-600 sm:text-lg;
+    @apply mx-auto mt-4 text-base leading-7 text-white/82 sm:text-lg;
   }
 
   .india-market-pill {
-    @apply inline-flex w-fit items-center gap-2 rounded-full border border-brand-secondary/20 bg-brand-secondary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-brand-secondary;
+    @apply inline-flex w-fit items-center gap-2 rounded-full border border-white/24 bg-white/12 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white shadow-[0_12px_28px_rgba(15,23,42,0.18)] backdrop-blur-md;
   }
 
   .india-market-pill img {
@@ -401,7 +409,7 @@
   }
 
   .package-showcase-card {
-    @apply block h-full rounded-lg border border-slate-100 bg-white text-slate-900 no-underline shadow-[0_8px_18px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(15,23,42,0.08)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-secondary;
+    @apply block h-full rounded-lg border border-slate-100 bg-white text-slate-900 no-underline shadow-[0_8px_18px_rgba(15,23,42,0.06)] transition-shadow duration-300 hover:shadow-[0_12px_24px_rgba(15,23,42,0.08)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-secondary;
   }
 
   .package-showcase-card article {

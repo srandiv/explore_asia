@@ -1,6 +1,7 @@
 ---
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "@lucide/astro";
 import { getCollection } from "astro:content";
+import sriLankaBackground from "../assets/images/ hero/yves-alarie-yagheetusk4-unsplash.webp";
 import { getIndiaMarketPrice } from "../lib/packagePricing";
 
 const packages = (await getCollection("packages")).sort((a, b) => a.data.order - b.data.order);
@@ -14,18 +15,19 @@ const offerPackages = packages
 
 {
   offerPackages.length > 0 && (
-    <section class="india-packages-section site-section relative overflow-hidden bg-white">
+    <section class="india-packages-section site-section relative overflow-hidden">
+      <img src={sriLankaBackground.src} alt="" class="india-packages-bg" loading="eager" decoding="async" aria-hidden="true" />
+      <div class="india-packages-overlay" aria-hidden="true"></div>
       <div class="section-container relative z-10">
         <div class="india-packages-header" data-animate="fade-up">
           <div>
             <span class="india-market-pill">
               <img src="/flags/india.svg" alt="" loading="lazy" />
-              India Market Special
+              India Traveller Special
             </span>
-            <h2>Sri Lanka tour packages with $10 off</h2>
+            <h2>Sri Lanka Tours for Indian Travellers</h2>
             <p>
-              A special starting price for Indian travelers across every private Sri Lanka journey.
-              Choose your route and open the package to see the offer price.
+              Private Sri Lanka journeys selected for Indian guests, with easy routes, local guidance, and warm island stays.
             </p>
           </div>
         </div>
@@ -45,7 +47,7 @@ const offerPackages = packages
                         <img src={pkg.data.image} alt={pkg.data.imageAlt} loading="lazy" />
                         <span>
                           <Sparkles aria-hidden="true" />
-                          Save $10
+                          India Special
                         </span>
                       </div>
 
