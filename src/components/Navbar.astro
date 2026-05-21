@@ -26,7 +26,7 @@ const isPackagesActive = isSectionActive("/packages");
       <img
         src={logo.src}
         alt="Explore Asia"
-        class="h-16 w-auto object-contain brightness-0 invert"
+        class="h-16 w-auto object-contain"
       />
     </a>
 
@@ -39,8 +39,7 @@ const isPackagesActive = isSectionActive("/packages");
         class:list={[
           "px-4 transition-colors hover:text-brand-secondary",
           isActivePath("/") && "text-brand-secondary",
-        ]}
-        >Home</a
+        ]}>Home</a
       >
       <span class="h-5 w-px bg-white/55"></span>
       <a
@@ -49,8 +48,7 @@ const isPackagesActive = isSectionActive("/packages");
         class:list={[
           "px-4 transition-colors hover:text-brand-secondary",
           isActivePath("/about") && "text-brand-secondary",
-        ]}
-        >About</a
+        ]}>About</a
       >
       <span class="h-5 w-px bg-white/55"></span>
 
@@ -132,8 +130,7 @@ const isPackagesActive = isSectionActive("/packages");
         class:list={[
           "px-4 transition-colors hover:text-brand-secondary",
           isActivePath("/contact") && "text-brand-secondary",
-        ]}
-        >Contact</a
+        ]}>Contact</a
       >
     </nav>
 
@@ -196,9 +193,7 @@ const isPackagesActive = isSectionActive("/packages");
             aria-hidden="true"
           />
         </summary>
-        <div
-          class="border border-slate-200 bg-white py-1 shadow-inner"
-        >
+        <div class="border border-slate-200 bg-white py-1 shadow-inner">
           {
             servicesLinks.map((link, index) => (
               <a
@@ -229,9 +224,7 @@ const isPackagesActive = isSectionActive("/packages");
             aria-hidden="true"
           />
         </summary>
-        <div
-          class="border border-slate-200 bg-white py-1 shadow-inner"
-        >
+        <div class="border border-slate-200 bg-white py-1 shadow-inner">
           {
             packageLinks.map((link) => (
               <a
@@ -251,8 +244,10 @@ const isPackagesActive = isSectionActive("/packages");
       <a
         href="/contact"
         aria-current={isActivePath("/contact") ? "page" : undefined}
-        class:list={["py-3", isActivePath("/contact") && "text-brand-secondary"]}
-        >Contact</a
+        class:list={[
+          "py-3",
+          isActivePath("/contact") && "text-brand-secondary",
+        ]}>Contact</a
       >
       <a
         href="tel:+94775011272"
@@ -312,7 +307,11 @@ const isPackagesActive = isSectionActive("/packages");
     z-index: 0;
     content: "";
     pointer-events: none;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.36), rgba(27, 156, 80, 0.06));
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.36),
+      rgba(27, 156, 80, 0.06)
+    );
   }
 
   .nav-dropdown-panel > * {
