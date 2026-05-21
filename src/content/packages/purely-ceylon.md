@@ -1,5 +1,5 @@
 ---
-title: Simply Sri Lanka
+title: Purely Ceylon
 description: A compact 4 day route through Kandy, Bentota, Colombo, and easy airport transfers.
 image: https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 imageAlt: Scenic Sri Lankan coastline and tropical landscape
@@ -7,7 +7,7 @@ order: 1
 duration: 4 Days / 3 Nights
 price:
   label: All inclusive package starting from
-  amount: $211.00
+  amount: $246.00
   note: per person
 inclusions:
   - Accommodation at selected hotels

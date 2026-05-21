@@ -1,5 +1,5 @@
 ---
-title: Pearl of Asia
+title: Pearl Island Journey
 description: An 8 day journey through Hikkaduwa, Galle, Yala, Ella, Kandy, Habarana, Sigiriya, Polonnaruwa, and Colombo.
 image: https://images.unsplash.com/photo-1561150018-8bb356679537?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 imageAlt: Palm lined Sri Lankan beach at sunset
@@ -7,7 +7,7 @@ order: 4
 duration: 8 Days / 7 Nights
 price:
   label: All inclusive package starting from
-  amount: $465.00
+  amount: $500.00
   note: per person
 inclusions:
   - Accommodation at selected hotels
@@ -69,7 +69,7 @@ itinerary:
     note: End of the tour.
 ---
 
-Pearl of Asia is built for travelers who want Sri Lanka's coast, wildlife, hill country, cultural triangle, and Colombo woven into one longer island journey.
+Pearl Island Journey is built for travelers who want Sri Lanka's coast, wildlife, hill country, cultural triangle, and Colombo woven into one longer island journey.
 
 - Beach time, safari, and hill country scenery
 - Ella, Kandy, Sigiriya, and Polonnaruwa highlights

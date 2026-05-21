@@ -9,12 +9,12 @@ export const servicesLinks = [
 ];
 
 export const packageLinks = [
-  { href: "/packages/simply-sri-lanka", label: "Simply Sri Lanka" },
-  { href: "/packages/islands-wonders", label: "Island's Wonders" },
-  { href: "/packages/ceylon-highlights", label: "Ceylon Highlights" },
-  { href: "/packages/pearl-of-asia", label: "Pearl of Asia" },
-  { href: "/packages/undiscovered-sri-lanka", label: "Undiscovered Sri Lanka" },
-  { href: "/packages/active-and-adventurous", label: "Active & Adventurous" },
+  { href: "/packages/purely-ceylon", label: "Purely Ceylon" },
+  { href: "/packages/island-treasures", label: "Island Treasures" },
+  { href: "/packages/best-of-ceylon", label: "Best of Ceylon" },
+  { href: "/packages/pearl-island-journey", label: "Pearl Island Journey" },
+  { href: "/packages/hidden-sri-lanka", label: "Hidden Sri Lanka" },
+  { href: "/packages/adventure-and-explore", label: "Adventure & Explore" },
 ];
 
 export const footerQuickLinks = [

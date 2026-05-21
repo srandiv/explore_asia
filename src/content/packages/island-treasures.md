@@ -1,5 +1,5 @@
 ---
-title: Island's Wonders
+title: Island Treasures
 description: A 6 day route through Kandy, Nuwara Eliya, Bentota, Galle, Colombo, and Sri Lanka's most scenic island stops.
 image: https://images.unsplash.com/photo-1621847473222-d85c022cbf07?w=1400&auto=format&fit=crop&q=80&ixlib=rb-4.1.0
 imageAlt: Sunlit tropical beach with bright blue water
@@ -7,7 +7,7 @@ order: 2
 duration: 6 Days / 5 Nights
 price:
   label: All inclusive package starting from
-  amount: $292.00
+  amount: $327.00
   note: per person
 inclusions:
   - Accommodation at selected hotels
@@ -61,7 +61,7 @@ itinerary:
     note: End of the tour.
 ---
 
-Island's Wonders gives travelers an easy way to experience Sri Lanka's hill country, waterfall routes, beach stays, southern heritage, and Colombo in a relaxed six-day journey.
+Island Treasures gives travelers an easy way to experience Sri Lanka's hill country, waterfall routes, beach stays, southern heritage, and Colombo in a relaxed six-day journey.
 
 - Hill country views and tea country stops
 - Bentota beach time and Galle heritage

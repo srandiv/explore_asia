@@ -1,5 +1,5 @@
 ---
-title: Undiscovered Sri Lanka
+title: Hidden Sri Lanka
 description: A 12 day journey through Colombo, Jaffna, Trincomalee, Sigiriya, Kandy, Nuwara Eliya, Yala, Galle, Bentota, and beyond.
 image: https://images.unsplash.com/photo-1566299589192-bdf059d4b0be?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 imageAlt: Misty Sri Lankan hill country landscape
@@ -7,7 +7,7 @@ order: 5
 duration: 12 Days / 11 Nights
 price:
   label: All inclusive package starting from
-  amount: $910.00
+  amount: $945.00
   note: per person
 inclusions:
   - Accommodation at selected hotels
@@ -85,7 +85,7 @@ itinerary:
     note: End of the tour.
 ---
 
-Undiscovered Sri Lanka is a longer route for travelers who want to go beyond the classic highlights, adding Jaffna, Trincomalee, village life, hill country, wildlife, and southern beaches.
+Hidden Sri Lanka is a longer route for travelers who want to go beyond the classic highlights, adding Jaffna, Trincomalee, village life, hill country, wildlife, and southern beaches.
 
 - Northern culture, east coast beaches, and ancient cities
 - Hill country, wildlife safari, and southern coast

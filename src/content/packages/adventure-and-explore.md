@@ -1,5 +1,5 @@
 ---
-title: Active & Adventurous
+title: Adventure & Explore
 description: A 7 day adventure route with Wilpattu safari, ancient cities, hot air ballooning, waterfall trekking, rafting, and Colombo.
 image: https://images.unsplash.com/photo-1752498227072-3641487a2a44?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 imageAlt: Adventurous mountain road and landscape
@@ -7,7 +7,7 @@ order: 6
 duration: 7 Days / 6 Nights
 price:
   label: All inclusive package starting from
-  amount: $615.00
+  amount: $650.00
   note: per person
 inclusions:
   - Accommodation at selected hotels
@@ -65,7 +65,7 @@ itinerary:
     note: End of the tour.
 ---
 
-Active & Adventurous is shaped for travelers who want Sri Lanka with more movement, from safari drives and ancient climbs to ballooning, waterfalls, rafting, and city stops.
+Adventure & Explore is shaped for travelers who want Sri Lanka with more movement, from safari drives and ancient climbs to ballooning, waterfalls, rafting, and city stops.
 
 - Safari, hot air ballooning, trekking, and rafting
 - Ancient cities, cave temples, and cultural landmarks
