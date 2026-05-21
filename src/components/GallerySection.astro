@@ -26,19 +26,32 @@ const galleryRows = [
 
 {
   galleryImages.length > 0 && (
-    <section id="gallery" class="home-gallery-section site-section relative overflow-hidden">
+    <section
+      id="gallery"
+      class="home-gallery-section site-section relative overflow-hidden"
+    >
       <div class="section-container">
         <div class="section-heading" data-animate="fade-up">
           <p>Gallery</p>
           <h2>Moments from the Island</h2>
           <p>
-            A glimpse of the places, textures, and travel days guests remember long after the journey.
+            A glimpse of the places, textures, and travel days guests remember
+            long after the journey.
           </p>
         </div>
 
-        <div class="gallery-marquee" data-animate="fade-up" data-animate-delay="0.12">
+        <div
+          class="gallery-marquee"
+          data-animate="fade-up"
+          data-animate-delay="0.12"
+        >
           {galleryRows.map((rowImages, rowIndex) => (
-            <div class:list={["swiper gallery-marquee-swiper", rowIndex === 1 && "gallery-marquee-reverse"]}>
+            <div
+              class:list={[
+                "swiper gallery-marquee-swiper",
+                rowIndex === 1 && "gallery-marquee-reverse",
+              ]}
+            >
               <div class="swiper-wrapper">
                 {rowImages.map((image, imageIndex) => (
                   <div class="swiper-slide">
@@ -46,8 +59,11 @@ const galleryRows = [
                       <img
                         src={image.src}
                         alt={image.alt}
-                        loading={rowIndex === 0 && imageIndex < 2 ? "eager" : "lazy"}
+                        loading={
+                          rowIndex === 0 && imageIndex < 2 ? "eager" : "lazy"
+                        }
                         decoding="async"
+                        class="object-top"
                       />
                     </figure>
                   </div>
@@ -65,24 +81,26 @@ const galleryRows = [
   import Swiper from "swiper";
   import { Autoplay } from "swiper/modules";
 
-  document.querySelectorAll(".gallery-marquee-swiper").forEach((swiperElement, index) => {
-    new Swiper(swiperElement as HTMLElement, {
-      modules: [Autoplay],
-      loop: true,
-      speed: 6200,
-      allowTouchMove: false,
-      slidesPerView: "auto",
-      spaceBetween: 8,
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false,
-        reverseDirection: index % 2 === 1,
-      },
-      breakpoints: {
-        768: {
-          spaceBetween: 10,
+  document
+    .querySelectorAll(".gallery-marquee-swiper")
+    .forEach((swiperElement, index) => {
+      new Swiper(swiperElement as HTMLElement, {
+        modules: [Autoplay],
+        loop: true,
+        speed: 6200,
+        allowTouchMove: false,
+        slidesPerView: "auto",
+        spaceBetween: 8,
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false,
+          reverseDirection: index % 2 === 1,
         },
-      },
+        breakpoints: {
+          768: {
+            spaceBetween: 10,
+          },
+        },
+      });
     });
-  });
 </script>
