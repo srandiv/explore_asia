@@ -4,11 +4,15 @@ import { getCollection } from "astro:content";
 import sriLankaBackground from "../assets/images/ hero/yves-alarie-yagheetusk4-unsplash.webp";
 import { getIndiaMarketPrice } from "../lib/packagePricing";
 
-const packages = (await getCollection("packages")).sort((a, b) => a.data.order - b.data.order);
+const packages = (await getCollection("packages")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 const offerPackages = packages
   .map((pkg) => ({
     ...pkg,
-    indiaPrice: pkg.data.price ? getIndiaMarketPrice(pkg.data.price.amount) : undefined,
+    indiaPrice: pkg.data.price
+      ? getIndiaMarketPrice(pkg.data.price.amount)
+      : undefined,
   }))
   .filter((pkg) => pkg.data.price && pkg.indiaPrice);
 ---
@@ -16,8 +20,15 @@ const offerPackages = packages
 {
   offerPackages.length > 0 && (
     <section class="india-packages-section site-section relative overflow-hidden">
-      <img src={sriLankaBackground.src} alt="" class="india-packages-bg" loading="eager" decoding="async" aria-hidden="true" />
-      <div class="india-packages-overlay" aria-hidden="true"></div>
+      <img
+        src={sriLankaBackground.src}
+        alt=""
+        class="india-packages-bg"
+        loading="eager"
+        decoding="async"
+        aria-hidden="true"
+      />
+      <div class="india-packages-overlay" aria-hidden="true" />
       <div class="section-container relative z-10">
         <div class="india-packages-header" data-animate="fade-up">
           <div>
@@ -27,13 +38,22 @@ const offerPackages = packages
             </span>
             <h2>Sri Lanka Tours for Indian Travellers</h2>
             <p>
-              Private Sri Lanka journeys selected for Indian guests, with easy routes, local guidance, and warm island stays.
+              Private Sri Lanka journeys selected for Indian guests, with easy
+              routes, local guidance, and warm island stays.
             </p>
           </div>
         </div>
 
-        <div class="package-showcase-carousel" data-animate="fade-up" data-animate-delay="0.12">
-          <button type="button" class="package-showcase-control india-packages-prev" aria-label="Previous India special package">
+        <div
+          class="package-showcase-carousel"
+          data-animate="fade-up"
+          data-animate-delay="0.12"
+        >
+          <button
+            type="button"
+            class="package-showcase-control india-packages-prev"
+            aria-label="Previous India special package"
+          >
             <ChevronLeft aria-hidden="true" />
           </button>
 
@@ -41,29 +61,41 @@ const offerPackages = packages
             <div class="swiper-wrapper">
               {offerPackages.map((pkg) => (
                 <div class="swiper-slide">
-                  <a href={`/packages/${pkg.id}?market=india`} class="package-showcase-card">
+                  <a
+                    href={`/packages/${pkg.id}?market=india`}
+                    class="package-showcase-card"
+                  >
                     <article>
                       <div class="package-showcase-media">
-                        <img src={pkg.data.image} alt={pkg.data.imageAlt} loading="lazy" />
-                        <span>
-                          <Sparkles aria-hidden="true" />
-                          India Special
-                        </span>
+                        <img
+                          src={pkg.data.image}
+                          alt={pkg.data.imageAlt}
+                          loading="lazy"
+                        />
                       </div>
 
                       <div class="package-showcase-content">
                         <div>
-                          <p data-role="duration">{pkg.data.duration ?? "Private Sri Lanka Tour"}</p>
+                          <p data-role="duration">
+                            {pkg.data.duration ?? "Private Sri Lanka Tour"}
+                          </p>
                           <h3>{pkg.data.title}</h3>
                         </div>
 
                         <div class="package-showcase-footer">
                           <div>
-                            <span data-role="standard-price">{pkg.data.price?.amount}</span>
+                            <span data-role="standard-price">
+                              {pkg.data.price?.amount}
+                            </span>
                             <strong>{pkg.indiaPrice}</strong>
-                            <span data-role="note">{pkg.data.price?.note ?? "per person"}</span>
+                            <span data-role="note">
+                              {pkg.data.price?.note ?? "per person"}
+                            </span>
                           </div>
-                          <span class="package-showcase-arrow" aria-hidden="true">
+                          <span
+                            class="package-showcase-arrow"
+                            aria-hidden="true"
+                          >
                             <ArrowRight />
                           </span>
                         </div>
@@ -75,7 +107,11 @@ const offerPackages = packages
             </div>
           </div>
 
-          <button type="button" class="package-showcase-control india-packages-next" aria-label="Next India special package">
+          <button
+            type="button"
+            class="package-showcase-control india-packages-next"
+            aria-label="Next India special package"
+          >
             <ChevronRight aria-hidden="true" />
           </button>
         </div>
@@ -88,10 +124,18 @@ const offerPackages = packages
   import Swiper from "swiper";
   import { Autoplay, Navigation } from "swiper/modules";
 
-  const indiaPackagesSection = document.querySelector(".india-packages-section");
-  const indiaPackagesSwiper = indiaPackagesSection?.querySelector(".india-packages-swiper");
-  const indiaPackagesNext = indiaPackagesSection?.querySelector(".india-packages-next");
-  const indiaPackagesPrev = indiaPackagesSection?.querySelector(".india-packages-prev");
+  const indiaPackagesSection = document.querySelector(
+    ".india-packages-section",
+  );
+  const indiaPackagesSwiper = indiaPackagesSection?.querySelector(
+    ".india-packages-swiper",
+  );
+  const indiaPackagesNext = indiaPackagesSection?.querySelector(
+    ".india-packages-next",
+  );
+  const indiaPackagesPrev = indiaPackagesSection?.querySelector(
+    ".india-packages-prev",
+  );
 
   if (indiaPackagesSwiper && indiaPackagesNext && indiaPackagesPrev) {
     new Swiper(indiaPackagesSwiper, {
