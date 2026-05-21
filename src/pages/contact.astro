@@ -7,29 +7,39 @@ import PageHeader from "../components/PageHeader.astro";
 const headerImage =
   "https://images.unsplash.com/photo-1775189632564-9a089ed5d0b5?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
+const phoneNumber = "+94 77 50 11 272";
+const phoneHref = "tel:+94775011272";
+const whatsappHref = "https://wa.me/94775011272";
+const primaryEmail = "sales@exploreasiatravels.com";
+const secondaryEmail = "roshan@exploreasiatravels.com";
+const emailHref = `mailto:${primaryEmail},${secondaryEmail}`;
+const address = "No 8, Pagiriwaththa Road, Nugegoda, Colombo, Sri Lanka";
+const mapHref =
+  "https://www.google.com/maps/search/?api=1&query=No%208%2C%20Pagiriwaththa%20Road%2C%20Nugegoda%2C%20Colombo%2C%20Sri%20Lanka";
+
 const contactDetails = [
   {
     label: "Call us",
-    value: "+94 00 000 0000",
-    href: "tel:+940000000000",
+    value: phoneNumber,
+    href: phoneHref,
     icon: Phone,
   },
   {
     label: "Email",
-    value: "info@exploreasia.com",
-    href: "mailto:info@exploreasia.com",
+    value: `${primaryEmail} or ${secondaryEmail}`,
+    href: emailHref,
     icon: Mail,
   },
   {
     label: "WhatsApp",
-    value: "Chat with our travel team",
-    href: "https://wa.me/940000000000",
+    value: phoneNumber,
+    href: whatsappHref,
     icon: MessageCircle,
   },
   {
-    label: "Based in",
-    value: "Colombo, Sri Lanka",
-    href: "https://www.openstreetmap.org/?mlat=6.9271&mlon=79.8612#map=12/6.9271/79.8612",
+    label: "Address",
+    value: address,
+    href: mapHref,
     icon: MapPin,
   },
 ];
@@ -40,7 +50,7 @@ const contactDetails = [
 
   <PageHeader
     eyebrow="Contact"
-    title="Tell us about your Sri Lanka trip"
+    title="Tell us about your Asia trip"
     subtitle="Share your dates, route ideas, and group details. We will help turn them into a clear travel plan."
     image={headerImage}
     imageAlt="Scenic Sri Lankan coastline and tropical landscape"
@@ -55,7 +65,7 @@ const contactDetails = [
               <p>Get In Touch</p>
               <h2>Start with a few trip details</h2>
               <p>
-                Tell us your travel dates, group size, route ideas, and the kind of Sri Lanka holiday you want. We will help shape it into a clear plan.
+                Tell us your travel dates, group size, route ideas, and the kind of Sri Lanka, India, Maldives, or Asia holiday you want. We will help shape it into a clear plan.
               </p>
             </div>
 
@@ -94,7 +104,7 @@ const contactDetails = [
             </div>
           </aside>
 
-          <form class="contact-form" action="mailto:info@exploreasia.com" method="post" enctype="text/plain" data-animate="fade-up">
+          <form class="contact-form" action={emailHref} method="post" enctype="text/plain" data-animate="fade-up">
             <div class="contact-form-heading">
               <Send aria-hidden="true" />
               <div>
@@ -163,12 +173,12 @@ const contactDetails = [
               <p>Find Us</p>
               <h2>Based in Sri Lanka</h2>
               <p>
-                We coordinate trips across the island, with easy pickup planning for airport arrivals, city stays, beach holidays, and round tours.
+                Visit or reach our Colombo office for Sri Lanka and regional travel planning, including airport arrivals, city stays, beach holidays, round tours, and Asia travel support.
               </p>
             </div>
             <a
               class="text-link"
-              href="https://www.openstreetmap.org/?mlat=6.9271&mlon=79.8612#map=12/6.9271/79.8612"
+              href={mapHref}
               target="_blank"
               rel="noreferrer"
             >
@@ -180,7 +190,7 @@ const contactDetails = [
           <div class="contact-map-card" data-animate="fade-left" data-animate-delay="0.1">
             <iframe
               title="Explore Asia location map"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=79.8000%2C6.8400%2C79.9500%2C6.9900&layer=mapnik&marker=6.9271%2C79.8612"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=79.8500%2C6.8300%2C79.9300%2C6.9100&layer=mapnik&marker=6.8728%2C79.8893"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
