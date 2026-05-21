@@ -2,7 +2,7 @@
 import { ArrowRight, ChevronDown, Menu, X } from "@lucide/astro";
 import LanguageSelector from "./LanguageSelector.astro";
 import logo from "../assets/logo.png";
-import { destinationLinks, packageLinks, servicesLinks } from "../lib/navigation";
+import { packageLinks, servicesLinks } from "../lib/navigation";
 
 const normalizePath = (path: string) =>
   path.length > 1 ? path.replace(/\/$/, "") : path;
@@ -14,9 +14,6 @@ const isSectionActive = (href: string) =>
 
 const isServicesActive = isSectionActive("/services");
 const isPackagesActive = isSectionActive("/packages");
-const isDestinationsActive = destinationLinks.some((link) =>
-  isActivePath(link.href),
-);
 ---
 
 <header
@@ -92,40 +89,23 @@ const isDestinationsActive = destinationLinks.some((link) =>
 
       <span class="h-5 w-px bg-white/55"></span>
 
-      <div class="group relative">
-        <a
-          href="/india"
-          aria-current={isDestinationsActive ? "page" : undefined}
-          class:list={[
-            "flex items-center gap-1 px-4 py-7 transition-colors hover:text-brand-secondary",
-            isDestinationsActive && "text-brand-secondary",
-          ]}
-        >
-          Destinations
-          <ChevronDown class="h-4 w-4" aria-hidden="true" />
-        </a>
-        <div
-          class="invisible absolute left-4 top-full w-56 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
-        >
-          <div class="nav-dropdown-panel border border-white/70 py-2 shadow-xl">
-            {
-              destinationLinks.map((link) => (
-                <a
-                  href={link.href}
-                  aria-current={isActivePath(link.href) ? "page" : undefined}
-                  class:list={[
-                    "block px-6 py-3 text-sm font-semibold normal-case tracking-normal text-slate-700 transition-colors hover:bg-brand-secondary/10 hover:text-brand-secondary",
-                    isActivePath(link.href) && "text-brand-secondary",
-                  ]}
-                >
-                  {link.label}
-                </a>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-
+      <a
+        href="/india"
+        aria-current={isActivePath("/india") ? "page" : undefined}
+        class:list={[
+          "px-4 transition-colors hover:text-brand-secondary",
+          isActivePath("/india") && "text-brand-secondary",
+        ]}>India</a
+      >
+      <span class="h-5 w-px bg-white/55"></span>
+      <a
+        href="/maldives"
+        aria-current={isActivePath("/maldives") ? "page" : undefined}
+        class:list={[
+          "px-4 transition-colors hover:text-brand-secondary",
+          isActivePath("/maldives") && "text-brand-secondary",
+        ]}>Maldives</a
+      >
       <span class="h-5 w-px bg-white/55"></span>
 
       <div class="group relative">
@@ -250,36 +230,20 @@ const isDestinationsActive = destinationLinks.some((link) =>
           }
         </div>
       </details>
-      <details class="group" open={isDestinationsActive}>
-        <summary
-          class:list={[
-            "flex cursor-pointer list-none items-center justify-between py-3",
-            isDestinationsActive && "text-brand-secondary",
-          ]}
-        >
-          Destinations
-          <ChevronDown
-            class="h-4 w-4 transition-transform group-open:rotate-180"
-            aria-hidden="true"
-          />
-        </summary>
-        <div class="border border-slate-200 bg-white py-1 shadow-inner">
-          {
-            destinationLinks.map((link) => (
-              <a
-                href={link.href}
-                aria-current={isActivePath(link.href) ? "page" : undefined}
-                class:list={[
-                  "block px-5 py-3 text-sm font-medium normal-case tracking-normal hover:bg-brand-secondary/10 hover:text-brand-secondary",
-                  isActivePath(link.href) && "text-brand-secondary",
-                ]}
-              >
-                {link.label}
-              </a>
-            ))
-          }
-        </div>
-      </details>
+      <a
+        href="/india"
+        aria-current={isActivePath("/india") ? "page" : undefined}
+        class:list={["py-3", isActivePath("/india") && "text-brand-secondary"]}
+        >India</a
+      >
+      <a
+        href="/maldives"
+        aria-current={isActivePath("/maldives") ? "page" : undefined}
+        class:list={[
+          "py-3",
+          isActivePath("/maldives") && "text-brand-secondary",
+        ]}>Maldives</a
+      >
       <details class="group" open={isPackagesActive}>
         <summary
           class:list={[
