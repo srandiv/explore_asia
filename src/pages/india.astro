@@ -1,0 +1,158 @@
+---
+import DestinationDetail from "../components/DestinationDetail.astro";
+
+const destination = {
+  title: "India",
+  eyebrow: "Incredible India",
+  description:
+    "A journey beyond imagination through culture, heritage, luxury, wellness, romance, nature, and expertly managed group travel.",
+  heroImage:
+    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1800&q=80",
+  heroImageAlt: "Taj Mahal in Agra, India",
+  imagePosition: "center 48%",
+  backgroundImage:
+    "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1800&q=80",
+  backgroundImageAlt: "Ornate palace architecture in Jaipur, India",
+  introTitle: "Incredible India - A Journey Beyond Imagination",
+  introParagraphs: [
+    "India is a land of timeless culture, spiritual heritage, breathtaking landscapes, royal history, vibrant traditions, and unforgettable experiences. From the snow-covered Himalayas to tropical beaches, bustling cities to peaceful temples, India offers a diverse travel experience unlike anywhere else in the world.",
+    "At Explore Asia Travels Pvt Ltd, we specialize in creating personalized and professionally managed journeys across India for leisure travelers, groups, honeymooners, cultural explorers, wellness seekers, and corporate travelers.",
+    "With strong destination expertise and trusted partnerships across India, we ensure every journey is carefully planned with comfort, authenticity, and seamless service.",
+  ],
+  introImages: [
+    {
+      title: "Royal Heritage",
+      description: "Palaces, forts, and living traditions across Rajasthan and beyond.",
+      image:
+        "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Colorful palace architecture in Jaipur, India",
+    },
+    {
+      title: "Peaceful Backwaters",
+      description: "Slow, scenic escapes through Kerala's lush waterways.",
+      image:
+        "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Peaceful Kerala backwaters in India",
+    },
+    {
+      title: "Himalayan Nature",
+      description: "Mountain landscapes, fresh air, and unforgettable views.",
+      image:
+        "https://images.unsplash.com/photo-1587135941948-670b381f08ce?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Mountain landscape in the Himalayas",
+    },
+  ],
+  experiencesEyebrow: "Explore the Diversity of India",
+  experiencesTitle: "Journeys shaped around every travel style",
+  experiencesIntro:
+    "From cultural icons to wellness retreats and corporate programs, our India journeys are built with careful planning and reliable local coordination.",
+  experiences: [
+    {
+      title: "Cultural & Heritage Tours",
+      description:
+        "Discover the Taj Mahal, Jaipur, Delhi, Varanasi, Rajasthan, South Indian heritage cities, royal palaces, festivals, and UNESCO World Heritage sites.",
+      image:
+        "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Taj Mahal with reflecting pool in India",
+    },
+    {
+      title: "Luxury Holidays",
+      description:
+        "Enjoy premium hotels, private transportation, curated experiences, and personalized services for comfort, exclusivity, and elegance.",
+      image:
+        "https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Luxury palace hotel architecture in India",
+    },
+    {
+      title: "Spiritual & Wellness Journeys",
+      description:
+        "Experience yoga, Ayurveda, meditation, sacred temples, wellness retreats, and peaceful destinations for inner renewal.",
+      image:
+        "https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Yoga practice at sunset",
+    },
+    {
+      title: "Honeymoon & Romantic Escapes",
+      description:
+        "From Kerala backwaters to Goa beaches and Rajasthan palaces, India offers romantic experiences designed for couples.",
+      image:
+        "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Beach in Goa, India",
+    },
+    {
+      title: "Adventure & Nature Experiences",
+      description:
+        "Explore the Himalayas, wildlife safaris, tea plantations, deserts, rivers, and tropical landscapes through nature-based tours.",
+      image:
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Scenic mountain and nature landscape",
+    },
+    {
+      title: "MICE & Group Travel",
+      description:
+        "Professional support for meetings, incentives, conferences, exhibitions, customized group tours, and corporate travel arrangements.",
+      image:
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Corporate group meeting and travel planning",
+    },
+  ],
+  whyTitle: "Why travel to India with us?",
+  whyIntro:
+    "At Explore Asia Travels Pvt Ltd, every India journey is planned to feel authentic, comfortable, enriching, and unforgettable.",
+  whyItems: [
+    "Strong B2B destination management expertise",
+    "Carefully curated travel experiences",
+    "Reliable local partnerships across India",
+    "Professional tour planning and coordination",
+    "Cost-effective travel solutions",
+    "Personalized service and 24/7 support",
+    "Experienced management and operations team",
+    "Seamless transportation and guided services",
+  ],
+  galleryTitle: "India moments",
+  galleryIntro:
+    "A destination of contrasts, colors, sacred places, royal stories, and landscapes that keep changing as you travel.",
+  gallery: [
+    {
+      title: "Agra",
+      description: "Iconic Mughal architecture and timeless heritage.",
+      image:
+        "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Taj Mahal in Agra",
+    },
+    {
+      title: "Rajasthan",
+      description: "Royal palaces, desert cities, and vivid traditions.",
+      image:
+        "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Jaipur palace architecture",
+    },
+    {
+      title: "Kerala",
+      description: "Waterways, wellness, and tropical quiet.",
+      image:
+        "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Kerala backwaters",
+    },
+    {
+      title: "Himalayas",
+      description: "Highland scenery and adventure-filled routes.",
+      image:
+        "https://images.unsplash.com/photo-1587135941948-670b381f08ce?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Himalayan landscape",
+    },
+    {
+      title: "Goa",
+      description: "Golden beaches, relaxed coastlines, and bright evenings.",
+      image:
+        "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Goa beach in India",
+    },
+  ],
+  closingTitle: "Plan India with confidence",
+  closingText:
+    "Tell us the experience you want, and our team will shape the route, hotels, transport, guides, and timing into a journey that fits your travelers.",
+};
+---
+
+<DestinationDetail destination={destination} />

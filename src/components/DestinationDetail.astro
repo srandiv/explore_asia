@@ -1,0 +1,334 @@
+---
+import { ArrowRight, CheckCircle2 } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "./Navbar.astro";
+import PageHeader from "./PageHeader.astro";
+
+type DestinationExperience = {
+  title: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+};
+
+type DestinationPageData = {
+  title: string;
+  eyebrow: string;
+  description: string;
+  heroImage: string;
+  heroImageAlt: string;
+  imagePosition?: string;
+  backgroundImage: string;
+  backgroundImageAlt: string;
+  introTitle: string;
+  introParagraphs: string[];
+  introImages: DestinationExperience[];
+  experiencesEyebrow: string;
+  experiencesTitle: string;
+  experiencesIntro: string;
+  experiences: DestinationExperience[];
+  whyTitle: string;
+  whyIntro: string;
+  whyItems: string[];
+  galleryTitle: string;
+  galleryIntro: string;
+  gallery: DestinationExperience[];
+  closingTitle: string;
+  closingText: string;
+};
+
+interface Props {
+  destination: DestinationPageData;
+}
+
+const { destination } = Astro.props;
+const whatsappText = encodeURIComponent(
+  `Hello Explore Asia Travels, I'm interested in planning a ${destination.title} journey. Please share more details.`,
+);
+const whatsappHref = `https://wa.me/94775011272?text=${whatsappText}`;
+---
+
+<Layout>
+  <Navbar />
+
+  <PageHeader
+    eyebrow={destination.eyebrow}
+    title={destination.title}
+    subtitle={destination.description}
+    image={destination.heroImage}
+    imageAlt={destination.heroImageAlt}
+    imagePosition={destination.imagePosition}
+  />
+
+  <main class="inner-page">
+    <section class="destination-atmosphere site-section">
+      <img
+        src={destination.backgroundImage}
+        alt=""
+        class="destination-atmosphere-image"
+        loading="lazy"
+        aria-hidden="true"
+      />
+      <div class="destination-atmosphere-overlay"></div>
+      <div class="section-container">
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(24rem,1fr)] lg:items-center">
+          <div data-animate="fade-up">
+            <div class="section-heading" data-align="left">
+              <p>Destination</p>
+              <h2>{destination.introTitle}</h2>
+            </div>
+            <div class="mt-7 space-y-5">
+              {destination.introParagraphs.map((paragraph) => <p class="text-base leading-8 text-slate-600 sm:text-lg">{paragraph}</p>)}
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-[1.12fr_0.88fr]" data-animate="fade-left" data-animate-delay="0.12">
+            <figure class="min-h-[30rem] overflow-hidden bg-slate-200 shadow-[0_22px_50px_rgba(15,23,42,0.14)] sm:min-h-[35rem]">
+              <img
+                src={destination.introImages[0].image}
+                alt={destination.introImages[0].imageAlt}
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+            </figure>
+            <div class="grid gap-4">
+              {destination.introImages.slice(1).map((image) => (
+                <figure class="min-h-[14.5rem] overflow-hidden bg-slate-200 shadow-[0_18px_40px_rgba(15,23,42,0.12)] sm:min-h-[17rem]">
+                  <img src={image.image} alt={image.imageAlt} class="h-full w-full object-cover" loading="lazy" />
+                </figure>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section bg-slate-50">
+      <div class="section-container">
+        <div class="section-heading" data-animate="fade-up">
+          <p>{destination.experiencesEyebrow}</p>
+          <h2>{destination.experiencesTitle}</h2>
+          <p>{destination.experiencesIntro}</p>
+        </div>
+
+        <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {destination.experiences.map((experience, index) => (
+            <article class="group bg-white shadow-[0_18px_40px_rgba(15,23,42,0.08)]" data-animate="fade-up" data-animate-delay={String(Math.min(index, 5) * 0.08)}>
+              <div class="h-64 overflow-hidden bg-slate-200">
+                <img
+                  src={experience.image}
+                  alt={experience.imageAlt}
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-slate-800">{experience.title}</h3>
+                <p class="mt-3 text-base leading-7 text-slate-600">{experience.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="destination-why-section site-section">
+      <img
+        src={destination.backgroundImage}
+        alt=""
+        class="destination-why-bg"
+        loading="lazy"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-white/88"></div>
+      <div class="section-container">
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)] lg:items-start">
+          <div class="section-heading lg:sticky lg:top-24" data-align="left" data-animate="fade-up">
+            <p>Why Choose Us</p>
+            <h2>{destination.whyTitle}</h2>
+            <p>{destination.whyIntro}</p>
+            <a href={whatsappHref} target="_blank" rel="noreferrer" class="site-button">
+              Plan this trip
+              <ArrowRight class="h-4 w-4 -rotate-45" aria-hidden="true" />
+            </a>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2" data-animate="fade-left" data-animate-delay="0.12">
+            {destination.whyItems.map((item, index) => (
+              <div class="border-l-2 border-brand-secondary bg-slate-50 p-5 shadow-[0_14px_34px_rgba(15,23,42,0.06)]">
+                <CheckCircle2 class="h-5 w-5 text-brand-secondary" aria-hidden="true" />
+                <p class="mt-4 text-base font-semibold leading-7 text-slate-700">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="destination-gallery-section site-section bg-brand-dark text-white"
+      style={`--destination-gallery-bg: url("${destination.backgroundImage}");`}
+    >
+      <div class="section-container">
+        <div class="section-heading" data-theme="dark" data-animate="fade-up">
+          <p>Gallery</p>
+          <h2>{destination.galleryTitle}</h2>
+          <p>{destination.galleryIntro}</p>
+        </div>
+
+        <div class="mt-10 grid gap-4 md:grid-cols-4">
+          {destination.gallery.map((item, index) => (
+            <figure
+              class:list={[
+                "destination-gallery-card group relative min-h-[22rem] overflow-hidden bg-slate-800 shadow-[0_24px_60px_rgba(0,0,0,0.2)]",
+                index === 0 && "md:col-span-2 md:row-span-2 md:min-h-[45rem]",
+              ]}
+              style={`--destination-gallery-image: url("${item.image}");`}
+              data-animate="fade-up"
+              data-animate-delay={String(Math.min(index, 4) * 0.08)}
+            >
+              <span class="sr-only">{item.imageAlt}</span>
+              <figcaption class="absolute inset-x-0 bottom-0 p-5">
+                <h3 class="text-white">{item.title}</h3>
+                <p class="mt-2 text-sm leading-6 text-white/82">{item.description}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section">
+      <div class="section-container">
+        <div
+          class="relative overflow-hidden bg-brand-primary p-8 text-center text-white shadow-[0_24px_60px_rgba(15,23,42,0.14)] sm:p-10 lg:p-12"
+          data-animate="fade-up"
+        >
+          <img src={destination.heroImage} alt="" class="absolute inset-0 h-full w-full object-cover opacity-30" loading="lazy" aria-hidden="true" />
+          <div class="absolute inset-0 bg-slate-950/58"></div>
+          <div class="relative z-10 mx-auto max-w-3xl">
+            <p class="text-xs font-bold uppercase tracking-[0.24em] text-brand-gold">Explore Beyond Expectations</p>
+            <h2 class="mt-3 text-white">{destination.closingTitle}</h2>
+            <p class="mt-4 text-base leading-8 text-white/84 sm:text-lg">{destination.closingText}</p>
+            <div class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a href={whatsappHref} target="_blank" rel="noreferrer" class="site-button">
+                Inquire on WhatsApp
+                <ArrowRight class="h-4 w-4 -rotate-45" aria-hidden="true" />
+              </a>
+              <a href="/contact" class="site-button bg-white text-brand-primary hover:bg-brand-secondary hover:text-white">
+                Contact us
+                <ArrowRight class="h-4 w-4 -rotate-45" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .destination-atmosphere,
+  .destination-why-section,
+  .destination-gallery-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .destination-atmosphere-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.14;
+    transform: scale(1.02);
+  }
+
+  .destination-atmosphere-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.8)),
+      radial-gradient(circle at top right, rgba(27, 156, 80, 0.12), transparent 34%);
+  }
+
+  .destination-why-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+  }
+
+  .destination-why-section > .section-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .destination-gallery-section::before,
+  .destination-gallery-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .destination-gallery-section::before {
+    z-index: 0;
+    background-image: var(--destination-gallery-bg);
+    background-position: center;
+    background-size: cover;
+    opacity: 0.34;
+    transform: scale(1.02);
+  }
+
+  .destination-gallery-section::after {
+    z-index: 1;
+    background:
+      linear-gradient(180deg, rgba(5, 18, 31, 0.88), rgba(5, 18, 31, 0.76)),
+      radial-gradient(circle at top, rgba(27, 156, 80, 0.16), transparent 38%);
+  }
+
+  .destination-gallery-section > .section-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .destination-gallery-card::before,
+  .destination-gallery-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .destination-gallery-card::before {
+    z-index: 0;
+    background-image: var(--destination-gallery-image);
+    background-position: center;
+    background-size: cover;
+    transition: transform 700ms ease;
+  }
+
+  .destination-gallery-card::after {
+    z-index: 1;
+    background: linear-gradient(
+      to top,
+      rgba(2, 6, 23, 0.8),
+      rgba(2, 6, 23, 0.2),
+      transparent
+    );
+  }
+
+  .destination-gallery-card:hover::before {
+    transform: scale(1.05);
+  }
+
+  .destination-gallery-card figcaption {
+    z-index: 2;
+  }
+</style>

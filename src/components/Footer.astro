@@ -1,6 +1,6 @@
 ---
 import logo from "../assets/logo.png";
-import { footerQuickLinks, packageLinks, servicesLinks } from "../lib/navigation";
+import { destinationLinks, footerQuickLinks, packageLinks, servicesLinks } from "../lib/navigation";
 
 const year = new Date().getFullYear();
 ---
@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
         </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 lg:grid-cols-4">
+      <div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 lg:grid-cols-5">
         <div class="footer-column">
           <h2>Quick Links</h2>
           <ul class="mt-5 space-y-3 text-sm text-white/82">
@@ -55,6 +55,21 @@ const year = new Date().getFullYear();
           <ul class="mt-5 space-y-3 text-sm text-white/82">
             {
               packageLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="transition-colors hover:text-brand-gold">
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h2>Destinations</h2>
+          <ul class="mt-5 space-y-3 text-sm text-white/82">
+            {
+              destinationLinks.map((link) => (
                 <li>
                   <a href={link.href} class="transition-colors hover:text-brand-gold">
                     {link.label}

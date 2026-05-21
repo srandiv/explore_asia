@@ -1,0 +1,158 @@
+---
+import DestinationDetail from "../components/DestinationDetail.astro";
+
+const destination = {
+  title: "Maldives",
+  eyebrow: "Experience Paradise",
+  description:
+    "Personalized island holidays for luxury, romance, relaxation, diving, wellness, family travel, and unforgettable memories.",
+  heroImage:
+    "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1800&q=80",
+  heroImageAlt: "Turquoise lagoon and white beach in the Maldives",
+  imagePosition: "center 48%",
+  backgroundImage:
+    "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1800&q=80",
+  backgroundImageAlt: "Overwater villas and turquoise lagoon in the Maldives",
+  introTitle: "Experience Paradise in the Maldives",
+  introParagraphs: [
+    "Maldives is one of the world's most breathtaking tropical destinations, famous for its crystal-clear turquoise waters, luxury resorts, white sandy beaches, vibrant marine life, and unforgettable island experiences.",
+    "At Explore Asia Travels Pvt Ltd, we create personalized Maldives holidays designed for relaxation, romance, luxury, and unforgettable memories.",
+    "Whether you seek a honeymoon escape, family vacation, wellness retreat, or luxury island experience, we ensure every moment is perfectly arranged.",
+  ],
+  introImages: [
+    {
+      title: "Overwater Villas",
+      description: "Wake up above clear lagoons with uninterrupted ocean views.",
+      image:
+        "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Overwater villas in a tropical island resort",
+    },
+    {
+      title: "Marine Life",
+      description: "Snorkeling, diving, dolphins, and vibrant reefs.",
+      image:
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Snorkeling above coral reef in clear tropical water",
+    },
+    {
+      title: "White Beaches",
+      description: "Soft sand, quiet island time, and blue horizons.",
+      image:
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "White sand tropical beach and blue sea",
+    },
+  ],
+  experiencesEyebrow: "Discover the Beauty of the Maldives",
+  experiencesTitle: "Island experiences made for effortless escape",
+  experiencesIntro:
+    "From romantic villas to family resorts and water adventures, we match each traveler with the right island style and arrange the details smoothly.",
+  experiences: [
+    {
+      title: "Luxury Island Resorts",
+      description:
+        "Experience overwater villas, private pools, ocean views, fine dining, and premium hospitality surrounded by the Indian Ocean.",
+      image:
+        "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Luxury overwater villas in the Maldives",
+    },
+    {
+      title: "Honeymoon & Romantic Escapes",
+      description:
+        "Enjoy beach dinners, sunset cruises, private villas, and meaningful experiences designed for couples.",
+      image:
+        "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Romantic tropical beach at sunset",
+    },
+    {
+      title: "Beach & Relaxation Holidays",
+      description:
+        "Relax on pristine white beaches, swim in clear lagoons, and enjoy peaceful island living away from daily stress.",
+      image:
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Tropical beach and clear water",
+    },
+    {
+      title: "Diving & Water Sports",
+      description:
+        "Explore reefs through snorkeling, scuba diving, dolphin watching, jet skiing, kayaking, and other water activities.",
+      image:
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Snorkeling and coral reef",
+    },
+    {
+      title: "Wellness & Spa Experiences",
+      description:
+        "Rejuvenate with luxury spa treatments, yoga, wellness retreats, and calm island settings.",
+      image:
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Luxury spa treatment room",
+    },
+    {
+      title: "Family & Group Getaways",
+      description:
+        "Family-friendly resorts, shared activities, group-friendly transfers, and customized travel arrangements.",
+      image:
+        "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Family enjoying a beach holiday",
+    },
+  ],
+  whyTitle: "Why choose us for Maldives holidays?",
+  whyIntro:
+    "We focus on creating island experiences filled with comfort, beauty, exceptional service, and dependable coordination.",
+  whyItems: [
+    "Carefully selected resort partnerships",
+    "Personalized luxury experiences",
+    "Competitive and cost-effective packages",
+    "Professional travel coordination",
+    "Reliable transfers and island arrangements",
+    "Tailor-made honeymoon and family packages",
+    "Dedicated customer support",
+    "Experienced destination management team",
+  ],
+  galleryTitle: "Maldives moments",
+  galleryIntro:
+    "A paradise of turquoise lagoons, soft beaches, underwater beauty, and resort experiences made for complete relaxation.",
+  gallery: [
+    {
+      title: "Lagoon Living",
+      description: "Crystal-clear water and calm island days.",
+      image:
+        "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Maldives turquoise lagoon",
+    },
+    {
+      title: "Resort Luxury",
+      description: "Private villas and premium hospitality.",
+      image:
+        "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Overwater villas",
+    },
+    {
+      title: "Underwater Beauty",
+      description: "Reefs, marine life, and clear tropical water.",
+      image:
+        "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Snorkeling in tropical water",
+    },
+    {
+      title: "Beach Escape",
+      description: "White sand and peaceful blue horizons.",
+      image:
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "White sand beach",
+    },
+    {
+      title: "Sunset Cruises",
+      description: "Warm horizons, ocean breezes, and quiet evening views.",
+      image:
+        "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80",
+      imageAlt: "Tropical beach sunset in the Maldives",
+    },
+  ],
+  closingTitle: "Your paradise awaits",
+  closingText:
+    "Discover the magic of the Maldives with professionally designed journeys that combine luxury, relaxation, and unforgettable memories.",
+};
+---
+
+<DestinationDetail destination={destination} />
