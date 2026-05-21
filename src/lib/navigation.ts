@@ -6,6 +6,8 @@ export const servicesLinks = [
   { href: "/services/professional-guides", label: "Professional Guides" },
   { href: "/services/food-and-drinks", label: "Food & Drinks" },
   { href: "/services/visa-support", label: "Visa Support" },
+  { href: "/services/india", label: "India" },
+  { href: "/services/maldives", label: "Maldives" },
 ];
 
 export const packageLinks = [
