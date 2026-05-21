@@ -1,0 +1,100 @@
+---
+import {
+  CircleDollarSign,
+  HeartHandshake,
+  ShieldCheck,
+  UsersRound,
+} from "@lucide/astro";
+import valuesBackground from "../assets/images/ hero/chathura-indika-laj-xlhp6rs-unsplash.webp";
+
+const values = [
+  {
+    title: "Trusted B2B DMC Partner",
+    text: "We support international travel agents, tour operators, and travel partners with reliable destination management, fast responses, and strong operational care.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Cost-Effective Travel Solutions",
+    text: "Our in-house transportation services and professional guides help reduce third-party costs, giving partners and guests competitive rates without compromising quality.",
+    icon: CircleDollarSign,
+  },
+  {
+    title: "Experienced Leadership",
+    text: "Led by a Managing Director with deep tourism and customer care experience, every journey is handled with practical knowledge and international understanding.",
+    icon: UsersRound,
+  },
+  {
+    title: "Every Journey Matters",
+    text: "From airport arrival to the final farewell, we carefully manage each movement so guests enjoy smooth, memorable, and comfortable tours.",
+    icon: HeartHandshake,
+  },
+];
+---
+
+<section
+  class="our-values-section site-section relative overflow-hidden bg-brand-dark text-white"
+  style={`--values-background: url("${valuesBackground.src}");`}
+>
+  <div class="section-container relative z-10">
+    <div class="section-heading" data-theme="dark" data-animate="fade-up">
+      <p>Why Travel With Us</p>
+      <h2>Our values shape every journey</h2>
+      <p>
+        Explore Asia Travels combines trusted B2B destination management with
+        careful local operation, personal attention, and value-focused travel
+        planning across Sri Lanka and Asia.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {
+        values.map((item, index) => {
+          const Icon = item.icon;
+
+          return (
+            <article
+              class="group h-full rounded-lg border border-white/16 bg-white/92 p-6 text-slate-900 shadow-[0_18px_45px_rgba(2,6,23,0.18)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white"
+              data-animate="fade-up"
+              data-animate-delay={Math.min(index, 3) * 0.08}
+            >
+              <span class="grid h-12 w-12 place-items-center rounded-lg bg-brand-secondary/12 text-brand-secondary transition duration-300 group-hover:bg-brand-secondary group-hover:text-white">
+                <Icon class="h-6 w-6" aria-hidden="true" />
+              </span>
+              <h3 class="mt-5 text-2xl text-slate-900">{item.title}</h3>
+              <p class="mt-3 text-base leading-7 text-slate-600">{item.text}</p>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .our-values-section {
+    isolation: isolate;
+  }
+
+  .our-values-section::before,
+  .our-values-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .our-values-section::before {
+    z-index: 0;
+    background-image: var(--values-background);
+    background-position: center 58%;
+    background-size: cover;
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+
+  .our-values-section::after {
+    z-index: 1;
+    background:
+      linear-gradient(120deg, rgba(5, 18, 31, 0.88), rgba(5, 43, 56, 0.66) 52%, rgba(6, 35, 29, 0.82)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 36%);
+  }
+</style>

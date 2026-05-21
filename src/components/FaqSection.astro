@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 const faqs = (await getCollection("faqs")).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section id="faq" class="faq-section site-section relative overflow-hidden bg-brand-primary/5">
+<section id="faq" class="faq-section site-section relative overflow-hidden bg-white">
   <div class="section-container relative">
     <div class="section-heading" data-animate="fade-up">
       <p>FAQ</p>
@@ -21,7 +21,7 @@ const faqs = (await getCollection("faqs")).sort((a, b) => a.data.order - b.data.
       {
         faqs.map((faq, index) => (
           <article
-            class="faq-item rounded-[1.4rem] border border-slate-200 bg-white shadow-[0_12px_30px_rgba(15,23,42,0.06)] transition-shadow duration-300 hover:shadow-[0_16px_34px_rgba(15,23,42,0.09)]"
+            class="faq-item rounded-lg border border-brand-secondary/20 bg-white shadow-[0_14px_34px_rgba(27,156,80,0.08)] transition duration-300 hover:-translate-y-0.5 hover:border-brand-secondary/45 hover:shadow-[0_18px_42px_rgba(27,156,80,0.14)]"
             data-open={index === 0 ? "true" : "false"}
             data-animate="fade-left"
             data-animate-delay={`${Math.min(index, 4) * 0.08}`}
@@ -34,7 +34,7 @@ const faqs = (await getCollection("faqs")).sort((a, b) => a.data.order - b.data.
               <span>
                 {faq.data.question}
               </span>
-              <span class="faq-icon inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-transform duration-300">
+              <span class="faq-icon inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-secondary text-white shadow-[0_12px_24px_rgba(27,156,80,0.2)] transition duration-300">
                 <ChevronDown class="h-5 w-5" aria-hidden="true" />
               </span>
             </button>
@@ -113,5 +113,31 @@ const faqs = (await getCollection("faqs")).sort((a, b) => a.data.order - b.data.
 <style>
   .faq-section {
     isolation: isolate;
+  }
+
+  .faq-item {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .faq-item::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: linear-gradient(90deg, rgba(27, 156, 80, 0.45), #1b9c50);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  .faq-item[data-open="true"]::before,
+  .faq-item:hover::before {
+    opacity: 1;
+  }
+
+  .faq-item[data-open="true"] .faq-icon,
+  .faq-item:hover .faq-icon {
+    background-color: #157f43;
+    color: #ffffff;
   }
 </style>
