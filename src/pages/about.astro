@@ -1,58 +1,81 @@
 ---
-import { ArrowRight, BadgeCheck, HeartHandshake, Map, Sparkles } from "@lucide/astro";
+import {
+  ArrowRight,
+  BadgeCheck,
+  HeartHandshake,
+  Map,
+  Sparkles,
+} from "@lucide/astro";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import PageHeader from "../components/PageHeader.astro";
 import TestimonialsCarousel from "../components/TestimonialsCarousel.astro";
 import heroImage from "../assets/images/ hero/malith-d-karunarathne--pw-saa99lw-unsplash.webp";
-import coastImage from "../assets/images/ hero/chathura-indika-laj-xlhp6rs-unsplash.webp";
-import templeImage from "../assets/images/ hero/paul-kapischka-43fxbr3mqoy-unsplash.webp";
-import mountainImage from "../assets/images/ hero/yves-alarie-yagheetusk4-unsplash.webp";
-import sigiriyaImage from "../assets/images/sri-lanka-unsplash-sigiriya.jpg";
+import gallery1 from "../assets/images/gallery/gallery-1.webp";
+import gallery3 from "../assets/images/gallery/gallery-3.webp";
+import gallery5 from "../assets/images/gallery/gallery-5.webp";
+import gallery8 from "../assets/images/gallery/gallery-8.webp";
+import gallery10 from "../assets/images/gallery/gallery-10.webp";
+import gallery13 from "../assets/images/gallery/gallery-13.webp";
+import gallery14 from "../assets/images/gallery/gallery-14.webp";
+import gallery15 from "../assets/images/gallery/gallery-15.webp";
+import leadershipImage from "../assets/images/gallery/gallery-19.webp";
 
 const values = [
   {
-    title: "Local knowledge",
-    text: "Routes are shaped by people who understand travel times, seasons, quiet stops, and the small details that make each day feel easier.",
+    title: "B2B DMC expertise",
+    text: "We support international travel agents, tour operators, and tourism stakeholders with reliable destination management solutions and competitive pricing.",
     icon: Map,
   },
   {
-    title: "Personal planning",
-    text: "Every itinerary is adjusted around your pace, comfort, budget, interests, and the kind of Sri Lanka you want to experience.",
+    title: "Tailor-made experiences",
+    text: "Our team creates personalized holidays, cultural journeys, MICE travel, luxury escapes, and experiential tours across Sri Lanka and Asia.",
     icon: Sparkles,
   },
   {
-    title: "Warm guidance",
-    text: "From arrival to departure, our team keeps the journey calm with clear communication, flexible support, and thoughtful service.",
+    title: "In-house operations",
+    text: "Through our own transportation services and professional guiding team, we maintain strong quality standards and smoother coordination.",
     icon: HeartHandshake,
   },
   {
-    title: "Trusted partners",
-    text: "We work with reliable hotels, private drivers, guides, and local hosts so each journey feels connected and well cared for.",
+    title: "Value with quality",
+    text: "Our operational foundation helps us offer cost-effective travel solutions without compromising comfort, safety, or service excellence.",
     icon: BadgeCheck,
   },
 ];
 
 const gallery = [
   {
-    image: sigiriyaImage.src,
-    alt: "Sigiriya rock fortress rising above green forest",
+    image: gallery1.src,
+    alt: "Explore Asia travel experience in Sri Lanka",
   },
   {
-    image: coastImage.src,
-    alt: "Sri Lankan coastal landscape with tropical water",
+    image: gallery3.src,
+    alt: "Sri Lankan cultural and scenic travel moment",
   },
   {
-    image: templeImage.src,
-    alt: "Ancient temple architecture in Sri Lanka",
+    image: gallery5.src,
+    alt: "Guests exploring Sri Lanka with Explore Asia",
   },
   {
-    image: mountainImage.src,
-    alt: "Misty mountain scenery in Sri Lanka",
+    image: gallery8.src,
+    alt: "Sri Lanka destination experience",
   },
   {
-    image: heroImage.src,
-    alt: "Scenic Sri Lankan landscape with palms and hills",
+    image: gallery10.src,
+    alt: "Travel moment from Explore Asia gallery",
+  },
+  {
+    image: gallery13.src,
+    alt: "Memorable Sri Lanka tour experience",
+  },
+  {
+    image: gallery14.src,
+    alt: "Explore Asia destination management experience",
+  },
+  {
+    image: gallery15.src,
+    alt: "Authentic Sri Lanka travel experience",
   },
 ];
 ---
@@ -62,8 +85,8 @@ const gallery = [
 
   <PageHeader
     eyebrow="About Us"
-    title="Sri Lanka holidays planned with local care"
-    subtitle="We create comfortable, flexible journeys across Sri Lanka with private transport, trusted stays, friendly guides, and thoughtful travel planning."
+    title="Discover Asia, Your Way"
+    subtitle="Explore Asia Travels Pvt Ltd is a Sri Lanka-based Destination Management Company creating tailor-made travel experiences across Sri Lanka and Asia."
     image={heroImage.src}
     imageAlt="Scenic Sri Lankan landscape with palms and hills"
     imagePosition="center 46%"
@@ -72,37 +95,54 @@ const gallery = [
   <main class="inner-page">
     <section class="site-section">
       <div class="section-container">
-        <div class="about-story-grid">
-          <div class="about-copy" data-animate="fade-right">
-            <div class="section-heading" data-align="left">
+        <div class="mx-auto max-w-5xl text-center">
+          <div class="about-copy items-center" data-animate="fade-up">
+            <div class="section-heading">
               <p>Who We Are</p>
-              <h2>Made for travelers who want Sri Lanka to feel effortless</h2>
+              <h2>A trusted DMC for personalized journeys across Asia</h2>
               <p>
-                Lanka Classy Tours helps travelers discover Sri Lanka with calm planning, local insight, and flexible service from the first message to the final airport transfer.
+                Explore Asia Travels Pvt Ltd specializes in inbound tourism,
+                luxury holidays, cultural journeys, MICE travel, and
+                experiential tourism.
               </p>
             </div>
 
-            <div class="about-body">
+            <div class="about-body mx-auto max-w-4xl">
               <p>
-                We plan tailor-made holidays for couples, families, groups, and solo travelers who want more than a fixed route. Our itineraries can include cultural cities, wildlife parks, tea country, beach stays, village experiences, food stops, and meaningful local encounters.
+                Founded with a passion for showcasing the beauty, culture, and
+                diversity of Asia, we are committed to delivering seamless,
+                memorable, and personalized travel experiences for travelers and
+                <br/>
+                global travel partners alike.
               </p>
               <p>
-                The idea is simple: you share your dates, interests, pace, and budget, then we shape the route, transport, hotels, and daily details around you. The result is a journey that feels organized but never rushed.
+                What makes us different is our strong operational foundation,
+                customer-focused service approach, and deep understanding of the
+                tourism industry. As one of the leading B2B service providers in
+                Sri Lanka, we proudly support international travel agents, tour
+                operators, and tourism stakeholders with reliable destination
+                management solutions and competitive pricing.
+              </p>
+              <p>
+                Through our in-house transportation services and professional
+                guiding team, we maintain high-quality standards while offering
+                cost-effective travel solutions without compromising comfort,
+                safety, or service excellence.
               </p>
             </div>
 
-            <div class="about-stats" aria-label="Company highlights">
+            <div class="about-stats w-full" aria-label="Company highlights">
               <div class="about-stat">
-                <strong>Custom</strong>
-                <span>Routes for every traveler</span>
+                <strong>DMC</strong>
+                <span>Sri Lanka-based destination management</span>
               </div>
               <div class="about-stat">
-                <strong>Private</strong>
-                <span>Transport and guide support</span>
+                <strong>B2B</strong>
+                <span>Travel agent and tour operator support</span>
               </div>
               <div class="about-stat">
-                <strong>Islandwide</strong>
-                <span>Culture, coast, hills, and wildlife</span>
+                <strong>Asia</strong>
+                <span>Tailor-made journeys across the region</span>
               </div>
             </div>
 
@@ -114,20 +154,6 @@ const gallery = [
               </span>
             </a>
           </div>
-
-          <div class="about-media-collage" data-animate="fade-left" data-animate-delay="0.12">
-            <figure class="about-media-main">
-              <img src={sigiriyaImage.src} alt="Sigiriya rock fortress surrounded by green forest" loading="lazy" />
-            </figure>
-            <div class="about-media-stack">
-              <figure>
-                <img src={coastImage.src} alt="Tropical coastline in Sri Lanka" loading="lazy" />
-              </figure>
-              <figure>
-                <img src={templeImage.src} alt="Sri Lankan temple and cultural architecture" loading="lazy" />
-              </figure>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -135,10 +161,12 @@ const gallery = [
     <section class="about-values-section site-section">
       <div class="section-container">
         <div class="section-heading" data-animate="fade-up">
-          <p>Why Travel With Us</p>
-          <h2>Comfortable journeys, carefully connected</h2>
+          <p>What Makes Us Different</p>
+          <h2>Strong operations, personal service, better value</h2>
           <p>
-            We focus on the practical details that keep your trip smooth, while leaving enough space for surprise, rest, and discovery.
+            We combine professional planning with practical control over
+            transport, guiding, and partner coordination, helping every trip run
+            smoothly from first request to final farewell.
           </p>
         </div>
 
@@ -166,18 +194,163 @@ const gallery = [
 
     <section class="site-section">
       <div class="section-container">
+        <div
+          class="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start"
+        >
+          <div data-animate="fade-right">
+            <div class="section-heading" data-align="left">
+              <p>Leadership</p>
+              <h2>Roshan Priyadarshana</h2>
+              <p>Managing Director</p>
+            </div>
+
+            <figure
+              class="mt-7 h-[24rem] overflow-hidden bg-slate-200 shadow-[0_18px_45px_rgba(15,23,42,0.12)] sm:h-[27rem] lg:h-[28rem] xl:h-[29rem]"
+            >
+              <img
+                src={leadershipImage.src}
+                alt="Roshan Priyadarshana, Managing Director of Explore Asia Travels"
+                class="h-full w-full object-cover object-top"
+                loading="lazy"
+              />
+            </figure>
+
+            <div class="about-stats" aria-label="Leadership highlights">
+              <div class="about-stat">
+                <strong>25+</strong>
+                <span>Years of diversified industry experience</span>
+              </div>
+              <div class="about-stat">
+                <strong>5+</strong>
+                <span>Years collaborating with global travel partners</span>
+              </div>
+              <div class="about-stat">
+                <strong>Senior</strong>
+                <span>Tourism, logistics, events, and corporate leadership</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="about-body mt-0"
+            data-animate="fade-left"
+            data-animate-delay="0.12"
+          >
+            <p>
+              Roshan Priyadarshana is a highly experienced tourism and business
+              professional with over 25 years of diversified industry experience
+              in tourism operations, logistics, administration, event
+              management, strategic partnerships, and corporate leadership.
+            </p>
+            <p>
+              With more than five years of active collaboration with
+              international travel partners, hospitality providers, and tourism
+              stakeholders, he has developed a strong understanding of
+              destination management, traveler expectations, operational
+              excellence, and global tourism trends.
+            </p>
+            <p>
+              Before establishing Explore Asia Travels, Roshan held senior
+              leadership positions in reputed organizations including The
+              Institute of Chartered Accountants of Sri Lanka and Asian Travel
+              Solutions Pvt Ltd, where he successfully managed large-scale
+              operations, national and international events, procurement,
+              logistics, stakeholder coordination, and cross-functional teams.
+            </p>
+            <p>
+              His extensive corporate background brings a unique level of
+              professionalism, structure, operational precision, and service
+              quality into the tourism industry. His leadership philosophy is
+              built on trust, reliability, personalized care, and long-term
+              partnerships.
+            </p>
+            <p>
+              Roshan strongly believes that travel is not only about visiting
+              destinations. It is about creating unforgettable moments,
+              meaningful cultural connections, and life-enriching experiences.
+              Under his leadership, Explore Asia Travels continues to provide
+              carefully designed journeys that focus on comfort, authenticity,
+              seamless execution, and exceptional customer satisfaction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section bg-slate-50">
+      <div class="section-container">
+        <div class="grid gap-5 md:grid-cols-2">
+          <article
+            class="bg-white p-7 shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
+            data-animate="fade-up"
+          >
+            <Map class="h-9 w-9 text-brand-secondary" aria-hidden="true" />
+            <p
+              class="mt-5 text-xs font-bold uppercase tracking-[0.24em] text-brand-primary"
+            >
+              Our Vision
+            </p>
+            <h2 class="mt-3 text-slate-800">
+              Inspiring travel across Sri Lanka and Asia
+            </h2>
+            <p class="mt-4 text-base leading-7 text-slate-600">
+              To position Sri Lanka and Asia among the world's most inspiring
+              travel destinations by delivering authentic, high-quality, and
+              unforgettable travel experiences.
+            </p>
+          </article>
+
+          <article
+            class="bg-white p-7 shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
+            data-animate="fade-up"
+            data-animate-delay="0.1"
+          >
+            <Sparkles class="h-9 w-9 text-brand-secondary" aria-hidden="true" />
+            <p
+              class="mt-5 text-xs font-bold uppercase tracking-[0.24em] text-brand-primary"
+            >
+              Our Mission
+            </p>
+            <h2 class="mt-3 text-slate-800">
+              Meaningful journeys, delivered with care
+            </h2>
+            <p class="mt-4 text-base leading-7 text-slate-600">
+              To create meaningful journeys through personalized service,
+              operational excellence, trusted partnerships, and sustainable
+              tourism practices while ensuring every traveler experiences Asia
+              in their own unique way.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section">
+      <div class="section-container">
         <div class="section-heading" data-animate="fade-up">
           <p>Gallery</p>
-          <h2>A few moments from the island</h2>
+          <h2>A few moments from Sri Lanka</h2>
           <p>
-            Ancient kingdoms, wild coastlines, tea country, temples, and scenic routes come together in one compact island journey.
+            Ancient kingdoms, wild coastlines, tea country, temples, and scenic
+            routes reflect the kind of authentic experiences we shape for our
+            guests.
           </p>
         </div>
 
-        <div class="about-gallery-grid" data-animate="fade-up" data-animate-delay="0.12">
+        <div
+          class="about-gallery-grid"
+          data-animate="fade-up"
+          data-animate-delay="0.12"
+        >
           {
             gallery.map((item, index) => (
-              <figure class:list={["about-gallery-item", index === 0 && "about-gallery-feature"]}>
+              <figure
+                class:list={[
+                  "about-gallery-item",
+                  index === 0 && "about-gallery-feature",
+                ]}
+              >
                 <img src={item.image} alt={item.alt} loading="lazy" />
               </figure>
             ))
