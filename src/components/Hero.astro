@@ -76,23 +76,20 @@ const slides = [
     data-animate-delay="0.35"
     data-animate-duration="0.85"
   >
-    <div id="slide-numbers" class="flex gap-1 text-sm font-semibold md:text-base">
-      <span class="slide-num active text-white cursor-pointer inline-flex items-baseline gap-1" data-index="0">
-        01
-        <span class="slide-line block h-px w-8 bg-white opacity-100 transition-all duration-500 ease-in-out"></span>
-      </span>
-      <span class="slide-num text-white/40 cursor-pointer inline-flex items-baseline gap-1" data-index="1">
-        02
-        <span class="slide-line block h-px w-1 bg-white/40 opacity-0 transition-all duration-500 ease-in-out"></span>
-      </span>
-      <span class="slide-num text-white/40 cursor-pointer inline-flex items-baseline gap-1" data-index="2">
-        03
-        <span class="slide-line block h-px w-1 bg-white/40 opacity-0 transition-all duration-500 ease-in-out"></span>
-      </span>
-      <span class="slide-num text-white/40 cursor-pointer inline-flex items-baseline gap-1" data-index="3">
-        04
-        <span class="slide-line block h-px w-1 bg-white/40 opacity-0 transition-all duration-500 ease-in-out"></span>
-      </span>
+    <div id="slide-numbers" class="flex items-center gap-3">
+      {
+        slides.map((slide, index) => (
+          <button
+            type="button"
+            class:list={["slide-num", index === 0 && "active"]}
+            data-index={index}
+            aria-label={`Go to ${slide.title} slide`}
+            aria-current={index === 0 ? "true" : "false"}
+          >
+            <span class="slide-line" aria-hidden="true"></span>
+          </button>
+        ))
+      }
     </div>
   </div>
 
@@ -147,23 +144,10 @@ const slides = [
 
     const setActive = (idx) => {
       slideNums.forEach((num, i) => {
-      const line = num.querySelector('.slide-line');
-      if (i === idx) {
-        num.classList.remove('text-white/40');
-        num.classList.add('text-white');
-        if (line) {
-          line.classList.remove('opacity-0', 'w-1', 'bg-white/40');
-          line.classList.add('opacity-100', 'w-8', 'bg-white');
-        }
-      } else {
-        num.classList.remove('text-white');
-        num.classList.add('text-white/40');
-        if (line) {
-          line.classList.remove('opacity-100', 'w-8', 'bg-white');
-          line.classList.add('opacity-0', 'w-1', 'bg-white/40');
-        }
-      }
-    });
+        const isActive = i === idx;
+        num.classList.toggle('active', isActive);
+        num.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
     };
 
     setActive(swiper.realIndex);
@@ -183,8 +167,37 @@ const slides = [
 
 <style>
   .slide-num {
-    cursor: pointer;
-    transition: color 0.4s;
+    display: inline-flex;
+    height: 1.5rem;
+    align-items: center;
+    border-radius: 999px;
     position: relative;
+    transition: opacity 0.35s ease;
+  }
+
+  .slide-num:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.9);
+    outline-offset: 4px;
+  }
+
+  .slide-line {
+    display: block;
+    height: 3px;
+    width: 1.25rem;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.45);
+    transition:
+      width 0.45s ease,
+      background-color 0.45s ease,
+      opacity 0.45s ease;
+  }
+
+  .slide-num:hover .slide-line {
+    background-color: rgba(255, 255, 255, 0.78);
+  }
+
+  .slide-num.active .slide-line {
+    width: 3.25rem;
+    background-color: #ffffff;
   }
 </style>
