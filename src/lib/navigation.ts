@@ -9,6 +9,7 @@ export const servicesLinks = [
 ];
 
 export const destinationLinks = [
+  { href: "/srilanka", label: "Sri Lanka" },
   { href: "/india", label: "India" },
   { href: "/maldives", label: "Maldives" },
 ];

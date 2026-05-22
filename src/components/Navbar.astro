@@ -2,7 +2,7 @@
 import { ArrowRight, ChevronDown, Menu, X } from "@lucide/astro";
 import LanguageSelector from "./LanguageSelector.astro";
 import logo from "../assets/logo.png";
-import { packageLinks, servicesLinks } from "../lib/navigation";
+import { destinationLinks, packageLinks, servicesLinks } from "../lib/navigation";
 
 const normalizePath = (path: string) =>
   path.length > 1 ? path.replace(/\/$/, "") : path;
@@ -89,24 +89,23 @@ const isPackagesActive = isSectionActive("/packages");
 
       <span class="h-5 w-px bg-white/55"></span>
 
-      <a
-        href="/india"
-        aria-current={isActivePath("/india") ? "page" : undefined}
-        class:list={[
-          "px-4 transition-colors hover:text-brand-secondary",
-          isActivePath("/india") && "text-brand-secondary",
-        ]}>India</a
-      >
-      <span class="h-5 w-px bg-white/55"></span>
-      <a
-        href="/maldives"
-        aria-current={isActivePath("/maldives") ? "page" : undefined}
-        class:list={[
-          "px-4 transition-colors hover:text-brand-secondary",
-          isActivePath("/maldives") && "text-brand-secondary",
-        ]}>Maldives</a
-      >
-      <span class="h-5 w-px bg-white/55"></span>
+      {
+        destinationLinks.map((link) => (
+          <>
+            <a
+              href={link.href}
+              aria-current={isActivePath(link.href) ? "page" : undefined}
+              class:list={[
+                "px-4 transition-colors hover:text-brand-secondary",
+                isActivePath(link.href) && "text-brand-secondary",
+              ]}
+            >
+              {link.label}
+            </a>
+            <span class="h-5 w-px bg-white/55" />
+          </>
+        ))
+      }
 
       <div class="group relative">
         <a
@@ -230,20 +229,17 @@ const isPackagesActive = isSectionActive("/packages");
           }
         </div>
       </details>
-      <a
-        href="/india"
-        aria-current={isActivePath("/india") ? "page" : undefined}
-        class:list={["py-3", isActivePath("/india") && "text-brand-secondary"]}
-        >India</a
-      >
-      <a
-        href="/maldives"
-        aria-current={isActivePath("/maldives") ? "page" : undefined}
-        class:list={[
-          "py-3",
-          isActivePath("/maldives") && "text-brand-secondary",
-        ]}>Maldives</a
-      >
+      {
+        destinationLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActivePath(link.href) ? "page" : undefined}
+            class:list={["py-3", isActivePath(link.href) && "text-brand-secondary"]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
       <details class="group" open={isPackagesActive}>
         <summary
           class:list={[

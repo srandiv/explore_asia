@@ -3,6 +3,19 @@ import { ChevronLeft, ChevronRight } from "@lucide/astro";
 import { getCollection } from "astro:content";
 import { resolveContentImage } from "../lib/contentImages";
 
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+}
+
+const {
+  eyebrow = "Our Services",
+  title = "Everything you need for a smooth Sri Lanka trip",
+  intro =
+    "Choose the service you need and build the trip around it. The carousel below can highlight hotels, transport, sightseeing, guides, dining, visa support, and more.",
+} = Astro.props;
+
 const services = (await getCollection("services")).sort(
   (a, b) => a.data.order - b.data.order,
 );
@@ -29,12 +42,9 @@ const servicesBackground =
 
   <div class="section-container relative z-10">
     <div class="section-heading" data-theme="dark" data-animate="fade-up">
-      <p>Our Services</p>
-      <h2>Everything you need for a smooth Sri Lanka trip</h2>
-      <p>
-        Choose the service you need and build the trip around it. The carousel
-        below can highlight hotels, transport, sightseeing, guides, dining, visa support, and more.
-      </p>
+      <p>{eyebrow}</p>
+      <h2>{title}</h2>
+      <p>{intro}</p>
     </div>
 
     <div class="relative mt-8" data-animate="fade-up" data-animate-delay="0.12">

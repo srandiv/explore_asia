@@ -1,0 +1,158 @@
+---
+import DestinationDetail from "../components/DestinationDetail.astro";
+import sigiriyaImage from "../assets/images/sri-lanka-unsplash-sigiriya.jpg";
+
+const destination = {
+  title: "Sri Lanka",
+  eyebrow: "Explore Ceylon",
+  description:
+    "Curated island journeys with flexible packages, trusted services, private transport, local guides, wildlife, beaches, culture, and hill country escapes.",
+  heroImage: sigiriyaImage.src,
+  heroImageAlt: "Sigiriya Rock Fortress rising above the forest in Sri Lanka",
+  imagePosition: "center 46%",
+  backgroundImage:
+    "https://images.unsplash.com/photo-1566299589192-bdf059d4b0be?q=80&w=1800&auto=format&fit=crop",
+  backgroundImageAlt: "Misty Sri Lankan hill country landscape",
+  introTitle: "Sri Lanka - Small Island, Endless Journeys",
+  introParagraphs: [
+    "Sri Lanka brings together ancient cities, golden beaches, misty tea country, wildlife parks, tropical forests, and warm local hospitality in one compact island.",
+    "At Explore Asia Travels Pvt Ltd, we design Sri Lanka holidays around the way each traveler wants to move, whether that means a relaxed beach stay, a family circuit, a honeymoon escape, a cultural route, or a private guided journey.",
+    "Our Sri Lanka page brings together the island packages and travel services from our home page, so you can browse routes, hotels, transport, sightseeing, guides, dining support, and visa assistance in one place.",
+  ],
+  introImages: [
+    {
+      title: "Cultural Triangle",
+      description: "Sigiriya, Dambulla, Polonnaruwa, Anuradhapura, and living heritage.",
+      image: sigiriyaImage.src,
+      imageAlt: "Sigiriya Rock Fortress in Sri Lanka",
+    },
+    {
+      title: "Tea Country",
+      description: "Cool mountain roads, waterfalls, plantations, and scenic train routes.",
+      image:
+        "https://images.unsplash.com/photo-1566299589192-bdf059d4b0be?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Misty tea country landscape in Sri Lanka",
+    },
+    {
+      title: "Southern Coast",
+      description: "Beach time, Galle Fort, turtle hatcheries, and relaxed coastal stays.",
+      image:
+        "https://images.unsplash.com/photo-1561150018-8bb356679537?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Palm lined Sri Lankan beach at sunset",
+    },
+  ],
+  experiencesEyebrow: "Discover Sri Lanka",
+  experiencesTitle: "Services for every Sri Lanka journey",
+  experiencesIntro:
+    "Browse the travel services we use to shape smooth Sri Lanka holidays, from hotels and transport to sightseeing, guides, dining, visa support, and B2B arrangements.",
+  experiences: [
+    {
+      title: "Private Tour Packages",
+      description:
+        "Choose from ready-made Sri Lanka routes, then adjust the pace, hotels, meal plan, sightseeing, and beach stays around your travelers.",
+      image:
+        "https://images.unsplash.com/photo-1665849050332-8d5d7e59afb6?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Aerial view of a lush coastal area in Sri Lanka",
+    },
+    {
+      title: "Hotels & Resorts",
+      description:
+        "Stay in handpicked city hotels, beach resorts, hill country retreats, boutique properties, and comfortable family-friendly accommodation.",
+      image:
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Tropical resort pool surrounded by palm trees",
+    },
+    {
+      title: "Transport & Transfers",
+      description:
+        "Move smoothly with airport pickups, private vehicles, experienced drivers, group transport, scenic transfers, and flexible daily travel plans.",
+      image:
+        "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Scenic travel road through tropical landscape",
+    },
+    {
+      title: "Sightseeing & Guides",
+      description:
+        "Explore cultural sites, wildlife parks, temples, tea estates, beaches, local markets, and city highlights with knowledgeable local guidance.",
+      image:
+        "https://images.unsplash.com/photo-1623595289196-007a22dd8560?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Sri Lankan elephant close-up",
+    },
+    {
+      title: "Food & Local Experiences",
+      description:
+        "Add village meals, cooking demonstrations, market visits, seafood dinners, tea tastings, and local cultural moments to the itinerary.",
+      image:
+        "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Fresh Asian food served on a table",
+    },
+    {
+      title: "Visa & Travel Support",
+      description:
+        "Get practical support for travel documentation, route planning, day-by-day arrangements, and on-trip coordination from arrival to departure.",
+      image:
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Travel documents and planning papers on a table",
+    },
+  ],
+  showPackagesAndServices: true,
+  showServicesCarouselAsExperiences: true,
+  whyTitle: "Why explore Sri Lanka with us?",
+  whyIntro:
+    "We combine local destination knowledge with practical planning, trusted suppliers, and flexible support for travelers, agents, families, couples, and groups.",
+  whyItems: [
+    "Sri Lanka destination specialists",
+    "Flexible private tour packages",
+    "Reliable hotels, transport, and guides",
+    "Custom routes for every travel style",
+    "B2B and group travel support",
+    "Cost-effective island arrangements",
+    "On-trip coordination and assistance",
+    "One team for packages and services",
+  ],
+  galleryTitle: "Sri Lanka moments",
+  galleryIntro:
+    "A compact island of ancient stories, green mountains, wildlife encounters, warm beaches, and local experiences that fit beautifully into one journey.",
+  gallery: [
+    {
+      title: "Sigiriya",
+      description: "Ancient rock fortress and cultural triangle icon.",
+      image: sigiriyaImage.src,
+      imageAlt: "Sigiriya Rock Fortress in Sri Lanka",
+    },
+    {
+      title: "Polonnaruwa",
+      description: "Ancient ruins, stone temples, and royal city heritage.",
+      image:
+        "https://images.unsplash.com/photo-1566299589192-bdf059d4b0be?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Ancient stone ruins in Polonnaruwa",
+    },
+    {
+      title: "Colombo",
+      description: "City views, shopping stops, and modern island energy.",
+      image:
+        "https://images.unsplash.com/photo-1623595289196-007a22dd8560?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Colombo skyline with Lotus Tower",
+    },
+    {
+      title: "South Coast",
+      description: "Soft beaches, coastal towns, and ocean sunsets.",
+      image:
+        "https://images.unsplash.com/photo-1561150018-8bb356679537?q=80&w=1200&auto=format&fit=crop",
+      imageAlt: "Palm lined Sri Lankan beach",
+    },
+    {
+      title: "Wildlife Parks",
+      description: "Leopards, elephants, birds, and safari landscapes.",
+      image:
+        "https://images.unsplash.com/photo-1621847473222-d85c022cbf07?w=1200&auto=format&fit=crop&q=80",
+      imageAlt: "Leopard resting near water in a Sri Lankan wildlife park",
+    },
+  ],
+  closingTitle: "Plan Sri Lanka with one local team",
+  closingText:
+    "Browse our Sri Lanka packages, choose the services you need, and let us shape the route, stays, transfers, sightseeing, and support into a smooth island journey.",
+};
+---
+
+<DestinationDetail destination={destination} />

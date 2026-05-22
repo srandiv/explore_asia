@@ -3,6 +3,8 @@ import { ArrowRight, CheckCircle2 } from "@lucide/astro";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "./Navbar.astro";
 import PageHeader from "./PageHeader.astro";
+import PackagesGrid from "./PackagesGrid.astro";
+import ServicesCarousel from "./ServicesCarousel.astro";
 
 type DestinationExperience = {
   title: string;
@@ -35,6 +37,8 @@ type DestinationPageData = {
   gallery: DestinationExperience[];
   closingTitle: string;
   closingText: string;
+  showPackagesAndServices?: boolean;
+  showServicesCarouselAsExperiences?: boolean;
 };
 
 interface Props {
@@ -103,34 +107,45 @@ const whatsappHref = `https://wa.me/94775011272?text=${whatsappText}`;
       </div>
     </section>
 
-    <section class="site-section bg-slate-50">
-      <div class="section-container">
-        <div class="section-heading" data-animate="fade-up">
-          <p>{destination.experiencesEyebrow}</p>
-          <h2>{destination.experiencesTitle}</h2>
-          <p>{destination.experiencesIntro}</p>
-        </div>
+    {destination.showServicesCarouselAsExperiences ? (
+      <ServicesCarousel
+        eyebrow={destination.experiencesEyebrow}
+        title={destination.experiencesTitle}
+        intro={destination.experiencesIntro}
+      />
+    ) : (
+      <section class="site-section bg-slate-50">
+        <div class="section-container">
+          <div class="section-heading" data-animate="fade-up">
+            <p>{destination.experiencesEyebrow}</p>
+            <h2>{destination.experiencesTitle}</h2>
+            <p>{destination.experiencesIntro}</p>
+          </div>
 
-        <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {destination.experiences.map((experience, index) => (
-            <article class="group bg-white shadow-[0_18px_40px_rgba(15,23,42,0.08)]" data-animate="fade-up" data-animate-delay={String(Math.min(index, 5) * 0.08)}>
-              <div class="h-64 overflow-hidden bg-slate-200">
-                <img
-                  src={experience.image}
-                  alt={experience.imageAlt}
-                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-slate-800">{experience.title}</h3>
-                <p class="mt-3 text-base leading-7 text-slate-600">{experience.description}</p>
-              </div>
-            </article>
-          ))}
+          <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {destination.experiences.map((experience, index) => (
+              <article class="group bg-white shadow-[0_18px_40px_rgba(15,23,42,0.08)]" data-animate="fade-up" data-animate-delay={String(Math.min(index, 5) * 0.08)}>
+                <div class="h-64 overflow-hidden bg-slate-200">
+                  <img
+                    src={experience.image}
+                    alt={experience.imageAlt}
+                    class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-slate-800">{experience.title}</h3>
+                  <p class="mt-3 text-base leading-7 text-slate-600">{experience.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )}
+
+    {destination.showPackagesAndServices && <PackagesGrid />}
+
 
     <section class="destination-why-section site-section">
       <img
