@@ -6,6 +6,13 @@ import Navbar from "../../components/Navbar.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import PackageCta from "../../components/PackageCta.astro";
 import { getIndiaMarketPrice } from "../../lib/packagePricing";
+import {
+  absoluteUrl,
+  breadcrumbJsonLd,
+  organizationJsonLd,
+  webpageJsonLd,
+  websiteJsonLd,
+} from "../../lib/seo";
 
 export async function getStaticPaths() {
   const packages = await getCollection("packages");
@@ -32,9 +39,79 @@ const hasPackageDetails = Boolean(
 );
 const gallery = entry.data.gallery ?? [];
 const indiaMarketPrice = entry.data.price ? getIndiaMarketPrice(entry.data.price.amount) : undefined;
+const canonicalPath = `/packages/${entry.id}`;
+const seoTitle = `${entry.data.title} Sri Lanka Tour Package${
+  entry.data.duration ? ` - ${entry.data.duration}` : ""
+}`;
+const seoDescription = `${entry.data.description} Explore private transport, hotels, guides, inclusions, daily itinerary, and custom Sri Lanka travel support.`;
+const packagePrice = entry.data.price?.amount.replace(/[^0-9.]/g, "");
+const packageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "@id": `${absoluteUrl(canonicalPath)}#tour`,
+  name: entry.data.title,
+  description: entry.data.description,
+  image: absoluteUrl(entry.data.image),
+  url: absoluteUrl(canonicalPath),
+  touristType: ["Private travelers", "Families", "Couples", "Groups", "Travel agents"],
+  provider: {
+    "@id": "https://www.exploreasiatravels.com/#organization",
+  },
+  itinerary: entry.data.itinerary?.length
+    ? {
+        "@type": "ItemList",
+        itemListElement: entry.data.itinerary.map((day, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: `${day.day}: ${day.route}`,
+          description: day.description,
+        })),
+      }
+    : undefined,
+  offers: packagePrice
+    ? {
+        "@type": "Offer",
+        priceCurrency: "USD",
+        price: packagePrice,
+        availability: "https://schema.org/InStock",
+        url: absoluteUrl(canonicalPath),
+      }
+    : undefined,
+  additionalProperty: entry.data.duration
+    ? [
+        {
+          "@type": "PropertyValue",
+          name: "Duration",
+          value: entry.data.duration,
+        },
+      ]
+    : undefined,
+};
 ---
 
-<Layout>
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  canonicalPath={canonicalPath}
+  image={entry.data.image}
+  imageAlt={entry.data.imageAlt}
+  jsonLd={[
+    organizationJsonLd(),
+    websiteJsonLd(),
+    webpageJsonLd({
+      title: seoTitle,
+      description: seoDescription,
+      path: canonicalPath,
+      image: entry.data.image,
+    }),
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Packages", path: "/packages" },
+      { name: entry.data.title, path: canonicalPath },
+    ]),
+    packageJsonLd,
+  ]}
+>
   <Navbar />
 
   <PageHeader

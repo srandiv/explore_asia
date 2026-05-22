@@ -933,6 +933,7 @@
     @apply max-w-xl text-left;
   }
 
+  .hero-copy h1,
   .hero-copy h2 {
     @apply text-3xl font-bold uppercase tracking-wide text-white md:text-5xl lg:text-6xl;
   }

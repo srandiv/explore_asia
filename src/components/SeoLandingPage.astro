@@ -1,0 +1,212 @@
+---
+import { ArrowRight, CheckCircle2 } from "@lucide/astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "./Navbar.astro";
+import PageHeader from "./PageHeader.astro";
+import {
+  breadcrumbJsonLd,
+  itemListJsonLd,
+  organizationJsonLd,
+  serviceJsonLd,
+  webpageJsonLd,
+  websiteJsonLd,
+} from "../lib/seo";
+
+type LandingSection = {
+  eyebrow: string;
+  title: string;
+  body: string[];
+};
+
+type LandingLink = {
+  label: string;
+  href: string;
+  description: string;
+};
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  eyebrow: string;
+  heading: string;
+  subtitle: string;
+  image: string;
+  imageAlt: string;
+  serviceType: string;
+  intro: LandingSection;
+  highlights: string[];
+  sections: LandingSection[];
+  relatedLinks: LandingLink[];
+  ctaTitle: string;
+  ctaText: string;
+  whatsappText: string;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  eyebrow,
+  heading,
+  subtitle,
+  image,
+  imageAlt,
+  serviceType,
+  intro,
+  highlights,
+  sections,
+  relatedLinks,
+  ctaTitle,
+  ctaText,
+  whatsappText,
+} = Astro.props;
+
+const whatsappHref = `https://wa.me/94775011272?text=${encodeURIComponent(whatsappText)}`;
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath={canonicalPath}
+  image={image}
+  imageAlt={imageAlt}
+  jsonLd={[
+    organizationJsonLd(),
+    websiteJsonLd(),
+    webpageJsonLd({ title, description, path: canonicalPath, image }),
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: heading, path: canonicalPath },
+    ]),
+    serviceJsonLd({
+      name: heading,
+      description,
+      path: canonicalPath,
+      image,
+      serviceType,
+    }),
+    itemListJsonLd(
+      relatedLinks.map((link) => ({
+        name: link.label,
+        description: link.description,
+        path: link.href,
+      })),
+    ),
+  ]}
+>
+  <Navbar />
+
+  <PageHeader
+    eyebrow={eyebrow}
+    title={heading}
+    subtitle={subtitle}
+    image={image}
+    imageAlt={imageAlt}
+  />
+
+  <main class="inner-page">
+    <section class="site-section">
+      <div class="section-container">
+        <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(20rem,0.65fr)] lg:items-start">
+          <div data-animate="fade-up">
+            <div class="section-heading" data-align="left">
+              <p>{intro.eyebrow}</p>
+              <h2>{intro.title}</h2>
+            </div>
+            <div class="content-body mt-6">
+              {intro.body.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+          </div>
+
+          <aside class="bg-slate-50 p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]" data-animate="fade-left">
+            <p class="text-xs font-bold uppercase tracking-[0.24em] text-brand-primary">Best for</p>
+            <ul class="mt-5 space-y-4">
+              {
+                highlights.map((highlight) => (
+                  <li class="flex gap-3 text-base leading-7 text-slate-700">
+                    <CheckCircle2 class="mt-1 h-5 w-5 shrink-0 text-brand-secondary" aria-hidden="true" />
+                    <span>{highlight}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section bg-slate-50">
+      <div class="section-container">
+        <div class="grid gap-5 md:grid-cols-3">
+          {
+            sections.map((section, index) => (
+              <article
+                class="bg-white p-6 shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
+                data-animate="fade-up"
+                data-animate-delay={String(Math.min(index, 2) * 0.08)}
+              >
+                <p class="text-xs font-bold uppercase tracking-[0.24em] text-brand-primary">{section.eyebrow}</p>
+                <h2 class="mt-3 text-3xl">{section.title}</h2>
+                <div class="content-body mt-4">
+                  {section.body.map((paragraph) => <p>{paragraph}</p>)}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section">
+      <div class="section-container">
+        <div class="section-heading" data-animate="fade-up">
+          <p>Continue Planning</p>
+          <h2>Related Explore Asia pages</h2>
+          <p>Use these pages to compare routes, services, and destination options.</p>
+        </div>
+
+        <div class="page-grid mt-10">
+          {
+            relatedLinks.map((link, index) => (
+              <a
+                href={link.href}
+                class="page-card"
+                data-animate="fade-up"
+                data-animate-delay={String(Math.min(index, 3) * 0.08)}
+              >
+                <article>
+                  <div class="page-card-content">
+                    <p data-role="eyebrow">Explore More</p>
+                    <h2>{link.label}</h2>
+                    <p>{link.description}</p>
+                  </div>
+                </article>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="site-section bg-brand-dark text-white">
+      <div class="section-container">
+        <div class="mx-auto max-w-3xl text-center" data-animate="fade-up">
+          <p class="text-xs font-bold uppercase tracking-[0.24em] text-brand-gold">Start A Travel Plan</p>
+          <h2 class="mt-3 text-white">{ctaTitle}</h2>
+          <p class="mt-4 text-base leading-8 text-white/78 sm:text-lg">{ctaText}</p>
+          <div class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a href={whatsappHref} target="_blank" rel="noreferrer" class="site-button">
+              Inquire on WhatsApp
+              <ArrowRight class="h-4 w-4 -rotate-45" aria-hidden="true" />
+            </a>
+            <a href="/contact" class="site-button bg-white text-brand-primary hover:bg-brand-secondary hover:text-white">
+              Contact us
+              <ArrowRight class="h-4 w-4 -rotate-45" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

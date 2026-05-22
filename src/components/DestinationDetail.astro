@@ -5,6 +5,13 @@ import Navbar from "./Navbar.astro";
 import PageHeader from "./PageHeader.astro";
 import PackagesGrid from "./PackagesGrid.astro";
 import ServicesCarousel from "./ServicesCarousel.astro";
+import {
+  absoluteUrl,
+  breadcrumbJsonLd,
+  organizationJsonLd,
+  webpageJsonLd,
+  websiteJsonLd,
+} from "../lib/seo";
 
 type DestinationExperience = {
   title: string;
@@ -46,13 +53,75 @@ interface Props {
 }
 
 const { destination } = Astro.props;
+const destinationSeo = {
+  "Sri Lanka": {
+    title: "Sri Lanka Tour Packages, DMC Services and Private Trips",
+    description:
+      "Plan private Sri Lanka tours, cultural triangle routes, wildlife safaris, beach holidays, hotels, transport, guides, and B2B DMC support with Explore Asia Travels.",
+    path: "/srilanka",
+    landingPath: "/sri-lanka-tour-packages",
+    landingLabel: "View Sri Lanka tour packages",
+  },
+  Maldives: {
+    title: "Maldives Holiday Packages, Honeymoons and Luxury Resorts",
+    description:
+      "Create Maldives holidays with island resorts, honeymoon villas, family stays, diving, wellness escapes, transfers, and reliable travel planning support.",
+    path: "/maldives",
+    landingPath: "/maldives-holiday-packages",
+    landingLabel: "View Maldives holidays",
+  },
+  India: {
+    title: "India Tour Packages, Heritage Travel and Group Journeys",
+    description:
+      "Plan India tours across heritage cities, luxury hotels, wellness retreats, honeymoons, nature routes, MICE programs, and group travel arrangements.",
+    path: "/india",
+    landingPath: "/india-tour-packages",
+    landingLabel: "View India tour packages",
+  },
+}[destination.title] ?? {
+  title: `${destination.title} Travel Packages and Tours`,
+  description: destination.description,
+  path: `/${destination.title.toLowerCase().replace(/\s+/g, "-")}`,
+  landingPath: undefined,
+  landingLabel: undefined,
+};
 const whatsappText = encodeURIComponent(
   `Hello Explore Asia Travels, I'm interested in planning a ${destination.title} journey. Please share more details.`,
 );
 const whatsappHref = `https://wa.me/94775011272?text=${whatsappText}`;
+const destinationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TouristDestination",
+  "@id": `${absoluteUrl(destinationSeo.path)}#destination`,
+  name: destination.title,
+  description: destination.description,
+  image: absoluteUrl(destination.heroImage),
+  url: absoluteUrl(destinationSeo.path),
+};
 ---
 
-<Layout>
+<Layout
+  title={destinationSeo.title}
+  description={destinationSeo.description}
+  canonicalPath={destinationSeo.path}
+  image={destination.heroImage}
+  imageAlt={destination.heroImageAlt}
+  jsonLd={[
+    organizationJsonLd(),
+    websiteJsonLd(),
+    webpageJsonLd({
+      title: destinationSeo.title,
+      description: destinationSeo.description,
+      path: destinationSeo.path,
+      image: destination.heroImage,
+    }),
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: destination.title, path: destinationSeo.path },
+    ]),
+    destinationJsonLd,
+  ]}
+>
   <Navbar />
 
   <PageHeader
@@ -84,6 +153,14 @@ const whatsappHref = `https://wa.me/94775011272?text=${whatsappText}`;
             <div class="mt-7 space-y-5">
               {destination.introParagraphs.map((paragraph) => <p class="text-base leading-8 text-slate-600 sm:text-lg">{paragraph}</p>)}
             </div>
+            {
+              destinationSeo.landingPath && destinationSeo.landingLabel && (
+                <a href={destinationSeo.landingPath} class="site-button mt-7">
+                  {destinationSeo.landingLabel}
+                  <ArrowRight class="h-4 w-4 -rotate-45" aria-hidden="true" />
+                </a>
+              )
+            }
           </div>
 
           <div class="grid gap-4 sm:grid-cols-[1.12fr_0.88fr]" data-animate="fade-left" data-animate-delay="0.12">

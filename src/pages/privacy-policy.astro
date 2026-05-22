@@ -2,12 +2,36 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import PageHeader from "../components/PageHeader.astro";
+import {
+  breadcrumbJsonLd,
+  organizationJsonLd,
+  webpageJsonLd,
+  websiteJsonLd,
+} from "../lib/seo";
 
 const headerImage =
   "https://images.unsplash.com/photo-1586000695819-7dbe14384ba3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const title = "Privacy Policy";
+const description =
+  "Read how Explore Asia Travels handles personal information shared for travel inquiries, quotes, bookings, and Sri Lanka or Asia trip planning support.";
 ---
 
-<Layout>
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/privacy-policy"
+  image={headerImage}
+  imageAlt="A calm Sri Lankan beach at sunset"
+  jsonLd={[
+    organizationJsonLd(),
+    websiteJsonLd(),
+    webpageJsonLd({ title, description, path: "/privacy-policy", image: headerImage }),
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Privacy Policy", path: "/privacy-policy" },
+    ]),
+  ]}
+>
   <Navbar />
 
   <PageHeader

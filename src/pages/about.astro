@@ -10,6 +10,12 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import PageHeader from "../components/PageHeader.astro";
 import TestimonialsCarousel from "../components/TestimonialsCarousel.astro";
+import {
+  breadcrumbJsonLd,
+  organizationJsonLd,
+  webpageJsonLd,
+  websiteJsonLd,
+} from "../lib/seo";
 import heroImage from "../assets/images/ hero/malith-d-karunarathne--pw-saa99lw-unsplash.webp";
 import gallery1 from "../assets/images/gallery/gallery-1.webp";
 import gallery3 from "../assets/images/gallery/gallery-3.webp";
@@ -83,9 +89,27 @@ const gallery = [
     alt: "Explore Asia guest welcome experience",
   },
 ];
+const title = "About Explore Asia Travels Sri Lanka DMC";
+const description =
+  "Meet Explore Asia Travels, a Sri Lanka-based destination management company creating private holidays, B2B travel agent support, MICE programs, and Asia journeys.";
 ---
 
-<Layout>
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/about"
+  image={heroImage.src}
+  imageAlt="Scenic Sri Lankan landscape with palms and hills"
+  jsonLd={[
+    organizationJsonLd(),
+    websiteJsonLd(),
+    webpageJsonLd({ title, description, path: "/about", image: heroImage.src }),
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "About", path: "/about" },
+    ]),
+  ]}
+>
   <Navbar />
 
   <PageHeader

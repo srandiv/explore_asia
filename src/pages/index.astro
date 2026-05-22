@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import Hero from "../components/Hero.astro";
 import HolidayIntro from "../components/HolidayIntro.astro";
 import ValuesSection from "../components/ValuesSection.astro";
@@ -9,9 +10,61 @@ import PackagesGrid from "../components/PackagesGrid.astro";
 import TestimonialsCarousel from "../components/TestimonialsCarousel.astro";
 import FaqSection from "../components/FaqSection.astro";
 import Layout from "../layouts/Layout.astro";
+import {
+  breadcrumbJsonLd,
+  faqJsonLd,
+  organizationJsonLd,
+  webpageJsonLd,
+  websiteJsonLd,
+} from "../lib/seo";
+
+const faqs = (await getCollection("faqs")).sort((a, b) => a.data.order - b.data.order);
+const testimonials = (await getCollection("testimonials")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const title = "Sri Lanka Tours, Asia Holidays and B2B DMC Services";
+const description =
+  "Explore Asia Travels creates private Sri Lanka tour packages, Maldives and India holidays, and B2B DMC support for travel agents, families, couples, and groups.";
+const reviewJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Explore Asia traveler reviews",
+  itemListElement: testimonials.map((testimonial, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: testimonial.data.name,
+      },
+      reviewBody: testimonial.data.quote,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: "5",
+        bestRating: "5",
+      },
+      itemReviewed: {
+        "@id": "https://www.exploreasiatravels.com/#organization",
+      },
+    },
+  })),
+};
 ---
 
-<Layout>
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/"
+  jsonLd={[
+    organizationJsonLd(),
+    websiteJsonLd(),
+    webpageJsonLd({ title, description, path: "/" }),
+    breadcrumbJsonLd([{ name: "Home", path: "/" }]),
+    faqJsonLd(faqs.map((faq) => ({ question: faq.data.question, answer: faq.data.answer }))),
+    reviewJsonLd,
+  ]}
+>
   <Hero />
   <HolidayIntro />
   <ValuesSection />

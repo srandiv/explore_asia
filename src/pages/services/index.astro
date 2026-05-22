@@ -4,14 +4,47 @@ import Layout from "../../layouts/Layout.astro";
 import Navbar from "../../components/Navbar.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import { resolveContentImage } from "../../lib/contentImages";
+import {
+  breadcrumbJsonLd,
+  itemListJsonLd,
+  organizationJsonLd,
+  webpageJsonLd,
+  websiteJsonLd,
+} from "../../lib/seo";
 
 const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
 
 const headerImage =
   "https://images.unsplash.com/photo-1623595289196-007a22dd8560?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+const title = "Sri Lanka Travel Services, B2B DMC Support and Ground Handling";
+const description =
+  "Explore Sri Lanka travel services including B2B DMC support, hotels, private transport, sightseeing, guides, food experiences, visa support, and custom trip planning.";
 ---
 
-<Layout>
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/services"
+  image={headerImage}
+  imageAlt="Elephant close-up in Sri Lanka"
+  jsonLd={[
+    organizationJsonLd(),
+    websiteJsonLd(),
+    webpageJsonLd({ title, description, path: "/services", image: headerImage }),
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Services", path: "/services" },
+    ]),
+    itemListJsonLd(
+      services.map((service) => ({
+        name: service.data.title,
+        description: service.data.description,
+        image: resolveContentImage(service.data.image),
+        path: `/services/${service.id}`,
+      })),
+    ),
+  ]}
+>
   <Navbar />
 
   <PageHeader
@@ -32,6 +65,13 @@ const headerImage =
           <p>
             Choose the support you need, then we connect the pieces into a comfortable itinerary.
           </p>
+        </div>
+
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row" data-animate="fade-up">
+          <a href="/b2b-sri-lanka-dmc" class="site-button">B2B Sri Lanka DMC</a>
+          <a href="/sri-lanka-tour-packages" class="site-button bg-brand-dark hover:bg-brand-secondary">
+            Sri Lanka tour packages
+          </a>
         </div>
 
         <div class="page-grid mt-10">
