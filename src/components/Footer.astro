@@ -1,5 +1,6 @@
 ---
 import logo from "../assets/logo.png";
+import { Clock } from "@lucide/astro";
 import { destinationLinks, footerQuickLinks, packageLinks, servicesLinks } from "../lib/navigation";
 
 const year = new Date().getFullYear();
@@ -17,6 +18,16 @@ const year = new Date().getFullYear();
         <p>
           Curated Sri Lanka journeys, trusted local guidance, and flexible trip planning for holidays that feel effortless.
         </p>
+        <div class="footer-clock" data-sri-lanka-clock>
+          <span class="footer-clock__icon" aria-hidden="true">
+            <Clock size={18} stroke-width={1.8} />
+          </span>
+          <span>
+            <span class="footer-clock__label">Sri Lanka Time</span>
+            <time class="footer-clock__time" data-sri-lanka-clock-time datetime="">--:--:--</time>
+            <span class="footer-clock__date" data-sri-lanka-clock-date>Colombo, Sri Lanka</span>
+          </span>
+        </div>
       </div>
 
       <div class="grid grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 lg:grid-cols-5">
@@ -109,3 +120,104 @@ const year = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<script>
+  const sriLankaClock = document.querySelector("[data-sri-lanka-clock]");
+
+  if (sriLankaClock) {
+    const timeElement = sriLankaClock.querySelector("[data-sri-lanka-clock-time]");
+    const dateElement = sriLankaClock.querySelector("[data-sri-lanka-clock-date]");
+
+    const timeFormatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Colombo",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true,
+    });
+
+    const dateFormatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Colombo",
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+
+    const isoFormatter = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Colombo",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+
+    const updateSriLankaClock = () => {
+      const now = new Date();
+
+      if (timeElement instanceof HTMLTimeElement) {
+        timeElement.textContent = timeFormatter.format(now);
+        timeElement.dateTime = isoFormatter.format(now).replace(", ", "T");
+      }
+
+      if (dateElement) {
+        dateElement.textContent = `${dateFormatter.format(now)} - Colombo`;
+      }
+    };
+
+    updateSriLankaClock();
+    window.setInterval(updateSriLankaClock, 1000);
+  }
+</script>
+
+<style>
+  .footer-clock {
+    display: inline-flex;
+    width: min(100%, 18rem);
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 0.9rem;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.85rem 0.95rem;
+    color: #fff;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+  }
+
+  .footer-clock__icon {
+    display: inline-flex;
+    height: 2.35rem;
+    width: 2.35rem;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(201, 168, 76, 0.16);
+    color: #d8b65a;
+  }
+
+  .footer-clock__label,
+  .footer-clock__date {
+    display: block;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  .footer-clock__label {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+
+  .footer-clock__time {
+    display: block;
+    margin-top: 0.12rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+  }
+</style>
