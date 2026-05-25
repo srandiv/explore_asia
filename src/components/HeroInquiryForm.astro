@@ -357,7 +357,7 @@ import { ArrowRight, Send } from '@lucide/astro';
     color: #0f172a;
   }
 
-  @media (max-width: 1120px) {
+  @media (max-width: 1120px) and (min-width: 1025px) {
     .hero-inquiry-form {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -368,7 +368,7 @@ import { ArrowRight, Send } from '@lucide/astro';
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     :global(.hero-section) {
       height: auto;
       overflow: visible;
