@@ -1,5 +1,5 @@
 ---
-import { ArrowLeft, ArrowRight } from '@lucide/astro';
+import { ArrowLeft, ArrowRight, Send } from '@lucide/astro';
 import Navbar from './Navbar.astro';
 import galleFortImg from '../assets/images/ hero/chathura-indika-laj-xlhp6rs-unsplash.webp';
 import adamsPeakImg from '../assets/images/ hero/malith-d-karunarathne--pw-saa99lw-unsplash.webp';
@@ -84,33 +84,8 @@ const slides = [
     </div>
   </div>
 
-  <!-- ===== SLIDE NAVIGATION ===== -->
   <div
-    class="absolute bottom-28 left-6 md:left-16 lg:left-24 z-20 flex items-center"
-    data-animate="fade-up"
-    data-animate-trigger="load"
-    data-animate-delay="0.35"
-    data-animate-duration="0.85"
-  >
-    <div id="slide-numbers" class="flex items-center gap-3">
-      {
-        slides.map((slide, index) => (
-          <button
-            type="button"
-            class:list={["slide-num", index === 0 && "active"]}
-            data-index={index}
-            aria-label={`Go to ${slide.title} slide`}
-            aria-current={index === 0 ? "true" : "false"}
-          >
-            <span class="slide-line" aria-hidden="true"></span>
-          </button>
-        ))
-      }
-    </div>
-  </div>
-
-  <div
-    class="absolute bottom-28 right-6 z-20 flex items-center gap-3 md:right-16 lg:right-24"
+    class="absolute right-6 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-3 md:right-10 md:flex lg:right-14"
     data-animate="fade-up"
     data-animate-trigger="load"
     data-animate-delay="0.45"
@@ -131,6 +106,77 @@ const slides = [
       <ArrowRight class="h-4 w-4" aria-hidden="true" />
     </button>
   </div>
+
+  <div
+    class="hero-inquiry-panel absolute inset-x-0 bottom-0 z-20 px-4 pb-4 sm:px-6 sm:pb-6 md:px-10 lg:px-16"
+    data-animate="fade-up"
+    data-animate-trigger="load"
+    data-animate-delay="0.35"
+    data-animate-duration="0.85"
+  >
+    <form class="hero-inquiry-form" action="/api/contact" method="post" data-hero-inquiry-form>
+      <div class="hero-inquiry-heading">
+        <Send aria-hidden="true" />
+        <div>
+          <p>Inquiry</p>
+          <strong>Plan your trip</strong>
+        </div>
+      </div>
+
+      <div class="hero-inquiry-field">
+        <label for="hero-name" class="sr-only">Name</label>
+        <input id="hero-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" placeholder="Name" required />
+      </div>
+
+      <div class="hero-inquiry-field">
+        <label for="hero-email" class="sr-only">Email</label>
+        <input id="hero-email" name="email" type="email" autocomplete="email" maxlength="160" placeholder="Email" required />
+      </div>
+
+      <div class="hero-inquiry-field">
+        <label for="hero-phone" class="sr-only">Phone</label>
+        <input
+          id="hero-phone"
+          name="phone"
+          type="tel"
+          autocomplete="tel"
+          inputmode="tel"
+          maxlength="30"
+          pattern="[+()0-9 .-]{7,30}"
+          placeholder="Phone"
+        />
+      </div>
+
+      <div class="hero-inquiry-field">
+        <label for="hero-package" class="sr-only">Package</label>
+        <select id="hero-package" name="package" required>
+          <option value="" disabled selected>Package</option>
+          <option>Purely Ceylon</option>
+          <option>Island Treasures</option>
+          <option>Best of Ceylon</option>
+          <option>Pearl Island Journey</option>
+          <option>Hidden Sri Lanka</option>
+          <option>Adventure & Explore</option>
+          <option>Custom trip</option>
+        </select>
+      </div>
+
+      <input type="hidden" name="message" value="Hero quick inquiry from homepage form." />
+
+      <button type="submit" class="hero-inquiry-submit" data-hero-inquiry-submit>
+        <span data-hero-submit-label>Inquire</span>
+        <ArrowRight aria-hidden="true" />
+      </button>
+    </form>
+  </div>
+
+  <div class="contact-popup" data-hero-inquiry-popup hidden role="status" aria-live="polite">
+    <div>
+      <strong data-hero-popup-title></strong>
+      <p data-hero-popup-message></p>
+    </div>
+    <button type="button" data-hero-popup-close aria-label="Close message">&times;</button>
+  </div>
 </div>
 
 <script>
@@ -141,10 +187,9 @@ const slides = [
   const heroSwiper = heroSection?.querySelector('.hero-swiper');
   const heroNext = heroSection?.querySelector('.hero-next');
   const heroPrev = heroSection?.querySelector('.hero-prev');
-  const slideNums = heroSection?.querySelectorAll('.slide-num') ?? [];
 
   if (heroSwiper && heroNext && heroPrev) {
-    const swiper = new Swiper(heroSwiper, {
+    new Swiper(heroSwiper, {
     modules: [Autoplay, Navigation],
     loop: true,
     speed: 800,
@@ -157,63 +202,272 @@ const slides = [
       prevEl: heroPrev,
     },
   });
-
-    const setActive = (idx) => {
-      slideNums.forEach((num, i) => {
-        const isActive = i === idx;
-        num.classList.toggle('active', isActive);
-        num.setAttribute('aria-current', isActive ? 'true' : 'false');
-      });
-    };
-
-    setActive(swiper.realIndex);
-
-    swiper.on('slideChange', () => {
-      setActive(swiper.realIndex);
-    });
-
-    slideNums.forEach((num) => {
-      num.addEventListener('click', () => {
-        const idx = parseInt(num.dataset.index ?? '0', 10);
-        swiper.slideToLoop(idx);
-      });
-    });
   }
+
+  const inquiryForm = heroSection?.querySelector('[data-hero-inquiry-form]');
+  const popup = heroSection?.querySelector('[data-hero-inquiry-popup]');
+  const popupTitle = heroSection?.querySelector('[data-hero-popup-title]');
+  const popupMessage = heroSection?.querySelector('[data-hero-popup-message]');
+  const popupClose = heroSection?.querySelector('[data-hero-popup-close]');
+  const submitButton = heroSection?.querySelector('[data-hero-inquiry-submit]');
+  const submitLabel = heroSection?.querySelector('[data-hero-submit-label]');
+  let popupTimer;
+
+  const setPopup = (type, title, message) => {
+    if (!popup || !popupTitle || !popupMessage) return;
+
+    popup.dataset.status = type;
+    popupTitle.textContent = title;
+    popupMessage.textContent = message;
+    popup.hidden = false;
+
+    window.clearTimeout(popupTimer);
+    popupTimer = window.setTimeout(() => {
+      popup.hidden = true;
+    }, 7000);
+  };
+
+  const setFieldErrors = (errors = {}) => {
+    if (!inquiryForm) return;
+
+    for (const field of inquiryForm.querySelectorAll('[name]')) {
+      field.removeAttribute('aria-invalid');
+    }
+
+    for (const fieldName of Object.keys(errors)) {
+      const field = inquiryForm.querySelector(`[name="${fieldName}"]`);
+      field?.setAttribute('aria-invalid', 'true');
+    }
+  };
+
+  popupClose?.addEventListener('click', () => {
+    if (popup) popup.hidden = true;
+  });
+
+  inquiryForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    setFieldErrors();
+
+    if (!inquiryForm.checkValidity()) {
+      inquiryForm.reportValidity();
+      setPopup('error', 'Check the form', 'Please fill all required fields correctly.');
+      return;
+    }
+
+    submitButton?.setAttribute('disabled', 'true');
+    if (submitLabel) submitLabel.textContent = 'Sending...';
+
+    try {
+      const response = await fetch(inquiryForm.action, {
+        method: 'POST',
+        body: new FormData(inquiryForm),
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.ok) {
+        setFieldErrors(result.errors);
+        setPopup('error', 'Message not sent', result.message || 'Please try again in a moment.');
+        return;
+      }
+
+      inquiryForm.reset();
+      setPopup('success', 'Inquiry sent', result.message || 'Thank you. Your inquiry was sent successfully.');
+    } catch {
+      setPopup('error', 'Message not sent', 'Please check your connection and try again.');
+    } finally {
+      submitButton?.removeAttribute('disabled');
+      if (submitLabel) submitLabel.textContent = 'Inquire';
+    }
+  });
 </script>
 
 <style>
-  .slide-num {
-    display: inline-flex;
-    height: 1.5rem;
+  .hero-inquiry-panel {
+    background: linear-gradient(180deg, rgba(5, 18, 31, 0) 0%, rgba(5, 18, 31, 0.56) 100%);
+  }
+
+  .hero-inquiry-form {
+    display: grid;
+    grid-template-columns: 0.85fr repeat(4, minmax(0, 1fr)) auto;
+    gap: 0.75rem;
+    align-items: end;
+    width: min(100%, 76rem);
+    margin-inline: auto;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    border-radius: 1.15rem;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 22px 52px rgba(5, 18, 31, 0.24);
+    color: #0f172a;
+    backdrop-filter: blur(22px) saturate(1.18);
+  }
+
+  .hero-inquiry-heading {
+    display: flex;
     align-items: center;
-    border-radius: 999px;
-    position: relative;
-    transition: opacity 0.35s ease;
+    gap: 0.65rem;
+    min-width: 0;
   }
 
-  .slide-num:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.9);
-    outline-offset: 4px;
+  .hero-inquiry-heading svg {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: 0 0 auto;
+    padding: 0.6rem;
+    border-radius: 0.75rem;
+    background: rgba(27, 156, 80, 0.12);
+    color: #1b9c50;
   }
 
-  .slide-line {
+  .hero-inquiry-heading p {
+    margin: 0;
+    font-size: 0.64rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #105598;
+  }
+
+  .hero-inquiry-heading strong {
     display: block;
-    height: 3px;
-    width: 1.25rem;
+    margin-top: 0.18rem;
+    font-size: 0.92rem;
+    line-height: 1.15;
+    color: #0f172a;
+  }
+
+  .hero-inquiry-field input,
+  .hero-inquiry-field select {
+    min-height: 2.55rem;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 999px;
-    background-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.65rem 0.8rem;
+    font-size: 0.9rem;
+    color: #0f172a;
+    outline: none;
     transition:
-      width 0.45s ease,
-      background-color 0.45s ease,
-      opacity 0.45s ease;
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
-  .slide-num:hover .slide-line {
-    background-color: rgba(255, 255, 255, 0.78);
+  .hero-inquiry-field input::placeholder {
+    color: #64748b;
   }
 
-  .slide-num.active .slide-line {
-    width: 3.25rem;
-    background-color: #ffffff;
+  .hero-inquiry-field input:focus,
+  .hero-inquiry-field select:focus {
+    border-color: #105598;
+    box-shadow: 0 0 0 3px rgba(16, 85, 152, 0.14);
+  }
+
+  .hero-inquiry-field input[aria-invalid='true'],
+  .hero-inquiry-field select[aria-invalid='true'] {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+  }
+
+  .hero-inquiry-submit {
+    display: inline-flex;
+    min-height: 2.55rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border: 0;
+    border-radius: 0.75rem;
+    background: #1b9c50;
+    padding: 0.65rem 1.15rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffffff;
+    box-shadow: 0 14px 28px rgba(27, 156, 80, 0.24);
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .hero-inquiry-submit:hover {
+    transform: translateY(-1px);
+    background: #105598;
+    box-shadow: 0 16px 32px rgba(16, 85, 152, 0.22);
+  }
+
+  .hero-inquiry-submit:disabled {
+    cursor: wait;
+    opacity: 0.7;
+    transform: none;
+  }
+
+  .hero-inquiry-submit svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  @media (max-width: 1120px) {
+    .hero-inquiry-form {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hero-inquiry-heading,
+    .hero-inquiry-field:first-of-type {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-section {
+      height: auto;
+      overflow: visible;
+    }
+
+    .hero-swiper {
+      height: 100svh;
+      min-height: 40rem;
+    }
+
+    .hero-inquiry-panel {
+      position: relative;
+      padding: 1rem;
+      background: #f8fafc;
+    }
+
+    .hero-inquiry-form {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+      border-color: #e2e8f0;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.1);
+    }
+
+    .hero-inquiry-heading svg {
+      color: #1b9c50;
+    }
+
+    .hero-inquiry-heading p {
+      color: #105598;
+    }
+
+    .hero-inquiry-heading strong {
+      color: #0f172a;
+    }
+
+    .hero-inquiry-heading,
+    .hero-inquiry-field:first-of-type {
+      grid-column: auto;
+    }
+
+    .hero-inquiry-submit {
+      width: 100%;
+    }
   }
 </style>
