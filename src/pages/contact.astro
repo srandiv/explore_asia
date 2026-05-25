@@ -137,7 +137,7 @@ const contactDetails = [
             </div>
           </aside>
 
-          <form class="contact-form" action={emailHref} method="post" enctype="text/plain" data-animate="fade-up">
+          <form class="contact-form" action="/api/contact" method="post" data-contact-form data-animate="fade-up">
             <div class="contact-form-heading">
               <Send aria-hidden="true" />
               <div>
@@ -149,22 +149,31 @@ const contactDetails = [
             <div class="grid gap-5 sm:grid-cols-2">
               <div class="contact-field">
                 <label for="name">Name</label>
-                <input id="name" name="name" type="text" autocomplete="name" required />
+                <input id="name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required />
               </div>
               <div class="contact-field">
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required />
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="160" required />
               </div>
             </div>
 
             <div class="grid gap-5 sm:grid-cols-2">
               <div class="contact-field">
                 <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  maxlength="30"
+                  pattern="[+()0-9 .-]{7,30}"
+                />
               </div>
               <div class="contact-field">
                 <label for="package">Package</label>
-                <select id="package" name="package">
+                <select id="package" name="package" required>
+                  <option value="" disabled selected>Select a package</option>
                   <option>Purely Ceylon</option>
                   <option>Island Treasures</option>
                   <option>Best of Ceylon</option>
@@ -182,12 +191,14 @@ const contactDetails = [
                 id="message"
                 name="message"
                 placeholder="Travel dates, number of travelers, places you want to include, and anything important for the trip."
+                minlength="10"
+                maxlength="1500"
                 required
               ></textarea>
             </div>
 
-            <button type="submit" class="site-button">
-              Send Inquiry
+            <button type="submit" class="site-button" data-contact-submit>
+              <span data-submit-label>Send Inquiry</span>
               <span class="site-button-icon" aria-hidden="true">
                 <ArrowRight class="site-button-icon-angle" />
                 <ArrowRight class="site-button-icon-straight" />
@@ -232,4 +243,93 @@ const contactDetails = [
       </div>
     </section>
   </main>
+
+  <div class="contact-popup" data-contact-popup hidden role="status" aria-live="polite">
+    <div>
+      <strong data-contact-popup-title></strong>
+      <p data-contact-popup-message></p>
+    </div>
+    <button type="button" data-contact-popup-close aria-label="Close message">&times;</button>
+  </div>
+
+  <script>
+    const form = document.querySelector("[data-contact-form]");
+    const popup = document.querySelector("[data-contact-popup]");
+    const popupTitle = document.querySelector("[data-contact-popup-title]");
+    const popupMessage = document.querySelector("[data-contact-popup-message]");
+    const popupClose = document.querySelector("[data-contact-popup-close]");
+    const submitButton = document.querySelector("[data-contact-submit]");
+    const submitLabel = document.querySelector("[data-submit-label]");
+    let popupTimer;
+
+    const setPopup = (type, title, message) => {
+      if (!popup || !popupTitle || !popupMessage) return;
+
+      popup.dataset.status = type;
+      popupTitle.textContent = title;
+      popupMessage.textContent = message;
+      popup.hidden = false;
+
+      window.clearTimeout(popupTimer);
+      popupTimer = window.setTimeout(() => {
+        popup.hidden = true;
+      }, 7000);
+    };
+
+    const setFieldErrors = (errors = {}) => {
+      if (!form) return;
+
+      for (const field of form.querySelectorAll("[name]")) {
+        field.removeAttribute("aria-invalid");
+      }
+
+      for (const fieldName of Object.keys(errors)) {
+        const field = form.querySelector(`[name="${fieldName}"]`);
+        field?.setAttribute("aria-invalid", "true");
+      }
+    };
+
+    popupClose?.addEventListener("click", () => {
+      if (popup) popup.hidden = true;
+    });
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setFieldErrors();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        setPopup("error", "Check the form", "Please fill all required fields correctly.");
+        return;
+      }
+
+      submitButton?.setAttribute("disabled", "true");
+      if (submitLabel) submitLabel.textContent = "Sending...";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            Accept: "application/json",
+          },
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || !result.ok) {
+          setFieldErrors(result.errors);
+          setPopup("error", "Message not sent", result.message || "Please try again in a moment.");
+          return;
+        }
+
+        form.reset();
+        setPopup("success", "Inquiry sent", result.message || "Thank you. Your inquiry was sent successfully.");
+      } catch {
+        setPopup("error", "Message not sent", "Please check your connection and try again.");
+      } finally {
+        submitButton?.removeAttribute("disabled");
+        if (submitLabel) submitLabel.textContent = "Send Inquiry";
+      }
+    });
+  </script>
 </Layout>

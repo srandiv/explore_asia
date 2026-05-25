@@ -12,11 +12,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^10.1.1",
     "@astrojs/sitemap": "^3.7.2",
     "@lucide/astro": "^1.16.0",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.3",
     "gsap": "^3.15.0",
+    "nodemailer": "^8.0.8",
     "simple-icons": "^16.20.0",
     "swiper": "^12.1.4",
     "tailwindcss": "^4.3.0"

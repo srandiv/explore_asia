@@ -870,8 +870,38 @@
     @apply w-full border border-slate-200 bg-white px-4 py-3 text-base text-slate-800 outline-none transition focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20;
   }
 
+  .contact-field input[aria-invalid="true"],
+  .contact-field textarea[aria-invalid="true"],
+  .contact-field select[aria-invalid="true"] {
+    @apply border-red-500 ring-2 ring-red-100;
+  }
+
   .contact-field textarea {
     @apply min-h-36 resize-y;
+  }
+
+  .contact-popup {
+    @apply fixed bottom-5 right-5 z-[100] flex max-w-sm items-start gap-4 border-l-4 bg-white p-5 text-slate-700 shadow-[0_22px_55px_rgba(15,23,42,0.18)];
+  }
+
+  .contact-popup[data-status="success"] {
+    @apply border-brand-secondary;
+  }
+
+  .contact-popup[data-status="error"] {
+    @apply border-red-500;
+  }
+
+  .contact-popup strong {
+    @apply block text-base font-bold text-slate-900;
+  }
+
+  .contact-popup p {
+    @apply mt-1 text-sm leading-relaxed;
+  }
+
+  .contact-popup button {
+    @apply -mt-2 ml-auto h-8 w-8 shrink-0 cursor-pointer border-0 bg-transparent text-2xl leading-none text-slate-400 transition hover:text-slate-700;
   }
 
   .contact-map-section {
@@ -960,6 +990,10 @@
 
   .site-button {
     @apply mt-6 inline-flex w-fit items-center justify-center gap-3 rounded-full border border-brand-secondary/20 bg-brand-secondary px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-white no-underline shadow-[0_16px_34px_rgba(27,156,80,0.24)] transition duration-300 hover:-translate-y-0.5 hover:bg-brand-primary hover:shadow-[0_20px_42px_rgba(16,85,152,0.22)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-secondary;
+  }
+
+  .site-button:disabled {
+    @apply cursor-wait opacity-70 hover:translate-y-0;
   }
 
   .site-button-icon {
