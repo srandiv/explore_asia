@@ -1,7 +1,7 @@
 export const siteUrl = "https://www.exploreasiatravels.com";
 export const siteName = "Explore Asia Travels";
 export const legalName = "Explore Asia Travels Pvt Ltd";
-export const primaryPhone = "+94775011272";
+export const primaryPhone = "+94703272700";
 export const primaryEmail = "sales@exploreasiatravels.com";
 export const secondaryEmail = "roshan@exploreasiatravels.com";
 export const businessAddress =
