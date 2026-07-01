@@ -1,4 +1,3 @@
-import { getSecret } from "astro:env/server";
 import {
   buildEmailHtml,
   buildEmailText,
@@ -9,12 +8,13 @@ import {
 
 export const prerender = false;
 
+const getEnv = (key) => import.meta.env[key] ?? process.env[key];
+
 const getContactConfig = () => ({
-  resendApiKey: getSecret("RESEND_API_KEY"),
-  fromEmail: getSecret("CONTACT_FROM_EMAIL"),
-  toEmail: getSecret("CONTACT_TO_EMAIL"),
-  logoUrl:
-    getSecret("CONTACT_LOGO_URL") ?? "https://www.exploreasiatravels.com/favicon.png",
+  resendApiKey: getEnv("RESEND_API_KEY"),
+  fromEmail: getEnv("CONTACT_FROM_EMAIL"),
+  toEmail: getEnv("CONTACT_TO_EMAIL"),
+  logoUrl: getEnv("CONTACT_LOGO_URL") ?? "https://www.exploreasiatravels.com/favicon.png",
 });
 
 const json = (body, status = 200) =>
