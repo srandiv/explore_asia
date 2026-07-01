@@ -1,0 +1,18 @@
+---
+const { id = "company" } = Astro.props;
+---
+
+<div class="form-honeypot" aria-hidden="true">
+  <label for={id}>Company</label>
+  <input type="text" id={id} name="company" tabindex="-1" autocomplete="off" />
+</div>
+
+<style>
+  .form-honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>
