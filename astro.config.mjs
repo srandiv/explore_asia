@@ -11,9 +11,21 @@ export default defineConfig({
   integrations: [sitemap()],
   env: {
     schema: {
-      RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
-      CONTACT_FROM_EMAIL: envField.string({ context: "server", access: "secret" }),
-      CONTACT_TO_EMAIL: envField.string({ context: "server", access: "secret" }),
+      RESEND_API_KEY: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      CONTACT_FROM_EMAIL: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      CONTACT_TO_EMAIL: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
       CONTACT_LOGO_URL: envField.string({
         context: "server",
         access: "secret",

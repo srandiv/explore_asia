@@ -1,9 +1,4 @@
-import {
-  CONTACT_FROM_EMAIL,
-  CONTACT_LOGO_URL,
-  CONTACT_TO_EMAIL,
-  RESEND_API_KEY,
-} from "astro:env/server";
+import { getSecret } from "astro:env/server";
 import {
   buildEmailHtml,
   buildEmailText,
@@ -13,6 +8,14 @@ import {
 } from "../../../shared/contact-inquiry.js";
 
 export const prerender = false;
+
+const getContactConfig = () => ({
+  resendApiKey: getSecret("RESEND_API_KEY"),
+  fromEmail: getSecret("CONTACT_FROM_EMAIL"),
+  toEmail: getSecret("CONTACT_TO_EMAIL"),
+  logoUrl:
+    getSecret("CONTACT_LOGO_URL") ?? "https://www.exploreasiatravels.com/favicon.png",
+});
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -100,8 +103,14 @@ export async function POST({ request }) {
     );
   }
 
-  if (!RESEND_API_KEY || !CONTACT_FROM_EMAIL || !CONTACT_TO_EMAIL) {
-    console.error("Contact form Resend environment variables are missing.");
+  const { resendApiKey, fromEmail, toEmail, logoUrl } = getContactConfig();
+
+  if (!resendApiKey || !fromEmail || !toEmail) {
+    console.error("Contact form Resend environment variables are missing.", {
+      hasResendApiKey: Boolean(resendApiKey),
+      hasFromEmail: Boolean(fromEmail),
+      hasToEmail: Boolean(toEmail),
+    });
 
     return json(
       {
@@ -114,13 +123,12 @@ export async function POST({ request }) {
 
   const safeName = stripHeaderBreaks(fields.name);
   const safeEmail = stripHeaderBreaks(fields.email);
-  const logoUrl = CONTACT_LOGO_URL ?? "https://www.exploreasiatravels.com/favicon.png";
 
   try {
     const { ok, result } = await sendWithResend({
-      apiKey: RESEND_API_KEY,
-      from: `Explore Asia Travels <${CONTACT_FROM_EMAIL}>`,
-      to: CONTACT_TO_EMAIL,
+      apiKey: resendApiKey,
+      from: `Explore Asia Travels <${fromEmail}>`,
+      to: toEmail,
       replyTo: `${safeName} <${safeEmail}>`,
       subject: `New travel inquiry from ${safeName}`,
       text: buildEmailText(fields),
